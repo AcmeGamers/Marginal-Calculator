@@ -18,7 +18,9 @@
 
     <div>
       <h2 id="derivation_h2"></h2>
-      <p id="derivative_step1"></p>
+      <p id="derivative_step1">
+        <p id="derivative_step1_2"></p>
+      </p>
       <p id="derivative_step2"></p>
     </div>
     <div>
@@ -53,10 +55,14 @@
         // Derivation
         document.getElementById("derivation_h2").innerHTML =
           "Step 1: Derivation";
-        document.getElementById("derivative_step1").innerHTML = `
-    ${katex.render(`c = \\pm\\${nerdamer(`d/dx(${expression})`)}`, element, {
-      throwOnError: false,
-    })}`;
+        document.getElementById("derivative_step1").innerHTML = 
+    katex.render(
+      `c = \\pm\\${nerdamer(`d/dx(${expression})`)}`,
+      document.getElementById("derivative_step1_2"),
+      {
+        throwOnError: false,
+      }
+    );
 
         document.getElementById("derivative_step2").innerHTML =
           result.derivative;
