@@ -18,9 +18,10 @@
 
     <div>
       <h2 id="derivation_h2"></h2>
-      <p id="derivative_step1"></p>
+      <p id="derivative_step1" class="hide"></p>
       <p id="derivative_step1_2"></p>
-      <p id="derivative_step2"></p>
+      <p id="derivative_step2" class="hide"></p>
+      <p id="derivative_step2_2"></p>
     </div>
     <div>
       <h2 id="puttingValues_h2"></h2>
@@ -54,10 +55,11 @@
       var expression = document.getElementById("expression").value;
       var q_value = document.getElementById("q_value").value;
 
+      // Latex Function
       function LatexValue(id, nerdamerExpression, TheElement) {
         document.getElementById(id).innerHTML = katex.render(
           `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
-          TheElement,
+          document.getElementById(TheElement),
           {
             displayMode: true,
             macros: {
@@ -67,6 +69,7 @@
         );
       }
 
+      // Starting Function
       try {
         var result = MarginalRevenue(expression, q_value);
 
@@ -74,11 +77,11 @@
         document.getElementById("derivation_h2").innerHTML =
           "Step 1: Derivation";
 
-        var element = document.getElementById("derivative_step1_2");
-        var firstNeardream = nerdamer(`d/dq(${expression})`);
-
+        var element = "derivative_step1_2";
+        var firstNearDream = nerdamer(`d/dq(${expression})`);
         LatexValue("derivative_step1", "1", element);
 
+        var secondNearDream = nerdamer(`${result.derivative}`);
         document.getElementById("derivative_step2").innerHTML =
           result.derivative;
 
