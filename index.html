@@ -26,8 +26,10 @@
     </div>
     <div>
       <h2 id="puttingValues_h2"></h2>
-      <p id="puttingValues_step1"></p>
-      <p id="puttingValues_step2"></p>
+      <p id="puttingValues_step1" class="hide"></p>
+      <p id="puttingValues_step1_2"></p>
+      <p id="puttingValues_step2" class="hide"></p>
+      <p id="puttingValues_step2_2"></p>
     </div>
 
     <p>Answer: <span id="result"></span></p>
@@ -74,9 +76,10 @@
       var q_value = document.getElementById("q_value").value;
 
       // Latex Function
-      function LatexValue(id, nerdamerExpression, TheElement) {
+      function LatexValue(id, nerdamerExpression, TheElement, data) {
         document.getElementById(id).innerHTML = katex.render(
-          `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
+          data +
+            `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
           document.getElementById(TheElement),
           {
             displayMode: true,
@@ -101,16 +104,16 @@
 
         element = "derivative_step2_2";
         var secondNearDream = nerdamer(`${result.derivative}`);
-
         LatexValue("derivative_step2", "2", element);
 
         // Putting Values
         document.getElementById("puttingValues_h2").innerHTML =
           "Step 2: Putting Values";
+        // puttingValues_step2_2
+        element = "puttingValues_step1_2";
+        var secondNearDream = nerdamer(`${q_value}`);
+        LatexValue("puttingValues_step1", "3", element, "Value of Q");
 
-        document.getElementById(
-          "puttingValues_step1"
-        ).innerHTML = `Value of Q = ${q_value}`;
         document.getElementById("puttingValues_step2").innerHTML =
           result.puttingValues;
 
