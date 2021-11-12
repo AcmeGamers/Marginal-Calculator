@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marginal Calculator</title>
+    <script src="./app.js">
+        var inputCheck = function() {
+          var expression = document.getElementById("expression").value;
+          try {
+              var result = deriveExpression(expression);
+              document.getElementById("result").innerHTML = result;
+          }
+          catch (error) {
+              document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
+              console.log(error);
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <input type="text" id="expression" />
+      <button onclick="inputCheck()">Calculate!</button>>
+    </div>
+    <span id="result"></span>
+  </body>
+</html>
