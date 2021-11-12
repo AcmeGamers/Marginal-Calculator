@@ -5,24 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marginal Calculator</title>
-    <script type="text/javascript" src="app.js">
-      function inputCheck() {
-        console.log("check")
-        var expression = document.getElementById("expression").value;
-        var q_value = document.getElementById("q_value").value;
-        try {
-            var result = MarginalRevenue(expression, q_value);
-            document.getElementById("result").innerHTML = result;
-        }
-        catch (error) {
-            document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
-            console.log(error);
-        }
-      }
-    </script>
   </head>
   <body>
-    <div>
+    <form id="form">
       <input
         type="text"
         placeholder="Expression"
@@ -30,8 +15,27 @@
         id="expression"
       />
       <input type="text" placeholder="Value of Q" value="9" id="q_value" />
-      <input value="Calculate!" type="button" onclick="inputCheck()" />
-    </div>
+      <button onclick="inputCheck()">Calculate!</button>
+    </form>
     <p>Answer: <span id="result"></span></p>
   </body>
+
+  <script type="text/javascript" src="altogether.js">
+    document.getElementById("form").addEventListener("click", function(event){
+    event.preventDefault();
+    });
+    function inputCheck() {
+      console.log("check")
+      var expression = document.getElementById("expression").value;
+      var q_value = document.getElementById("q_value").value;
+      try {
+          var result = MarginalRevenue(expression, q_value);
+          document.getElementById("result").innerHTML = result;
+      }
+      catch (error) {
+          document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
+          console.log(error);
+      }
+    }
+  </script>
 </html>
