@@ -908,4 +908,5 @@ function MarginalRevenue(expression, Q) {
   console.log(value1);
 
   console.log(eval(value1));
+  return eval(value1);
 }
