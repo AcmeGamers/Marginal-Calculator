@@ -53,41 +53,41 @@
 
   <!-- Custom Scripts  -->
   <script>
-     function inputCheck() {
-       console.log("check");
-       var expression = document.getElementById("expression").value;
-       var q_value = document.getElementById("q_value").value;
-       try {
-         var result = MarginalRevenue(expression, q_value);
+    function inputCheck() {
+      console.log("check");
+      var expression = document.getElementById("expression").value;
+      var q_value = document.getElementById("q_value").value;
+      try {
+        var result = MarginalRevenue(expression, q_value);
 
-         // Derivation
-         document.getElementById("derivation_h2").innerHTML =
-           "Step 1: Derivation";
-         document.getElementById("derivative_step1").innerHTML = `
-    ${katex.render(`c = \\pm\\${nerdamer(`d/dx(${expression})`)}``, element, {
+        // Derivation
+        document.getElementById("derivation_h2").innerHTML =
+          "Step 1: Derivation";
+        document.getElementById("derivative_step1").innerHTML = `
+    ${katex.render(`c = \\pm\\${nerdamer(`d/dx(${expression})`)}`, element, {
       throwOnError: false,
-    })}
+    })}`;
 
-         document.getElementById("derivative_step2").innerHTML =
-           result.derivative;
+        document.getElementById("derivative_step2").innerHTML =
+          result.derivative;
 
-         // Putting Values
-         document.getElementById("puttingValues_h2").innerHTML =
-           "Step 2: Putting Values";
+        // Putting Values
+        document.getElementById("puttingValues_h2").innerHTML =
+          "Step 2: Putting Values";
 
-         document.getElementById(
-           "puttingValues_step1"
-         ).innerHTML = `Value of Q = ${q_value}`;
-         document.getElementById("puttingValues_step2").innerHTML =
-           result.puttingValues;
+        document.getElementById(
+          "puttingValues_step1"
+        ).innerHTML = `Value of Q = ${q_value}`;
+        document.getElementById("puttingValues_step2").innerHTML =
+          result.puttingValues;
 
-         // Results
-         document.getElementById("result").innerHTML = result.answer;
-       } catch (error) {
-         document.getElementById("result").innerHTML =
-           "There is some issue in the formula or the typed data is invalid";
-         console.log(error);
-       }
-     }
+        // Results
+        document.getElementById("result").innerHTML = result.answer;
+      } catch (error) {
+        document.getElementById("result").innerHTML =
+          "There is some issue in the formula or the typed data is invalid";
+        console.log(error);
+      }
+    }
   </script>
 </html>

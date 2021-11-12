@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "derivation": "1.0.0",
+    "katex": "^0.15.1",
     "nerdamer": "^1.1.12"
   }
 }
