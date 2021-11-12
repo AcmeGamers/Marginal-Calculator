@@ -10,6 +10,7 @@
   "author": "Acme Gamers",
   "license": "ISC",
   "dependencies": {
-    "derivation": "1.0.0"
+    "derivation": "1.0.0",
+    "nerdamer": "^1.1.12"
   }
 }

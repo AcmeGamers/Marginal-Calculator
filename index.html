@@ -15,12 +15,16 @@
     />
     <input type="text" placeholder="Value of Q" value="9" id="q_value" />
     <input value="Calculate!" type="button" onclick="inputCheck()" />
+
     <div>
-      <h2>Value: <strong id="theExpression"></strong></h2>
+      <h2 id="derivation_h2"></h2>
+      <p id="derivative_step1"></p>
+      <p id="derivative_step2"></p>
     </div>
     <div>
-      <h2>Step 1: Derivation</h2>
-      <span id="derivative_step"></span>
+      <h2 id="puttingValues_h2"></h2>
+      <p id="puttingValues_step1"></p>
+      <p id="puttingValues_step2"></p>
     </div>
 
     <p>Answer: <span id="result"></span></p>
@@ -34,9 +38,26 @@
       var q_value = document.getElementById("q_value").value;
       try {
         var result = MarginalRevenue(expression, q_value);
-        document.getElementById("theExpression").innerHTML = expression;
-        document.getElementById("derivative_step").innerHTML =
+
+        // Derivation
+        document.getElementById("derivation_h2").innerHTML =
+          "Step 1: Derivation";
+        document.getElementById(
+          "derivative_step1"
+        ).innerHTML = `d/dx(${expression})`;
+        document.getElementById("derivative_step2").innerHTML =
           result.derivative;
+
+        // Putting Values
+        document.getElementById("puttingValues_h2").innerHTML =
+          "Step 2: Putting Values";
+
+        document.getElementById(
+          "puttingValues_step1"
+        ).innerHTML = `Value of Q = ${q_value}`;
+        document.getElementById("puttingValues_step2").innerHTML =
+          result.puttingValues;
+        // Results
         document.getElementById("result").innerHTML = result.answer;
       } catch (error) {
         document.getElementById("result").innerHTML =
@@ -45,4 +66,5 @@
       }
     }
   </script>
+  
 </html>
