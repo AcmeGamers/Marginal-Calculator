@@ -7,34 +7,32 @@
     <title>Marginal Calculator</title>
   </head>
   <body>
-    <form id="form">
-      <input
-        type="text"
-        placeholder="Expression"
-        value="49 + 8*x + 6*x^2"
-        id="expression"
-      />
-      <input type="text" placeholder="Value of Q" value="9" id="q_value" />
-      <button onclick="inputCheck()">Calculate!</button>
-    </form>
+    <input
+      type="text"
+      placeholder="Expression"
+      value="49 + 8*x + 6*x^2"
+      id="expression"
+    />
+    <input type="text" placeholder="Value of Q" value="9" id="q_value" />
+    <input value="Calculate!" type="button" onclick="inputCheck()" />
+
     <p>Answer: <span id="result"></span></p>
   </body>
 
   <script type="text/javascript" src="altogether.js">
-    document.getElementById("form").addEventListener("click", function(event){
-    event.preventDefault();
-    });
-    function inputCheck() {
-      console.log("check")
+        function inputCheck() {
+      console.log("check");
       var expression = document.getElementById("expression").value;
       var q_value = document.getElementById("q_value").value;
       try {
-          var result = MarginalRevenue(expression, q_value);
-          document.getElementById("result").innerHTML = result;
-      }
-      catch (error) {
-          document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
-          console.log(error);
+        var result = MarginalRevenue(expression, q_value);
+        document.getElementById("result").innerHTML = result;
+        return true;
+      } catch (error) {
+        document.getElementById("result").innerHTML =
+          "There is some issue in the formula or the typed data is invalid";
+        console.log(error);
+        return false;
       }
     }
   </script>
