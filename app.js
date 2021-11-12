@@ -19,6 +19,5 @@ function MarginalRevenue(expression, Q) {
   console.log(value1);
 
   console.log(eval(value1));
+  return eval(value1);
 }
-
-console.log(MarginalRevenue("49 + 8*x + 6*x^2", 9));

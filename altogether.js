@@ -1,6 +1,6 @@
 // The Derivation code is obtained from the following URL
 // https://github.com/Michi83/JS-Derivative-Finder/
-// Thanking the Author Michi83, without whom this code would have
+// Thanking the Author Michi83, without whom this code would have been incomplete
 /*
  * The basic idea of this script is to construct a syntax tree from a
  * mathematical expression and to apply differentiation rules to it. Also some
@@ -889,24 +889,3 @@ var deriveExpression = function (expression) {
   return unparse(token);
 };
 
-function MarginalRevenue(expression, Q) {
-  var expressionValue = expression;
-  console.log(deriveExpression(expressionValue));
-
-  var deviationResult = deriveExpression(expressionValue),
-    result = deviationResult.replace(/x/g, Q);
-
-  // Split using a space character
-  let arr = result.split(" ");
-
-  // The array
-  // console.log(arr);
-  var value1 = [];
-  for (let index = 0; index < arr.length; index++) {
-    value1 += `${arr[index]} `;
-  }
-  console.log(value1);
-
-  console.log(eval(value1));
-  return eval(value1);
-}
