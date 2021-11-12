@@ -1,3 +1,6 @@
+// The Derivation code is obtained from the following URL
+// https://github.com/Michi83/JS-Derivative-Finder/
+// Thanking the Author Michi83, without whom this code would have
 /*
  * The basic idea of this script is to construct a syntax tree from a
  * mathematical expression and to apply differentiation rules to it. Also some
