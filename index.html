@@ -17,14 +17,14 @@
     <input type="text" placeholder="Value of Q" value="9" id="q_value" />
     <input value="Calculate!" type="button" onclick="inputCheck()" />
 
-    <div>
+    <div class="left-align">
       <h2 id="derivation_h2"></h2>
       <p id="derivative_step1" class="hide"></p>
       <p id="derivative_step1_2"></p>
       <p id="derivative_step2" class="hide"></p>
       <p id="derivative_step2_2"></p>
     </div>
-    <div>
+    <div class="left-align">
       <h2 id="puttingValues_h2"></h2>
       <p id="puttingValues_step1" class="hide"></p>
       <p id="puttingValues_step1_2"></p>
@@ -32,7 +32,7 @@
       <p id="puttingValues_step2_2"></p>
     </div>
 
-    <p>Answer: <span id="result"></span></p>
+    <span id="result"></span>
   </body>
 
   <!-- Nerdamer -->
@@ -100,11 +100,11 @@
 
         var element = "derivative_step1_2";
         var firstNearDream = nerdamer(`d/dq(${expression})`);
-        LatexValue("derivative_step1", "1", element);
+        LatexValue("derivative_step1", "1", element, "MC ");
 
         element = "derivative_step2_2";
         var secondNearDream = nerdamer(`${result.derivative}`);
-        LatexValue("derivative_step2", "2", element);
+        LatexValue("derivative_step2", "2", element, "MC ");
 
         // Putting Values
         document.getElementById("puttingValues_h2").innerHTML =
@@ -118,7 +118,9 @@
           result.puttingValues;
 
         // Results
-        document.getElementById("result").innerHTML = result.answer;
+        document.getElementById(
+          "result"
+        ).innerHTML = `Answer: ${result.answer}`;
       } catch (error) {
         document.getElementById("result").innerHTML =
           "There is some issue in the formula or the typed data is invalid";
