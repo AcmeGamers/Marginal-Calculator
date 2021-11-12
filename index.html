@@ -9,7 +9,7 @@
         var inputCheck = function() {
           var expression = document.getElementById("expression").value;
           try {
-              var result = deriveExpression(expression);
+              var result = MarginalRevenue(expression);
               document.getElementById("result").innerHTML = result;
           }
           catch (error) {
@@ -21,8 +21,11 @@
   </head>
   <body>
     <div>
-      <input type="text" id="expression" />
-      <button onclick="inputCheck()">Calculate!</button>>
+      <form action="">
+        <input type="text" placeholder="Expression" id="expression" />
+        <input type="text" placeholder="Value of Q" />
+        <button onclick="inputCheck()">Calculate!</button>
+      </form>
     </div>
     <span id="result"></span>
   </body>
