@@ -1,9 +1,10 @@
 import deriveExpression from "./derivation.js";
 
-console.log(deriveExpression("(x*2)+(x^2)"));
+var expressionValue = "39 + (7*x) - (4*x)^2 + (2*x)^3";
+console.log(deriveExpression(expressionValue));
 
-var deviationResult = deriveExpression("(x*2)+(x^2)"),
-  Q = 12,
+var deviationResult = deriveExpression(expressionValue),
+  Q = 9,
   result = deviationResult.replace(/x/g, Q);
 
 // Split using a space character
