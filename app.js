@@ -2,9 +2,9 @@ import deriveExpression from "./derivation.js";
 
 console.log(deriveExpression("(x*2)+(x^2)"));
 
-const deviationResult = deriveExpression("(x*2)+(x^2)");
-const Q = 12;
-const result = deviationResult.replace(/x/g, Q);
+var deviationResult = deriveExpression("(x*2)+(x^2)"),
+  Q = 12,
+  result = deviationResult.replace(/x/g, Q);
 
 // Split using a space character
 let arr = result.split(" ");
