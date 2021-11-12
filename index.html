@@ -18,9 +18,8 @@
 
     <div>
       <h2 id="derivation_h2"></h2>
-      <p id="derivative_step1">
-        <p id="derivative_step1_2"></p>
-      </p>
+      <p id="derivative_step1"></p>
+      <p id="derivative_step1_2"></p>
       <p id="derivative_step2"></p>
     </div>
     <div>
@@ -40,6 +39,11 @@
   <!-- Katex -->
   <link href="./node_modules/katex/dist/katex.min.css" />
   <script src="./node_modules/katex/dist/katex.min.js"></script>
+  <script
+    src="./node_modules/katex/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"
+  ></script>
+
   <!-- My Scripts -->
   <script src="./altogether.js"></script>
 
@@ -49,20 +53,31 @@
       console.log("check");
       var expression = document.getElementById("expression").value;
       var q_value = document.getElementById("q_value").value;
+
+      function LatexValue(id, nerdamerExpression, TheElement) {
+        document.getElementById(id).innerHTML = katex.render(
+          `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
+          TheElement,
+          {
+            displayMode: true,
+            macros: {
+              "\\RR": "\\mathbb{R}",
+            },
+          }
+        );
+      }
+
       try {
         var result = MarginalRevenue(expression, q_value);
 
         // Derivation
         document.getElementById("derivation_h2").innerHTML =
           "Step 1: Derivation";
-        document.getElementById("derivative_step1").innerHTML = 
-    katex.render(
-      `c = \\pm\\${nerdamer(`d/dx(${expression})`)}`,
-      document.getElementById("derivative_step1_2"),
-      {
-        throwOnError: false,
-      }
-    );
+
+        var element = document.getElementById("derivative_step1_2");
+        var firstNeardream = nerdamer(`d/dq(${expression})`);
+
+        LatexValue("derivative_step1", "1", element);
 
         document.getElementById("derivative_step2").innerHTML =
           result.derivative;
