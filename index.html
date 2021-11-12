@@ -35,43 +35,59 @@
   <script src="./node_modules/nerdamer/Algebra.js"></script>
   <script src="./node_modules/nerdamer/Calculus.js"></script>
 
+  <!-- Katex -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
+    crossorigin="anonymous"
+  />
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+    crossorigin="anonymous"
+  ></script>
   <!-- My Scripts -->
   <script src="./altogether.js"></script>
 
   <!-- Custom Scripts  -->
   <script>
-    function inputCheck() {
-      console.log("check");
-      var expression = document.getElementById("expression").value;
-      var q_value = document.getElementById("q_value").value;
-      try {
-        var result = MarginalRevenue(expression, q_value);
+     function inputCheck() {
+       console.log("check");
+       var expression = document.getElementById("expression").value;
+       var q_value = document.getElementById("q_value").value;
+       try {
+         var result = MarginalRevenue(expression, q_value);
 
-        // Derivation
-        document.getElementById("derivation_h2").innerHTML =
-          "Step 1: Derivation";
-        document.getElementById(
-          "derivative_step1"
-        ).innerHTML = `d/dx(${expression})`;
-        document.getElementById("derivative_step2").innerHTML =
-          result.derivative;
+         // Derivation
+         document.getElementById("derivation_h2").innerHTML =
+           "Step 1: Derivation";
+         document.getElementById("derivative_step1").innerHTML = `
+    ${katex.render(`c = \\pm\\${nerdamer(`d/dx(${expression})`)}``, element, {
+      throwOnError: false,
+    })}
 
-        // Putting Values
-        document.getElementById("puttingValues_h2").innerHTML =
-          "Step 2: Putting Values";
+         document.getElementById("derivative_step2").innerHTML =
+           result.derivative;
 
-        document.getElementById(
-          "puttingValues_step1"
-        ).innerHTML = `Value of Q = ${q_value}`;
-        document.getElementById("puttingValues_step2").innerHTML =
-          result.puttingValues;
-        // Results
-        document.getElementById("result").innerHTML = result.answer;
-      } catch (error) {
-        document.getElementById("result").innerHTML =
-          "There is some issue in the formula or the typed data is invalid";
-        console.log(error);
-      }
-    }
+         // Putting Values
+         document.getElementById("puttingValues_h2").innerHTML =
+           "Step 2: Putting Values";
+
+         document.getElementById(
+           "puttingValues_step1"
+         ).innerHTML = `Value of Q = ${q_value}`;
+         document.getElementById("puttingValues_step2").innerHTML =
+           result.puttingValues;
+
+         // Results
+         document.getElementById("result").innerHTML = result.answer;
+       } catch (error) {
+         document.getElementById("result").innerHTML =
+           "There is some issue in the formula or the typed data is invalid";
+         console.log(error);
+       }
+     }
   </script>
 </html>
