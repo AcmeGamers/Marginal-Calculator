@@ -16,8 +16,11 @@
     <input type="text" placeholder="Value of Q" value="9" id="q_value" />
     <input value="Calculate!" type="button" onclick="inputCheck()" />
     <div>
+      <h2>Value: <strong id="theExpression"></strong></h2>
+    </div>
+    <div>
       <h2>Step 1: Derivation</h2>
-      <div id="derivation-step"></div>
+      <span id="derivative_step"></span>
     </div>
 
     <p>Answer: <span id="result"></span></p>
@@ -31,7 +34,8 @@
       var q_value = document.getElementById("q_value").value;
       try {
         var result = MarginalRevenue(expression, q_value);
-        document.getElementById("derivative-step").innerHTML =
+        document.getElementById("theExpression").innerHTML = expression;
+        document.getElementById("derivative_step").innerHTML =
           result.derivative;
         document.getElementById("result").innerHTML = result.answer;
       } catch (error) {
