@@ -10,17 +10,11 @@ const result = deviationResult.replace(/x/g, Q);
 let arr = result.split(" ");
 
 // The array
-console.log(arr);
-console.log(arr[0] + arr[1] + arr[2] + arr[3] + arr[4]);
-// console.log(result);
-// console.log(result);
+// console.log(arr);
+var value1 = [];
+for (let index = 0; index < arr.length; index++) {
+  value1 += `${arr[index]} `;
+}
+console.log(value1);
 
-var newReslt = arr.map(function (x) {
-  if (!NaN) {
-    return parseInt(x, 10);
-  } else return x;
-});
-console.log(newReslt);
-console.log(
-  newReslt[0] + newReslt[1] + newReslt[2] + newReslt[3] + newReslt[4]
-);
+console.log(eval(value1));
