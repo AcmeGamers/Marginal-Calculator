@@ -5,28 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marginal Calculator</title>
-    <script src="./app.js">
-        var inputCheck = function() {
-          var expression = document.getElementById("expression").value;
-          try {
-              var result = MarginalRevenue(expression);
-              document.getElementById("result").innerHTML = result;
-          }
-          catch (error) {
-              document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
-              console.log(error);
-          }
+    <script type="text/javascript" src="app.js">
+      function inputCheck() {
+        console.log("check")
+        var expression = document.getElementById("expression").value;
+        var q_value = document.getElementById("q_value").value;
+        try {
+            var result = MarginalRevenue(expression, q_value);
+            document.getElementById("result").innerHTML = result;
+        }
+        catch (error) {
+            document.getElementById("result").innerHTML = "There is some issue in the formula or the typed data is invalid";
+            console.log(error);
+        }
       }
     </script>
   </head>
   <body>
     <div>
-      <form action="">
-        <input type="text" placeholder="Expression" id="expression" />
-        <input type="text" placeholder="Value of Q" />
-        <button onclick="inputCheck()">Calculate!</button>
-      </form>
+      <input
+        type="text"
+        placeholder="Expression"
+        value="49 + 8*x + 6*x^2"
+        id="expression"
+      />
+      <input type="text" placeholder="Value of Q" value="9" id="q_value" />
+      <input value="Calculate!" type="button" onclick="inputCheck()" />
     </div>
-    <span id="result"></span>
+    <p>Answer: <span id="result"></span></p>
   </body>
 </html>
