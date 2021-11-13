@@ -25,3 +25,12 @@ body {
 input {
   padding: 5px 1rem 5px 1rem;
 }
+
+.text_and_input {
+  display: flex;
+  align-items: center;
+}
+
+.margin-right-1rem {
+  margin-right: 1rem;
+}
