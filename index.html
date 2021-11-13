@@ -39,7 +39,7 @@
         />
         <!-- 55 + 6*q - 7*q^2 + 3*q^3 === Q = 4 === 94 -->
         <input type="text" value="9" placeholder="Value of Q" id="q_value" />
-        <input value="Calculate!" type="button" onclick="inputCheck()" />
+        <input value="Calculate!" type="button" onclick="MRCheck()" />
 
         <div class="left-align">
           <h2 id="derivation_h2"></h2>
@@ -66,8 +66,16 @@
       </div>
 
       <div id="PED" class="tabcontent">
-        <h3>PED</h3>
-        <p>PED is the capital of France.</p>
+        <div>
+          <input
+            type="text"
+            value="49 + 8*q + 6*Q^2"
+            placeholder="49 + 8*q + 6*Q^2"
+            id="expression"
+          />
+          <!-- 55 + 6*q - 7*q^2 + 3*q^3 === Q = 4 === 94 -->
+          <input value="Calculate!" type="button" onclick="PEDCheck()" />
+        </div>
       </div>
 
       <div id="YED" class="tabcontent">
@@ -144,17 +152,21 @@
 
   <!-- Custom Scripts  -->
   <script>
-    function inputCheck() {
-      console.log("check");
+    // Marginal Revenue Function
+    function MRCheck() {
+      // Obtaining Input Value
       var expression = document
         .getElementById("expression")
         .value.toLowerCase()
-        .replace(/q/g, "x");
+        .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
+
+      // Logs The Result
       console.log(expression);
-      var q_value = document.getElementById("q_value").value;
+      var q_value = document.getElementById("q_value").value; // Gets Value of Q
 
       // Latex Function
       function LatexValue(id, nerdamerExpression, TheElement, data) {
+        // Renders data
         document.getElementById(id).innerHTML = katex.render(
           data +
             `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
@@ -187,14 +199,13 @@
         );
       }
 
-      // Marginal Revenue
+      // Marginal Revenue Calculation
       function MarginalRevenue(expression, Q) {
-        // Obtaining the Expression
-        var expressionValue = expression;
-        console.log(deriveExpression(expressionValue));
-
-        var deviationResult = deriveExpression(expressionValue),
+        // Obtaining the Expression from first Function
+        var expressionValue = expression,
+          deviationResult = deriveExpression(expressionValue),
           result = deviationResult.replace(/x/g, Q);
+        console.log(deviationResult);
 
         // Split using a space character
         let arr = result.split(" ");
@@ -205,22 +216,12 @@
           value1 += `${arr[index]} `;
         }
 
-        // // Function to Store power
-        // function storePower(array, val) {
-        //   var indexes = [];
-        //   for (var i = 0; i <script array.length; i++)
-        //     if (array[i] === val) indexes.push(i);
-        //   return indexes;
-        // }
-
-        // var gettingPositions = storePower(value1, "^");
-        // console.log(gettingPositions);
-
         // Result
         var finalAnswer = eval(math.evaluate(value1));
         console.log(value1);
         console.log(finalAnswer);
 
+        // Providing the answers to variables which needs it.
         answers = {
           derivative: deriveExpression(expressionValue),
           puttingValues: value1,
@@ -230,8 +231,8 @@
         return answers;
       }
 
-      // Starting Function
-      try {
+      // Marginal Revenue Function Calculation 2
+      function MarginalRevenueDisplay() {
         var result = MarginalRevenue(expression, q_value);
 
         // Derivation
@@ -282,6 +283,10 @@
         ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
 
         nerdamer.flush();
+      }
+      // Function that displays values on HTML page
+      try {
+        MarginalRevenueDisplay();
       } catch (error) {
         document.getElementById("result").innerHTML =
           "There is some issue in the formula or the typed data is invalid";
