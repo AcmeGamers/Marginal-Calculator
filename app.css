@@ -10,4 +10,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin: 2rem;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+#result {
+  font: normal 1.21em KaTeX_Main, Times New Roman, serif;
 }

@@ -10,11 +10,11 @@
   </head>
   <body>
     <div id="tabs">
-      <h2>Tabs</h2>
+      <h2>Calculator</h2>
 
       <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'London')">
-          Marginal Calculator
+          Marginal Revenue
         </button>
         <button class="tablinks" onclick="openCity(event, 'Paris')">
           Paris
@@ -27,27 +27,27 @@
       <div id="London" class="tabcontent">
         <input
           type="text"
-          placeholder="Expression"
           value="49 + 8*x + 6*x^2"
+          placeholder="49 + 8*x + 6*x^2"
           id="expression"
         />
-        <input type="text" placeholder="Value of Q" value="9" id="q_value" />
+        <input type="text" value="9" placeholder="Value of Q" id="q_value" />
         <input value="Calculate!" type="button" onclick="inputCheck()" />
 
         <div class="left-align">
-          <h2 id="derivation_h2"></h2>
+          <h2 id="derivation_h2" class="no-margin"></h2>
           <p id="derivative_step1" class="hide"></p>
-          <p id="derivative_step1_2"></p>
+          <p id="derivative_step1_2" class="no-margin"></p>
           <p id="derivative_step2" class="hide"></p>
-          <p id="derivative_step2_2"></p>
+          <p id="derivative_step2_2" class="no-margin"></p>
         </div>
 
         <div class="left-align">
-          <h2 id="puttingValues_h2"></h2>
+          <h2 id="puttingValues_h2" class="no-margin"></h2>
           <p id="puttingValues_step1" class="hide"></p>
-          <p id="puttingValues_step1_2"></p>
+          <p id="puttingValues_step1_2" class="no-margin"></p>
           <p id="puttingValues_step2" class="hide"></p>
-          <p id="puttingValues_step2_2"></p>
+          <p id="puttingValues_step2_2" class="no-margin"></p>
           <span id="result"></span>
         </div>
       </div>
