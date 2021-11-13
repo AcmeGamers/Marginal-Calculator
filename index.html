@@ -47,7 +47,7 @@
           <p id="puttingValues_step1" class="hide"></p>
           <p id="puttingValues_step1_2" class="no-margin"></p>
           <p id="puttingValues_step2" class="hide"></p>
-          <p id="puttingValues_step2_2" class="no-margin"></p>
+          <p id="puttingValues_step2_1" class="no-margin"></p>
           <span id="result"></span>
         </div>
 
@@ -167,18 +167,19 @@
         // Putting Values
         document.getElementById("puttingValues_h2").innerHTML =
           "Step 2: Putting Values";
-        // puttingValues_step2_2
+
+        // puttingValues_step1_2
         element = "puttingValues_step1_2";
         var secondNearDream = nerdamer(`${q_value}`);
         LatexValue("puttingValues_step1", "3", element, "Value of Q");
 
-        document.getElementById("puttingValues_step2").innerHTML =
-          result.puttingValues;
+        // puttingValues_step2_1
+        document.getElementById(
+          "puttingValues_step2_1"
+        ).innerHTML = `MC = ${result.puttingValues}`;
 
         // Results
-        document.getElementById(
-          "result"
-        ).innerHTML = `Marginal Revenue = ${result.answer}`;
+        document.getElementById("result").innerHTML = `MC = ${result.answer}`;
 
         // Conclusion
         document.getElementById("Marginal_Conclusion_1").innerHTML =
