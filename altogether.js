@@ -906,7 +906,17 @@ function MarginalRevenue(expression, Q) {
     value1 += `${arr[index]} `;
   }
 
-  // value.indexOf("Apple");
+  // Function to Store power
+  function storePower(arr, val) {
+    var indexes = [],
+      i;
+    for (i = 0; i < arr.length; i++) if (arr[i] === val) indexes.push(i);
+    console.log(indexes);
+    return indexes;
+  }
+
+  storePower(value1, "^");
+
   // Result
   var finalAnswer = eval(value1);
   console.log(value1);
