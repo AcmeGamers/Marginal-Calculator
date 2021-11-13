@@ -14,7 +14,7 @@
 
       <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'London')">
-          London
+          Marginal Calculator
         </button>
         <button class="tablinks" onclick="openCity(event, 'Paris')">
           Paris
@@ -25,8 +25,32 @@
       </div>
 
       <div id="London" class="tabcontent">
-        <h3>London</h3>
-        <p>London is the capital city of England.</p>
+        <input
+          type="text"
+          placeholder="Expression"
+          value="49 + 8*x + 6*x^2"
+          id="expression"
+        />
+        <input type="text" placeholder="Value of Q" value="9" id="q_value" />
+        <input value="Calculate!" type="button" onclick="inputCheck()" />
+
+        <div class="left-align">
+          <h2 id="derivation_h2"></h2>
+          <p id="derivative_step1" class="hide"></p>
+          <p id="derivative_step1_2"></p>
+          <p id="derivative_step2" class="hide"></p>
+          <p id="derivative_step2_2"></p>
+        </div>
+
+        <div class="left-align">
+          <h2 id="puttingValues_h2"></h2>
+          <p id="puttingValues_step1" class="hide"></p>
+          <p id="puttingValues_step1_2"></p>
+          <p id="puttingValues_step2" class="hide"></p>
+          <p id="puttingValues_step2_2"></p>
+        </div>
+
+        <span id="result"></span>
       </div>
 
       <div id="Paris" class="tabcontent">
@@ -39,33 +63,6 @@
         <p>Tokyo is the capital of Japan.</p>
       </div>
     </div>
-
-    <input
-      type="text"
-      placeholder="Expression"
-      value="49 + 8*x + 6*x^2"
-      id="expression"
-    />
-    <input type="text" placeholder="Value of Q" value="9" id="q_value" />
-    <input value="Calculate!" type="button" onclick="inputCheck()" />
-
-    <div class="left-align">
-      <h2 id="derivation_h2"></h2>
-      <p id="derivative_step1" class="hide"></p>
-      <p id="derivative_step1_2"></p>
-      <p id="derivative_step2" class="hide"></p>
-      <p id="derivative_step2_2"></p>
-    </div>
-
-    <div class="left-align">
-      <h2 id="puttingValues_h2"></h2>
-      <p id="puttingValues_step1" class="hide"></p>
-      <p id="puttingValues_step1_2"></p>
-      <p id="puttingValues_step2" class="hide"></p>
-      <p id="puttingValues_step2_2"></p>
-    </div>
-
-    <span id="result"></span>
   </body>
 
   <!-- Nerdamer -->
