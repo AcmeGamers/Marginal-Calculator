@@ -899,16 +899,17 @@ function MarginalRevenue(expression, Q) {
 
   // Split using a space character
   let arr = result.split(" ");
-  // fruits.indexOf("Apple");
-  // The array
-  // console.log(arr);
+
+  // Making the Array
   var value1 = [];
   for (let index = 0; index < arr.length; index++) {
     value1 += `${arr[index]} `;
   }
+
+  // value.indexOf("Apple");
+  // Result
   var finalAnswer = eval(value1);
   console.log(value1);
-
   console.log(finalAnswer);
 
   answers = {
@@ -916,5 +917,6 @@ function MarginalRevenue(expression, Q) {
     puttingValues: value1,
     answer: finalAnswer,
   };
+  console.log("-------------------");
   return answers;
 }
