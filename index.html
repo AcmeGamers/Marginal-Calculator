@@ -41,7 +41,7 @@
         <input type="text" value="9" placeholder="Value of Q" id="q_value" />
         <input value="Calculate!" type="button" onclick="MRCheck()" />
 
-        <div class="left-align">
+        <div id="mr1" class="left-align">
           <h2 id="derivation_h2"></h2>
           <p id="derivative_step1" class="hide"></p>
           <p id="derivative_step1_2" class="no-margin"></p>
@@ -49,7 +49,7 @@
           <p id="derivative_step2_2" class="no-margin"></p>
         </div>
 
-        <div class="left-align">
+        <div id="mr2" class="left-align">
           <h2 id="puttingValues_h2"></h2>
           <p id="puttingValues_step1" class="hide"></p>
           <p id="puttingValues_step1_1" class="no-margin"></p>
@@ -59,7 +59,7 @@
           <span id="result"></span>
         </div>
 
-        <div class="left-align">
+        <div id="mr3" class="left-align">
           <h2 id="Marginal_Conclusion_1"></h2>
           <span id="Marginal_Conclusion_2"></span>
         </div>
@@ -150,8 +150,10 @@
     }
   </script>
 
-  <!-- Custom Scripts  -->
+  <!-- Custom Functions / Scripts  -->
   <script>
+    // Custom Property
+
     // Marginal Revenue Function
     function MRCheck() {
       // Obtaining Input Value
