@@ -893,44 +893,44 @@ var deriveExpression = function (expression) {
 // Code Written by Acme
 ///////////////////////
 
-function MarginalRevenue(expression, Q) {
-  // Obtaining the Expression
-  var expressionValue = expression;
-  console.log(deriveExpression(expressionValue));
+// function MarginalRevenue(expression, Q) {
+//   // Obtaining the Expression
+//   var expressionValue = expression;
+//   console.log(deriveExpression(expressionValue));
 
-  var deviationResult = deriveExpression(expressionValue),
-    result = deviationResult.replace(/x/g, Q);
+//   var deviationResult = deriveExpression(expressionValue),
+//     result = deviationResult.replace(/x/g, Q);
 
-  // Split using a space character
-  let arr = result.split(" ");
+//   // Split using a space character
+//   let arr = result.split(" ");
 
-  // Making the Array
-  var value1 = [];
-  for (let index = 0; index < arr.length; index++) {
-    value1 += `${arr[index]} `;
-  }
+//   // Making the Array
+//   var value1 = [];
+//   for (let index = 0; index < arr.length; index++) {
+//     value1 += `${arr[index]} `;
+//   }
 
-  // // Function to Store power
-  // function storePower(array, val) {
-  //   var indexes = [];
-  //   for (var i = 0; i < array.length; i++)
-  //     if (array[i] === val) indexes.push(i);
-  //   return indexes;
-  // }
+//   // // Function to Store power
+//   // function storePower(array, val) {
+//   //   var indexes = [];
+//   //   for (var i = 0; i < array.length; i++)
+//   //     if (array[i] === val) indexes.push(i);
+//   //   return indexes;
+//   // }
 
-  // var gettingPositions = storePower(value1, "^");
-  // console.log(gettingPositions);
+//   // var gettingPositions = storePower(value1, "^");
+//   // console.log(gettingPositions);
 
-  // Result
-  var finalAnswer = eval(math.evaluate(value1));
-  console.log(value1);
-  console.log(finalAnswer);
+//   // Result
+//   var finalAnswer = eval(math.evaluate(value1));
+//   console.log(value1);
+//   console.log(finalAnswer);
 
-  answers = {
-    derivative: deriveExpression(expressionValue),
-    puttingValues: value1,
-    answer: finalAnswer,
-  };
-  console.log("-------------------");
-  return answers;
-}
+//   answers = {
+//     derivative: deriveExpression(expressionValue),
+//     puttingValues: value1,
+//     answer: finalAnswer,
+//   };
+//   console.log("-------------------");
+//   return answers;
+// }
