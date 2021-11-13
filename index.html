@@ -186,6 +186,7 @@
         document.getElementById(
           "Marginal_Conclusion_2"
         ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
+        nerdamer.clear();
       } catch (error) {
         document.getElementById("result").innerHTML =
           "There is some issue in the formula or the typed data is invalid";
