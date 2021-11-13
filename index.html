@@ -188,15 +188,15 @@
         document.getElementById("puttingValues_h2").innerHTML =
           "Step 2: Putting Values";
 
-        // puttingValues_step1_1
-        element = "puttingValues_step1_1";
-        var secondNearDream = nerdamer(`${result.derivative}`);
-        LatexValue("puttingValues_step1", "2", element, "MC ");
-
         // puttingValues_step1_2
-        element = "puttingValues_step1_2";
+        element = "puttingValues_step1_1";
         var thirdNearDream = nerdamer(`${q_value}`);
         LatexValue("puttingValues_step1", "3", element, "Value of Q");
+
+        // puttingValues_step1_1
+        element = "puttingValues_step1_2";
+        var secondNearDream = nerdamer(`${result.derivative}`);
+        LatexValue("puttingValues_step1", "2", element, "MC ");
 
         // puttingValues_step2_1
         element = "puttingValues_step2_1";
