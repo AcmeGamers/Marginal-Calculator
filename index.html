@@ -161,14 +161,14 @@
 
   <!-- Custom Functions / Scripts  -->
   <script>
-    // Custom Property
+    // Add Custom Style Property
     function customStyleProperty(name, property, value, repeat) {
       try {
         if (repeat > 0) {
           for (var data = 1; data <= repeat; data++) {
-            return (document.getElementById(name + data).style.property =
-              value);
+            document.getElementById(name + data).style.property = value;
           }
+          console.log("Complete");
         } else {
           log(
             `The repeat is given less than 1, current value of repeat: ${repeat}`
@@ -181,6 +181,8 @@
 
     // Marginal Revenue Function
     function MRCheck() {
+      customStyleProperty("mr", "display", "flex", 3);
+
       // Obtaining Input Value
       var expression = document
         .getElementById("expression")
