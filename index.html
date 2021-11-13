@@ -28,6 +28,9 @@
         <button class="tablinks" onclick="openTab(event, 'XED')">
           Cross Price Elasticity of Demand (XED)
         </button>
+        <button class="tablinks" onclick="openTab(event, 'PC')">
+          Percentage Change
+        </button>
       </div>
 
       <div id="Marginal_Revenue_Tab" class="tabcontent">
@@ -67,6 +70,7 @@
 
       <div id="PED" class="tabcontent">
         <div>
+          <h3>Price Elasticity of Demand (PED)</h3>
           <input
             type="text"
             value="49 + 8*q + 6*Q^2"
@@ -86,6 +90,11 @@
       <div id="XED" class="tabcontent">
         <h3>XED</h3>
         <p>XED is the capital of Japan.</p>
+      </div>
+
+      <div id="PC" class="tabcontent">
+        <h3>Estimate the Percentage Change</h3>
+        <p>PC is the capital of Japan.</p>
       </div>
     </div>
   </body>
@@ -153,6 +162,22 @@
   <!-- Custom Functions / Scripts  -->
   <script>
     // Custom Property
+    function customStyleProperty(name, property, value, repeat) {
+      try {
+        if (repeat > 0) {
+          for (var data = 1; data <= repeat; data++) {
+            return (document.getElementById(name + data).style.property =
+              value);
+          }
+        } else {
+          log(
+            `The repeat is given less than 1, current value of repeat: ${repeat}`
+          );
+        }
+      } catch (error) {
+        console.log(`There is some error in the user input`);
+      }
+    }
 
     // Marginal Revenue Function
     function MRCheck() {
