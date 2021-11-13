@@ -48,9 +48,8 @@
           <p id="puttingValues_step1_2"></p>
           <p id="puttingValues_step2" class="hide"></p>
           <p id="puttingValues_step2_2"></p>
+          <span id="result"></span>
         </div>
-
-        <span id="result"></span>
       </div>
 
       <div id="Paris" class="tabcontent">
@@ -174,7 +173,7 @@
         // Results
         document.getElementById(
           "result"
-        ).innerHTML = `Marginal Revenue: ${result.answer}`;
+        ).innerHTML = `Marginal Revenue = ${result.answer}`;
       } catch (error) {
         document.getElementById("result").innerHTML =
           "There is some issue in the formula or the typed data is invalid";
