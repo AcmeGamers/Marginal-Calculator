@@ -38,7 +38,7 @@ function PriceElasticity(
   };
   //   return answers;
   // }
-  answers = valueCheck(expression);
+  // answers = valueCheck(expression);
   // Providing the answers to variables which needs it.
 
   console.log("-------------------");
