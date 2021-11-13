@@ -45,6 +45,7 @@
         <div class="left-align">
           <h2 id="puttingValues_h2"></h2>
           <p id="puttingValues_step1" class="hide"></p>
+          <p id="puttingValues_step1_1" class="no-margin"></p>
           <p id="puttingValues_step1_2" class="no-margin"></p>
           <p id="puttingValues_step2" class="hide"></p>
           <p id="puttingValues_step2_1" class="no-margin"></p>
@@ -148,6 +149,25 @@
         );
       }
 
+      // Latex Function Without Nerdamer
+      function LatexValue_WithoutNerdamer(
+        id,
+        expressionValue,
+        TheElement,
+        data
+      ) {
+        document.getElementById(id).innerHTML = katex.render(
+          data + `=  ${expressionValue}`,
+          document.getElementById(TheElement),
+          {
+            displayMode: true,
+            macros: {
+              "\\RR": "\\mathbb{R}",
+            },
+          }
+        );
+      }
+
       // Starting Function
       try {
         var result = MarginalRevenue(expression, q_value);
@@ -168,15 +188,24 @@
         document.getElementById("puttingValues_h2").innerHTML =
           "Step 2: Putting Values";
 
+        // puttingValues_step1_1
+        element = "puttingValues_step1_1";
+        var secondNearDream = nerdamer(`${result.derivative}`);
+        LatexValue("puttingValues_step1", "2", element, "MC ");
+
         // puttingValues_step1_2
         element = "puttingValues_step1_2";
-        var secondNearDream = nerdamer(`${q_value}`);
+        var thirdNearDream = nerdamer(`${q_value}`);
         LatexValue("puttingValues_step1", "3", element, "Value of Q");
 
         // puttingValues_step2_1
-        document.getElementById(
-          "puttingValues_step2_1"
-        ).innerHTML = `MC = ${result.puttingValues}`;
+        element = "puttingValues_step2_1";
+        LatexValue_WithoutNerdamer(
+          "puttingValues_step2",
+          result.puttingValues,
+          element,
+          `MC `
+        );
 
         // Results
         document.getElementById("result").innerHTML = `MC = ${result.answer}`;
