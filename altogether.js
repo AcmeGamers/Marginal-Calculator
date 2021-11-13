@@ -890,6 +890,7 @@ var deriveExpression = function (expression) {
 };
 
 function MarginalRevenue(expression, Q) {
+  // Obtaining the Expression
   var expressionValue = expression;
   console.log(deriveExpression(expressionValue));
 
@@ -898,7 +899,7 @@ function MarginalRevenue(expression, Q) {
 
   // Split using a space character
   let arr = result.split(" ");
-
+  // fruits.indexOf("Apple");
   // The array
   // console.log(arr);
   var value1 = [];

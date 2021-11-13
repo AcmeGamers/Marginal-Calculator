@@ -131,7 +131,11 @@
   <script>
     function inputCheck() {
       console.log("check");
-      var expression = document.getElementById("expression").value;
+      var expression = document
+        .getElementById("expression")
+        .value.toLowerCase()
+        .replace(/q/g, "x");
+      console.log(expression);
       var q_value = document.getElementById("q_value").value;
 
       // Latex Function
@@ -177,11 +181,13 @@
           "Step 1: Derivation";
 
         var element = "derivative_step1_2";
-        var firstNearDream = nerdamer(`d/dq(${expression})`);
+        var firstNearDream = nerdamer(`d/dq(${expression.replace(/x/g, "Q")})`);
         LatexValue("derivative_step1", "1", element, "MC ");
 
         element = "derivative_step2_2";
-        var secondNearDream = nerdamer(`${result.derivative}`);
+        var secondNearDream = nerdamer(
+          `${result.derivative.replace(/x/g, "Q")}`
+        );
         LatexValue("derivative_step2", "2", element, "MC ");
 
         // Putting Values
