@@ -10,7 +10,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 2rem;
 }
 
 .no-margin {
@@ -19,4 +18,8 @@ body {
 
 #result {
   font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+}
+
+input {
+  padding: 5px 1rem 5px 1rem;
 }
