@@ -893,13 +893,13 @@ var deriveExpression = function (expression) {
 // Code Written by Acme
 ///////////////////////
 
+// Marginal Revenue Function
 // function MarginalRevenue(expression, Q) {
-//   // Obtaining the Expression
-//   var expressionValue = expression;
-//   console.log(deriveExpression(expressionValue));
-
-//   var deviationResult = deriveExpression(expressionValue),
+//   // Obtaining the Expression from first Function
+//   var expressionValue = expression,
+//     deviationResult = deriveExpression(expressionValue),
 //     result = deviationResult.replace(/x/g, Q);
+//   console.log(deviationResult);
 
 //   // Split using a space character
 //   let arr = result.split(" ");
@@ -910,22 +910,12 @@ var deriveExpression = function (expression) {
 //     value1 += `${arr[index]} `;
 //   }
 
-//   // // Function to Store power
-//   // function storePower(array, val) {
-//   //   var indexes = [];
-//   //   for (var i = 0; i < array.length; i++)
-//   //     if (array[i] === val) indexes.push(i);
-//   //   return indexes;
-//   // }
-
-//   // var gettingPositions = storePower(value1, "^");
-//   // console.log(gettingPositions);
-
 //   // Result
 //   var finalAnswer = eval(math.evaluate(value1));
 //   console.log(value1);
 //   console.log(finalAnswer);
 
+//   // Providing the answers to variables which needs it.
 //   answers = {
 //     derivative: deriveExpression(expressionValue),
 //     puttingValues: value1,
@@ -934,3 +924,44 @@ var deriveExpression = function (expression) {
 //   console.log("-------------------");
 //   return answers;
 // }
+
+// Price Elasticity of Demand
+function PriceElasticity(expression, p1, p2, p3, y) {
+  // Obtaining the Expression from first Function
+
+  console.log(expression);
+  expression.replace(/p1/g, p1);
+  expression.replace(/p2/g, p2);
+  expression.replace(/p3/g, p3);
+  expression.replace(/y/g, y);
+
+  console.log(expression);
+
+  function valueCheck(dataExpression) {
+    // Split using a space character
+    let arr = dataExpression.split(" ");
+
+    // Making the Array
+    var value1 = [];
+    for (let index = 0; index < arr.length; index++) {
+      value1 += `${arr[index]} `;
+    }
+
+    // Result
+    var finalAnswer = eval(math.evaluate(value1));
+    console.log(value1);
+    console.log(finalAnswer);
+
+    answers = {
+      derivative: deriveExpression(expressionValue),
+      puttingValues: value1,
+      answer: finalAnswer,
+    };
+    return answers;
+  }
+  answers = valueCheck(expression);
+  // Providing the answers to variables which needs it.
+
+  console.log("-------------------");
+  return answers;
+}

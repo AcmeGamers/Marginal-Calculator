@@ -87,10 +87,11 @@
           <input
             type="text"
             style="width: -webkit-fill-available"
-            value="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
+            value="7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05*y"
             placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
             id="expression"
           />
+          <!-- "1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y" -->
           <div
             style="
               display: flex;
@@ -99,11 +100,26 @@
             "
           >
             <div style="display: block; margin: 1rem 0">
-              <input id="pg1" type="text" placeholder="Price of Good 1" />
-              <input id="pg2" type="text" placeholder="Price of Good 2" />
-              <input id="pg3" type="text" placeholder="Price of Good 3" />
+              <input
+                id="pg1"
+                value="209"
+                type="text"
+                placeholder="Price of Good 1"
+              />
+              <input
+                id="pg2"
+                value="101"
+                type="text"
+                placeholder="Price of Good 2"
+              />
+              <input
+                id="pg3"
+                value="478"
+                type="text"
+                placeholder="Price of Good 3"
+              />
             </div>
-            <input id="income" type="text" placeholder="Income" />
+            <input id="income" value="18361" type="text" placeholder="Income" />
             <input
               style="margin: 1rem 0"
               value="Calculate!"
@@ -266,6 +282,30 @@
             },
           }
         );
+      }
+
+      // Each Value Checker
+      function valueCheck(dataExpression) {
+        // Split using a space character
+        let arr = dataExpression.split(" ");
+
+        // Making the Array
+        var value1 = [];
+        for (let index = 0; index < arr.length; index++) {
+          value1 += `${arr[index]} `;
+        }
+
+        // Result
+        var finalAnswer = eval(math.evaluate(value1));
+        console.log(value1);
+        console.log(finalAnswer);
+
+        answers = {
+          derivative: deriveExpression(expressionValue),
+          puttingValues: value1,
+          answer: finalAnswer,
+        };
+        return answers;
       }
 
       // Marginal Revenue Calculation
