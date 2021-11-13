@@ -35,7 +35,7 @@
         <input value="Calculate!" type="button" onclick="inputCheck()" />
 
         <div class="left-align">
-          <h2 id="derivation_h2" class="no-margin"></h2>
+          <h2 id="derivation_h2"></h2>
           <p id="derivative_step1" class="hide"></p>
           <p id="derivative_step1_2" class="no-margin"></p>
           <p id="derivative_step2" class="hide"></p>
@@ -43,12 +43,17 @@
         </div>
 
         <div class="left-align">
-          <h2 id="puttingValues_h2" class="no-margin"></h2>
+          <h2 id="puttingValues_h2"></h2>
           <p id="puttingValues_step1" class="hide"></p>
           <p id="puttingValues_step1_2" class="no-margin"></p>
           <p id="puttingValues_step2" class="hide"></p>
           <p id="puttingValues_step2_2" class="no-margin"></p>
           <span id="result"></span>
+        </div>
+
+        <div class="left-align">
+          <h2 id="Marginal_Conclusion_1"></h2>
+          <span id="Marginal_Conclusion_2"></span>
         </div>
       </div>
 
@@ -174,6 +179,13 @@
         document.getElementById(
           "result"
         ).innerHTML = `Marginal Revenue = ${result.answer}`;
+
+        // Conclusion
+        document.getElementById("Marginal_Conclusion_1").innerHTML =
+          "Conclusion";
+        document.getElementById(
+          "Marginal_Conclusion_2"
+        ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
       } catch (error) {
         document.getElementById("result").innerHTML =
           "There is some issue in the formula or the typed data is invalid";
