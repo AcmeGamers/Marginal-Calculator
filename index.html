@@ -78,7 +78,34 @@
             id="expression"
           />
           <!-- 55 + 6*q - 7*q^2 + 3*q^3 === Q = 4 === 94 -->
-          <input value="Calculate!" type="button" onclick="PEDCheck()" />
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+            "
+          >
+            <div style="display: block; margin: 1rem 0">
+              <input id="pg1" type="text" placeholder="Price of Good 1" />
+              <input id="pg2" type="text" placeholder="Price of Good 2" />
+              <input id="pg3" type="text" placeholder="Price of Good 3" />
+            </div>
+            <input id="income" type="text" placeholder="Income" />
+            <input
+              style="margin: 1rem 0"
+              value="Calculate!"
+              type="button"
+              onclick="PEDCheck()"
+            />
+          </div>
+
+          <div id="ped1" class="left-align">
+            <h2 id="calculate_h2"></h2>
+            <p id="calculate_step1" class="hide"></p>
+            <p id="calculate_step1_2" class="no-margin"></p>
+            <p id="calculate_step1_3" class="no-margin"></p>
+            <p id="calculate_step1_4" class="no-margin"></p>
+          </div>
         </div>
       </div>
 
@@ -162,11 +189,11 @@
   <!-- Custom Functions / Scripts  -->
   <script>
     // Add Custom Style Property
-    function customStyleProperty(name, property, value, repeat) {
+    function hideToShow(name, value, repeat) {
       try {
         if (repeat > 0) {
           for (var data = 1; data <= repeat; data++) {
-            document.getElementById(name + data).style.property = value;
+            document.getElementById(name + data).style.display = value;
           }
           console.log("Complete");
         } else {
@@ -181,7 +208,7 @@
 
     // Marginal Revenue Function
     function MRCheck() {
-      customStyleProperty("mr", "display", "flex", 3);
+      hideToShow("mr", "flex", 3);
 
       // Obtaining Input Value
       var expression = document
