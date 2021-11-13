@@ -907,15 +907,15 @@ function MarginalRevenue(expression, Q) {
   }
 
   // Function to Store power
-  function storePower(arr, val) {
-    var indexes = [],
-      i;
-    for (i = 0; i < arr.length; i++) if (arr[i] === val) indexes.push(i);
-    console.log(indexes);
+  function storePower(array, val) {
+    var indexes = [];
+    for (var i = 0; i < array.length; i++)
+      if (array[i] === val) indexes.push(i);
     return indexes;
   }
 
-  storePower(value1, "^");
+  // var gettingPositions = storePower(value1, "^");
+  // console.log(gettingPositions);
 
   // Result
   var finalAnswer = eval(value1);
