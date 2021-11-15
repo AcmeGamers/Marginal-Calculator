@@ -926,38 +926,59 @@ var deriveExpression = function (expression) {
 // }
 
 // Price Elasticity of Demand
-function PriceElasticity(expression, p1, p2, p3, y) {
+function PriceElasticity(expression, p1, p2, p3, y, select_html_Value) {
   // Obtaining the Expression from first Function
 
   console.log(expression);
-  expression.replace(/p1/g, p1);
-  expression.replace(/p2/g, p2);
-  expression.replace(/p3/g, p3);
-  expression.replace(/y/g, y);
 
-  console.log(expression);
+  // select_html_Value means the value of select in the select.
+  if (select_html_Value == 1) {
+    // Formula
+    // PED = | E_d | = | (d_Q / d_p) * p/q|
+
+    expression.replace(/p1/g, p1);
+    expression.replace(/y/g, y);
+    console.log(expression);
+
+    expression.replace(/p/g, "x");
+    d_Q_div_d_p = deriveExpression(expression);
+    conole.log(d_Q_div_d_p);
+  }
+  if (select_html_Value == 2) {
+    expression.replace(/p1/g, p1);
+    expression.replace(/p2/g, p2);
+    expression.replace(/y/g, y);
+    console.log(expression);
+  }
+  if (select_html_Value == 3) {
+    expression.replace(/p1/g, p1);
+    expression.replace(/p2/g, p2);
+    expression.replace(/p3/g, p3);
+    expression.replace(/y/g, y);
+    console.log(expression);
+  }
 
   function valueCheck(dataExpression) {
     // Split using a space character
     let arr = dataExpression.split(" ");
 
     // Making the Array
-    var value1 = [];
+    var q_array = [];
     for (let index = 0; index < arr.length; index++) {
-      value1 += `${arr[index]} `;
+      q_array += `${arr[index]} `;
     }
 
-    // Result
-    var finalAnswer = eval(math.evaluate(value1));
-    console.log(value1);
-    console.log(finalAnswer);
+    // Value of Quantity (Q)
+    var valueOfQ = eval(math.evaluate(q_array));
+    console.log(q_array);
+    console.log(valueOfQ);
 
-    answers = {
+    q_result = {
       derivative: deriveExpression(expressionValue),
-      puttingValues: value1,
-      answer: finalAnswer,
+      puttingValues: q_array,
+      quantity: valueOfQ,
     };
-    return answers;
+    return q_result;
   }
   answers = valueCheck(expression);
   // Providing the answers to variables which needs it.
