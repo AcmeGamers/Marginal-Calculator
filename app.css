@@ -38,3 +38,12 @@ input {
 #observe_ped_change {
   margin: 1rem 0 2rem;
 }
+
+#observe_ped_change:after {
+  content: "*Required";
+  color: #ff0000;
+  position: relative;
+  left: 1rem;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+}
