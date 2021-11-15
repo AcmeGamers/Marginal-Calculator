@@ -965,3 +965,6 @@ function PriceElasticity(expression, p1, p2, p3, y) {
   console.log("-------------------");
   return answers;
 }
+// In fuunctions to check which data it is, like 1,2,3, out of which p1,p2 and p3 will be selected
+// we can use switch() or guard if statement to check and exit data accordingly in a var attay[].
+// the 1,2,3 can be obtained from the change function
