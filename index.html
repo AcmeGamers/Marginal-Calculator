@@ -88,11 +88,11 @@
           <h3>Price Elasticity of Demand (PED)</h3>
           <div id="observe_ped_change">
             <span>Price Goods Limit:</span>
-            <input type="radio" id="ped_1" name="status" />
+            <input type="radio" value="1" id="ped_1" name="status" />
             <label for="value_1">1</label>
-            <input type="radio" id="ped_2" name="status" />
+            <input type="radio" value="2" id="ped_2" name="status" />
             <label for="value_2">2</label>
-            <input type="radio" id="ped_3" name="status" />
+            <input type="radio" value="3" id="ped_3" name="status" />
             <label for="value_1">3</label>
             <p id="ped_result"></p>
           </div>
@@ -440,7 +440,7 @@
       .addEventListener("change", function (e) {
         var target = e.target;
         var data;
-        switch (target.id) {
+        switch (target.value) {
           case "1":
             data = "First value";
             break;
