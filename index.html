@@ -33,6 +33,7 @@
         </button>
       </div>
 
+      <!-- Marginal Revenue (MR) -->
       <div id="Marginal_Revenue_Tab" class="tabcontent">
         <div class="text_and_input">
           <p class="margin-right-1rem">Expression</p>
@@ -81,18 +82,19 @@
         </div>
       </div>
 
+      <!-- Price Elasticity of Demand (PED) -->
       <div id="PED" class="tabcontent">
         <div>
           <h3>Price Elasticity of Demand (PED)</h3>
-          <div>
+          <div id="observe_ped_change">
             <span>Price Goods Limit:</span>
             <input type="radio" id="ped_1" name="status" />
-            <label for="pending">1</label>
+            <label for="value_1">1</label>
             <input type="radio" id="ped_2" name="status" />
-            <label for="resolved">2</label>
+            <label for="value_2">2</label>
             <input type="radio" id="ped_3" name="status" />
-            <label for="rejected">3</label>
-            <p id="result"></p>
+            <label for="value_1">3</label>
+            <p id="ped_result"></p>
           </div>
           <span>Expression </span>
           <input
@@ -430,5 +432,27 @@
         console.log(error);
       }
     }
+  </script>
+  <script>
+    var result = document.querySelector("#ped_result");
+    document
+      .querySelector("#observe_ped_change")
+      .addEventListener("change", function (e) {
+        var target = e.target;
+        var data;
+        switch (target.id) {
+          case "1":
+            data = "First value";
+            break;
+          case "2":
+            data = "Second Value";
+            break;
+          case "3":
+            data = "Third Value";
+            break;
+        }
+        console.log(e);
+        result.innerHTML = data;
+      });
   </script>
 </html>
