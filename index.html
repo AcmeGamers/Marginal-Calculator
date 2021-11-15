@@ -94,7 +94,6 @@
             <label for="value_2">2</label>
             <input type="radio" value="3" id="ped_3" name="status" />
             <label for="value_1">3</label>
-            <p id="ped_result"></p>
           </div>
           <span>Expression </span>
           <input
@@ -112,34 +111,8 @@
               align-items: flex-start;
             "
           >
-            <div style="display: block; margin: 1rem 0">
-              <div class="text_and_input">
-                <p class="margin-right-1rem">Pay of Goods 1 (P1)</p>
-                <input
-                  id="pg1"
-                  value="209"
-                  type="text"
-                  placeholder="Price of Good 1"
-                />
-              </div>
-              <div class="text_and_input">
-                <p class="margin-right-1rem">Pay of Goods 2 (P2)</p>
-                <input
-                  id="pg2"
-                  value="101"
-                  type="text"
-                  placeholder="Price of Good 2"
-                />
-              </div>
-              <div class="text_and_input">
-                <p class="margin-right-1rem">Pay of Goods 3 (P3)</p>
-                <input
-                  id="pg3"
-                  value="478"
-                  type="text"
-                  placeholder="Price of Good 3"
-                />
-              </div>
+            <div id="PED_goods" style="display: block; margin: 1rem 0">
+              <span id="ped_result"></span>
             </div>
             <div
               style="
@@ -442,13 +415,13 @@
         var data;
         switch (target.value) {
           case "1":
-            data = "First value";
+            data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div>`;
             break;
           case "2":
-            data = "Second Value";
+            data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 2 (P2)</p><input id="pg2"value="101"type="text"placeholder="Price of Good 2"/></div>`;
             break;
           case "3":
-            data = "Third Value";
+            data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 2 (P2)</p><input id="pg2"value="101"type="text"placeholder="Price of Good 2"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 3 (P3)</p><input id="pg3"value="478"type="text"placeholder="Price of Good 3"/></div>`;
             break;
         }
         console.log(e);
