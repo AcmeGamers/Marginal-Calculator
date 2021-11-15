@@ -54,3 +54,4 @@ var Expressive = "7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05 * y",
   ExpressionResult = Expressive.toLowerCase();
 console.log(PriceElasticity(ExpressionResult, p1, p2, p3, TheIncome));
 console.log(7777 - 209 + 0.75 * 101 - 0.5 * 478 + 0.05 * 18361);
+console.log(eval(p1) + eval(p2) + eval(p3));

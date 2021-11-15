@@ -84,10 +84,18 @@
       <div id="PED" class="tabcontent">
         <div>
           <h3>Price Elasticity of Demand (PED)</h3>
+          <label for="cars">Choose :</label>
+          <select name="cars" id="cars">
+            <optgroup label="Pay Good Limit">
+              <option value="volvo">1</option>
+              <option value="saab">2</option>
+              <option value="saab">3</option>
+            </optgroup>
+          </select>
           <span>Expression </span>
           <input
             type="text"
-            style="width: -webkit-fill-available"
+            style="width: 50vw"
             value="7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05*y"
             placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
             id="expression"
