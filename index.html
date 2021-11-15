@@ -84,14 +84,16 @@
       <div id="PED" class="tabcontent">
         <div>
           <h3>Price Elasticity of Demand (PED)</h3>
-          <label for="cars">Choose :</label>
-          <select name="cars" id="cars">
-            <optgroup label="Pay Good Limit">
-              <option value="volvo">1</option>
-              <option value="saab">2</option>
-              <option value="saab">3</option>
-            </optgroup>
-          </select>
+          <div>
+            <span>Price Goods Limit:</span>
+            <input type="radio" id="ped_1" name="status" />
+            <label for="pending">1</label>
+            <input type="radio" id="ped_2" name="status" />
+            <label for="resolved">2</label>
+            <input type="radio" id="ped_3" name="status" />
+            <label for="rejected">3</label>
+            <p id="result"></p>
+          </div>
           <span>Expression </span>
           <input
             type="text"
