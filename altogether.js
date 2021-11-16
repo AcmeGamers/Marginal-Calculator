@@ -928,13 +928,27 @@ var deriveExpression = function (expression) {
 // Price Elasticity of Demand
 
 // Variable Replacer
-function variableReplacer(expression, valueToChange, value1, value2) {
+function variableReplacer(
+  expression,
+  valueToChange,
+  value1,
+  valueToChange2,
+  value2,
+  valueToChange3,
+  value3
+) {
   var result;
 
   if (value2) {
     // First Value will be your new value, second is the value currently
     result = expression.split(valueToChange).join(value1);
-    result = expression.split(valueToChange).join(value2);
+    result = expression.split(valueToChange2).join(value2);
+    return result;
+  }
+  if (value3) {
+    result = expression.split(valueToChange).join(value1);
+    result = expression.split(valueToChange2).join(value2);
+    result = expression.split(valueToChange3).join(value3);
     return result;
   } else {
     result = expression.split(valueToChange).join(value1);
@@ -1047,6 +1061,20 @@ function checkYED(value) {
   }
 }
 
+function calculatePED(derivative, paymentOfGoods1, quantity) {
+  // Find PED
+  console.log("");
+  console.log("####### PED #######");
+  var PED_formula = "(d*q / d * p) * p/q";
+  console.log(PED_formula);
+  var PED_answer = derivative * (paymentOfGoods1 / quantity),
+    PED_answer = Math.abs(PED_answer).toPrecision(3);
+  console.log(PED_answer);
+
+  var PED_commentary = checkPED(PED_answer);
+  console.log(PED_commentary);
+}
+
 // Price Elasticity of Demand
 function PriceElasticity(
   expression,
@@ -1108,37 +1136,38 @@ function PriceElasticity(
     };
 
     // Find PED
-    console.log("");
-    console.log("####### PED #######");
-    var PED_formula = "(d*q / d * p) * p/q";
-    console.log(PED_formula);
-    var PED_answer =
-        d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer),
-      PED_answer = Math.abs(PED_answer).toPrecision(3);
-    console.log(PED_answer);
-
-    var PED_commentary = checkPED(PED_answer);
-    console.log(PED_commentary);
+    calculatePED(d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer));
   }
   // If Value is 2
   if (select_html_Value == 2) {
     // Finding Q1
+    console.log("");
+    console.log("##### Finding Q1 #####");
     var p1_replaced = variableReplacer(expression, "p1", paymentOfGoods1),
       p1_p2_replaced = variableReplacer(p1_replaced, "p2", paymentOfGoods2),
       y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income),
-      p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
-      y_p2_replaced = variableReplacer(p2_replaced, "y", income),
       valueOf_Q1 = eval(y_p1_p2_replaced);
 
-    console.log(y_p2_replaced);
+    var p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
+      y_p2_replaced = variableReplacer(p2_replaced, "y", income),
+      x_variable = variableReplacer(y_p2_replaced, "p1", "x");
+
     console.log(y_p1_p2_replaced);
     console.log(valueOf_Q1);
 
+    console.log("");
+    console.log("##### Finding Derivation #####");
     // Finding Derivation == (dq1 / dp1 = d/dp1[expression])
     // Keeping p1 varible, other than them, all are constants.
-    var derivation = deriveExpression(y_p2_replaced);
+    var derivation = deriveExpression(x_variable);
+    console.log("Keeping p1 varible, other than them, all are constants.");
+    console.log(y_p2_replaced);
     console.log(derivation);
+
+    // Find PED
+    calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
   }
+
   // If Value is 3
   if (select_html_Value == 3) {
     expression.replace(/p1/g, paymentOfGoods1);
@@ -1191,10 +1220,19 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
     console.log(p_constant);
     console.log(q_variable);
     console.log(derivative);
-  }
-  if (GoodsValue == 2) {
-  }
-  if (GoodsValue == 3) {
+  } else if (GoodsValue == 2) {
+    // Derivative
+    // Formula = dQ/dY = (d/dy) [expression]
+    var newcomment = "Considering Prices as constant",
+      q_variable = variableReplacer(expression, "y", "x"),
+      derivative = deriveExpression(q_variable);
+
+    console.log(YED);
+    console.log(newcomment);
+    console.log(p_constant);
+    console.log(q_variable);
+    console.log(derivative);
+  } else if (GoodsValue == 3) {
   } else {
     console.log("Please enter a valid number");
   }
@@ -1214,7 +1252,7 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
 // Tests
 ////////
 // var Expressive = "700-2*p+0.02*y",
-var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.2 * y",
+var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   p = "200" || 0,
   p1 = p,
   p2 = "100" || 0,
@@ -1224,7 +1262,10 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.2 * y",
   expression = Expressive.toLowerCase();
 console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
-var y = 25,
+// var y = 25,
+//   q = 750;
+var y = p1,
   q = 750;
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
+YEDCalculator(Expressive, income, q, 2);
