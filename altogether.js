@@ -989,7 +989,7 @@ function checkPED(value) {
     };
     return data;
   } else {
-    comment = `Since the value is equal to 1, (${value} == 1), demand is unitary`;
+    comment = `Since the value is equal to 1, (${value} = 1), demand is unitary`;
     is_Q = `Demand for Q does not change in response to price.`;
     data = {
       comment: comment,
@@ -998,6 +998,55 @@ function checkPED(value) {
     return data;
   }
 }
+
+function checkYED(value) {
+  var comment, elasticity, data;
+  if (value < 1) {
+    comment = `Since the value is less than 1, (${value} < 1). It is a necessary good.`;
+    elasticity = `Such that, Income Elasticity is <b>Low Income Elasticity</b> having <b>necessary goods</b> from Normal Goods.`;
+    data = {
+      comment: comment,
+      elasticity: elasticity,
+    };
+    return data;
+  }
+  if (value > 1) {
+    comment = `Since the value is greater than 1, (${value} > 1). This is typical of a luxury or superior good.`;
+    elasticity = `Such that, Income Elasticity is <b>High Income Elasticity</b> having <b>superior goods</b> from Normal Goods.`;
+    data = {
+      comment: comment,
+      elasticity: elasticity,
+    };
+    return data;
+  }
+  if (value == 1) {
+    comment = `Since the value is equal to 1, (${value} = 1). Proportional increase in price and goods.`;
+    elasticity = `Such that, Income Elasticity is <b>Unitary Income Elasticity</b> having no change.`;
+    data = {
+      comment: comment,
+      elasticity: elasticity,
+    };
+    return data;
+  }
+  if (value == 0) {
+    comment = `Since the value is equal to 0, (${value} = 0). Change in income has no effect over the bought quantity`;
+    elasticity = `Such that, Income Elasticity is <b>Zero Income Elasticity</b> having <b>Sticky goods</b> from Normal Goods.`;
+    data = {
+      comment: comment,
+      elasticity: elasticity,
+    };
+    return data;
+  } else {
+    comment = `Since the value is less than 0, (${value} > 0), it is an inferior goods, unlike others which are normal goods.`;
+    elasticity = `Such that, Income Elasticity is <b>Negative Income Elasticity</b> inferior from Normal Goods.`;
+    data = {
+      comment: comment,
+      elasticity: elasticity,
+    };
+    return data;
+  }
+}
+
 // Price Elasticity of Demand
 function PriceElasticity(
   expression,
@@ -1132,11 +1181,25 @@ function YEDCalculator(expression, y, q, paymentOfGoods1) {
   // Formula = dQ/dY = (d/dy) [expression]
   var newcomment = "Considering Price as constant",
     p_constant = variableReplacer(expression, "p", paymentOfGoods1 || 1),
-    q_variable = variableReplacer(p_constant, "q", "x"),
+    q_variable = variableReplacer(p_constant, "y", "x"),
     derivative = deriveExpression(q_variable);
+
   console.log(YED);
   console.log(p_constant);
+  console.log(q_variable);
   console.log(derivative);
+
+  // Formula = (d*q / d*p) * y/q
+  console.log("Putting Values of Derivative");
+  console.log(YED);
+  var putting_values = variableReplacer(YED, "(d*q / d * p)", derivative);
+  console.log(putting_values);
+
+  YED = derivative * (y / q);
+  YED = YED.toPrecision(2);
+  console.log(YED);
+  var answer = checkYED(YED);
+  console.log(answer);
 }
 var y = 25,
   q = 750;
