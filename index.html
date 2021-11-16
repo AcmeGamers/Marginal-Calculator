@@ -492,11 +492,11 @@
         console.log(error);
       }
     }
-  </script>
-  <!-- Script for PED -->
 
-  <!-- Script to change Price good limits -->
-  <script>
+    // <!-- Script for PED -->
+
+    // <!-- Script to change Price good limits -->
+
     var result = document.querySelector("#ped_result");
     document
       .querySelector("#observe_ped_change")
@@ -518,10 +518,9 @@
         select_value = e.target.defaultValue;
         result.innerHTML = data;
       });
-  </script>
 
-  <!-- PED, YED, XED Calculator -->
-  <script>
+    // <!-- PED, YED, XED Calculator -->
+
     ////////////
     // Functions
     ////////////
@@ -854,8 +853,6 @@
       );
 
       function PED_Display() {
-        var result = MarginalRevenue(expression, q_value);
-
         // Find Value of Q
         document.getElementById("derivation_h2").innerHTML =
           "Step 1: Finding Value of Q";
