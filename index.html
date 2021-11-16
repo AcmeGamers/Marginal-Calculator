@@ -494,9 +494,9 @@
 
   <!-- PED, YED, XED Calculator -->
   <script>
-    //////////////////////////////
-    // Price Elasticity of Demand
-    //////////////////////////////
+    ////////////
+    // Functions
+    ////////////
     // Variable Replacer
     function variableReplacer(
       expression,
@@ -652,7 +652,9 @@
       return PED_Data;
     }
 
+    /////////////////////////////
     // Price Elasticity of Demand
+    //////////////////////////////
     function PriceElasticity(
       expression,
       paymentOfGoods1,
@@ -719,12 +721,34 @@
         };
 
         // Find PED
-        calculatePED(
+        PED_Data = calculatePED(
           // d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer)
           d_Q_div_d_p_answer.answer,
           paymentOfGoods1,
           qValue.answer
         );
+        console.log(PED_Data);
+        return (answers = [
+          {
+            // Q Values
+            name: "Q Value",
+            q_PuttingValues: qValue.puttingValues,
+            qValue: qValue.answer,
+          },
+          {
+            // d_Q_div_d_p
+            name: "Deviation",
+            deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
+            deviationAnswer: d_Q_div_d_p_answer.answer,
+          },
+          {
+            // PED
+            name: "PED",
+            ped_PuttingValues: PED_Data.PED_formula,
+            ped_answer: PED_Data.PED_answer,
+            PED_commentary: PED_Data.PED_commentary,
+          },
+        ]);
       }
       // If Value is 2
       if (select_html_Value == 2) {
@@ -767,32 +791,6 @@
       }
 
       console.log("-------------------");
-      if (select_html_Value == 1) {
-        console.log(PED_Data);
-        return (answers = [
-          {
-            // Q Values
-            name: "Q Value",
-            q_PuttingValues: qValue.puttingValues,
-            qValue: qValue.answer,
-          },
-          {
-            // d_Q_div_d_p
-            name: "Deviation",
-            deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
-            deviationAnswer: d_Q_div_d_p_answer.answer,
-          },
-          {
-            // PED
-            name: "PED",
-            ped_PuttingValues: PED_Data.PED_formula,
-            ped_answer: PED_answer,
-            PED_commentary: PED_commentary,
-          },
-        ]);
-      }
-      if (select_html_Value == 2) {
-      }
     }
 
     function PEDCheck() {
@@ -826,6 +824,63 @@
         ped_income,
         select_value
       );
+    }
+
+    function PED_Display() {
+      var result = MarginalRevenue(expression, q_value);
+
+      // Derivation
+      document.getElementById("derivation_h2").innerHTML = "Step 1: Derivation";
+
+      var element = "derivative_step1_2";
+      var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
+      LatexValue("derivative_step1", "1", element, "MC ");
+
+      element = "derivative_step2_2";
+      var secondNearDream = nerdamer(`${result.derivative.replace(/x/g, "Q")}`);
+      LatexValue("derivative_step2", "2", element, "MC ");
+
+      // Putting Values
+      document.getElementById("puttingValues_h2").innerHTML =
+        "Step 2: Putting Values";
+
+      // puttingValues_step1_2
+      element = "puttingValues_step1_1";
+      var thirdNearDream = nerdamer(`${q_value}`);
+      LatexValue("puttingValues_step1", "3", element, "Value of Q");
+
+      // puttingValues_step1_1
+      element = "puttingValues_step1_2";
+      var secondNearDream = nerdamer(`${result.derivative}`);
+      LatexValue("puttingValues_step1", "2", element, "MC ");
+
+      // puttingValues_step2_1
+      element = "puttingValues_step2_1";
+      LatexValue_WithoutNerdamer(
+        "puttingValues_step2",
+        result.puttingValues,
+        element,
+        `MC `
+      );
+
+      // Results
+      document.getElementById("result").innerHTML = `MC = ${result.answer}`;
+
+      // Conclusion
+      document.getElementById("Marginal_Conclusion_1").innerHTML = "Conclusion";
+      document.getElementById(
+        "Marginal_Conclusion_2"
+      ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
+
+      nerdamer.flush();
+    }
+    // Function that displays values on HTML page
+    try {
+      PED_Display();
+    } catch (error) {
+      document.getElementById("result").innerHTML =
+        "There is some issue in the formula or the typed data is invalid";
+      console.log(error);
     }
   </script>
   <!-- YED Calculator -->
