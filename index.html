@@ -91,16 +91,16 @@
           <div id="checkPEDRequirements">
             <span> Do you need to take out: </span>
 
-            <label>
-              <input type="checkbox" value="1" id="ped_1_1" name="status" />
+            <label id="ped_1_1">
+              <input type="checkbox" value="1" name="status" />
               YED
             </label>
-            <label>
-              <input type="checkbox" value="1" id="ped_1_2" name="status" />
+            <label id="ped_1_2">
+              <input type="checkbox" value="1" name="status" />
               XED
             </label>
-            <label>
-              <input type="checkbox" value="1" id="ped_1_3" name="status" />
+            <label id="ped_1_3">
+              <input type="checkbox" value="1" name="status" />
               Percentage Change
             </label>
           </div>
@@ -200,15 +200,10 @@
           </div>
 
           <div id="ped4" class="left-align">
-            <h2 id="ped_result"></h2>
+            <h2 id="ped_result_h2"></h2>
             <p id="ped_result_1" class="hide"></p>
             <p id="ped_result_1_1" class="no-margin"></p>
-          </div>
-
-          <div id="ped5" class="left-align">
-            <h2 id="ped_conclusion"></h2>
-            <p id="ped_conclusion_1" class="hide"></p>
-            <p id="ped_conclusion_1_1" class="no-margin"></p>
+            <p id="ped_result_1_2" class="no-margin"></p>
           </div>
         </div>
       </div>
@@ -498,12 +493,20 @@
         switch (target.value) {
           case "1":
             data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P)</p><input id="pg1"value="25"type="text"placeholder="Price of Good 1"/></div>`;
+            hideToShow();
+            document.querySelector("#ped_1_2").style.visibility = "hidden";
+            document.querySelector("#ped_1_3").style.visibility = "hidden";
             break;
           case "2":
             data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 2 (P2)</p><input id="pg2"value="101"type="text"placeholder="Price of Good 2"/></div>`;
+            document.querySelector("#ped_1_2").style.visibility = "initial";
+            document.querySelector("#ped_1_3").style.visibility = "initial";
             break;
           case "3":
             data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 2 (P2)</p><input id="pg2"value="101"type="text"placeholder="Price of Good 2"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 3 (P3)</p><input id="pg3"value="478"type="text"placeholder="Price of Good 3"/></div>`;
+            document.querySelector("#ped_1_2").style.visibility = "hidden";
+            document.querySelector("#ped_1_3").style.visibility = "hidden";
+            hideToShow();
             break;
         }
         console.log(e.target.defaultValue);
@@ -934,13 +937,16 @@
         );
 
         // Results
-        document.getElementById("").innerHTML = `PED = ${result.answer}`;
+        document.getElementById("ped_result_h2").innerHTML = `Result`;
 
         // Conclusion
-        document.getElementById("").innerHTML = "Conclusion";
         document.getElementById(
-          "Marginal_Conclusion_2"
-        ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
+          "ped_result_1_1"
+        ).innerHTML = `${PED_Data[2].PED_commentary.comment}`;
+
+        document.getElementById(
+          "ped_result_1_2"
+        ).innerHTML = `${PED_Data[2].PED_commentary.is_Q}`;
 
         nerdamer.flush();
       }
