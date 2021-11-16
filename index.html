@@ -189,7 +189,6 @@
             <p id="ped_deviation_1" class="hide"></p>
             <p id="ped_deviation_1_1" class="no-margin"></p>
             <p id="ped_deviation_1_2" class="no-margin"></p>
-            <p id="ped_deviation_1_3" class="no-margin"></p>
           </div>
 
           <div id="ped3" class="left-align">
@@ -897,15 +896,6 @@
         element = "ped_deviation_1_2";
         var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
         LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
-
-        // puttingValues_step2_1
-        element = "ped_deviation_1_3";
-        LatexValue_WithoutNerdamer(
-          "ped_deviation_1",
-          result.puttingValues,
-          element,
-          `dQ / dP`
-        );
 
         // Find Value of PED
         document.getElementById("find_ped").innerHTML =
