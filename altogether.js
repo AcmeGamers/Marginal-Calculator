@@ -955,7 +955,7 @@ function expressionSpliter(expression) {
 }
 
 // Q Finder
-function findQ(expression) {
+function Q_Checker(expression) {
   var q_array = expressionSpliter(expression);
   // var q_result = eval(math.evaluate(q_array));
   var q_result = eval(q_array);
@@ -1078,7 +1078,7 @@ function PriceElasticity(
     console.log(expression);
 
     // Getting Q
-    var qValue = findQ(expression); // Answer of Q
+    var qValue = Q_Checker(expression); // Answer of Q
     console.log(qValue);
     console.log("####### Q End #######");
     console.log("");
@@ -1174,7 +1174,7 @@ console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
 //////
 // YED
 //////
-function YEDCalculator(expression, y, q, paymentOfGoods1) {
+function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
   var YED = "(d*q / d * p) * y/q";
 
   // Derivative
@@ -1200,8 +1200,17 @@ function YEDCalculator(expression, y, q, paymentOfGoods1) {
   console.log(YED);
   var answer = checkYED(YED);
   console.log(answer);
+
+  if (GoodsValue == 1) {
+  }
+  if (GoodsValue == 2) {
+  }
+  if (GoodsValue == 3) {
+  } else {
+    console.log("Please enter a valid number");
+  }
 }
 var y = 25,
   q = 750;
 
-YEDCalculator("700-2*p+0.02*y", y, q);
+YEDCalculator("700-2*p+0.02*y", y, q, 2);
