@@ -1294,8 +1294,10 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
   var answer = checkYED(XED);
   console.log(answer);
 }
-function ChangeCalculator(changeInQ1, changeInP) {
-  return changeInQ1 / changeInP;
+function ChangeCalculator(quantity_demand, price, percentChange) {
+  var data = (quantity_demand / price) * (percentChange / 100);
+  console.log(data);
+  return data;
 }
 
 ////////
@@ -1323,4 +1325,5 @@ var y = 10000,
 // YEDCalculator(Expressive, y, q, 2);
 XEDCalculator(expression, p2, q, 2);
 
-ChangeCalculator(changeInQ1, changeInP);
+ChangeCalculator(q, p2, 10);
+// Use css selector:after to say number and use `%` in selector.
