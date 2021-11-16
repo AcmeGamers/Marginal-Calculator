@@ -1229,9 +1229,9 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
 
     console.log(YED);
     console.log(newcomment);
-    console.log(p_constant);
     console.log(q_variable);
     console.log(derivative);
+    console.log("");
   } else if (GoodsValue == 3) {
   } else {
     console.log("Please enter a valid number");
@@ -1264,8 +1264,8 @@ console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
 // var y = 25,
 //   q = 750;
-var y = p1,
-  q = 750;
+var y = 10000,
+  q = 5000;
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
 YEDCalculator(Expressive, income, q, 2);
