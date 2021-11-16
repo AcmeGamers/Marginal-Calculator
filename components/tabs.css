@@ -38,7 +38,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 0 0 10px 10px;
   border-top: none;
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  animation: fadeEffect 0.5s; /* Fading effect takes .5s second */
 }
 
 /* Go from zero to full opacity */

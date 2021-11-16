@@ -935,8 +935,9 @@ function PriceElasticity(
   select_html_Value
 ) {
   // Obtaining the Expression from first Function
-
   console.log(expression);
+  var d_Q_div_d_p, recievedValueOf_Q; // Creating variables.
+
   // select_html_Value means the value of select in the select.
   if (select_html_Value == 1) {
     // Formula
@@ -947,7 +948,7 @@ function PriceElasticity(
     console.log(expression);
 
     expression.replace(/p/g, "x");
-    var d_Q_div_d_p = deriveExpression(expression);
+    d_Q_div_d_p = deriveExpression(expression);
     console.log(d_Q_div_d_p);
   }
   if (select_html_Value == 2) {
@@ -964,11 +965,11 @@ function PriceElasticity(
     console.log(expression);
   }
 
-  console.log(AddingValue);
+  console.log(d_Q_div_d_p);
 
   // function valueCheck(dataExpression) {
   // Split using a space character
-  let arr = AddingValue.split(" ");
+  let arr = d_Q_div_d_p.split(" ");
 
   // Making the Array
   var q_array = [];
@@ -1005,7 +1006,3 @@ var Expressive = "7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05 * y",
 console.log(PriceElasticity(ExpressionResult, p1, p2, p3, TheIncome, 1));
 console.log(7777 - 209 + 0.75 * 101 - 0.5 * 478 + 0.05 * 18361);
 console.log(eval(p1) + eval(p2) + eval(p3));
-
-// In fuunctions to check which data it is, like 1,2,3, out of which p1,p2 and p3 will be selected
-// we can use switch() or guard if statement to check and exit data accordingly in a var attay[].
-// the 1,2,3 can be obtained from the change function
