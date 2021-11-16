@@ -4,15 +4,38 @@ function PriceElasticity(
   paymentOfGoods1,
   paymentOfGoods2,
   paymentOfGoods3,
-  income
+  income,
+  select_html_Value
 ) {
   // Obtaining the Expression from first Function
 
   console.log(expression);
-  var AddingValue = expression.replace(/p1/, paymentOfGoods1),
-    AddingValue = AddingValue.replace(/p2/, paymentOfGoods2),
-    AddingValue = AddingValue.replace(/p3/, paymentOfGoods3),
-    AddingValue = AddingValue.replace(/y/, income);
+  // select_html_Value means the value of select in the select.
+  if (select_html_Value == 1) {
+    // Formula
+    // PED = | E_d | = | (d_Q / d_p) * p/q|
+
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/y/g, income);
+    console.log(expression);
+
+    expression.replace(/p/g, "x");
+    d_Q_div_d_p = deriveExpression(expression);
+    conole.log(d_Q_div_d_p);
+  }
+  if (select_html_Value == 2) {
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/p2/g, paymentOfGoods2);
+    expression.replace(/y/g, income);
+    console.log(expression);
+  }
+  if (select_html_Value == 3) {
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/p2/g, paymentOfGoods2);
+    expression.replace(/p3/g, paymentOfGoods3);
+    expression.replace(/y/g, income);
+    console.log(expression);
+  }
 
   console.log(AddingValue);
 
@@ -21,20 +44,20 @@ function PriceElasticity(
   let arr = AddingValue.split(" ");
 
   // Making the Array
-  var value1 = [];
+  var q_array = [];
   for (let index = 0; index < arr.length; index++) {
-    value1 += `${arr[index]} `;
+    q_array += `${arr[index]} `;
   }
 
   // Result
-  // var finalAnswer = eval(math.evaluate(value1));
-  var finalAnswer = eval(value1);
-  console.log(value1);
-  console.log(finalAnswer);
+  // var q_result = eval(math.evaluate(q_array));
+  var q_result = eval(q_array);
+  console.log(q_array);
+  console.log(q_result);
 
   var answers = {
-    puttingValues: value1,
-    answer: finalAnswer,
+    puttingValues: q_array,
+    answer: q_result,
   };
   //   return answers;
   // }
