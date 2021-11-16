@@ -926,66 +926,86 @@ var deriveExpression = function (expression) {
 // }
 
 // Price Elasticity of Demand
-function PriceElasticity(expression, p1, p2, p3, y, select_html_Value) {
+function PriceElasticity(
+  expression,
+  paymentOfGoods1,
+  paymentOfGoods2,
+  paymentOfGoods3,
+  income,
+  select_html_Value
+) {
   // Obtaining the Expression from first Function
 
   console.log(expression);
-
   // select_html_Value means the value of select in the select.
   if (select_html_Value == 1) {
     // Formula
     // PED = | E_d | = | (d_Q / d_p) * p/q|
 
-    expression.replace(/p1/g, p1);
-    expression.replace(/y/g, y);
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/y/g, income);
     console.log(expression);
 
     expression.replace(/p/g, "x");
-    d_Q_div_d_p = deriveExpression(expression);
-    conole.log(d_Q_div_d_p);
+    var d_Q_div_d_p = deriveExpression(expression);
+    console.log(d_Q_div_d_p);
   }
   if (select_html_Value == 2) {
-    expression.replace(/p1/g, p1);
-    expression.replace(/p2/g, p2);
-    expression.replace(/y/g, y);
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/p2/g, paymentOfGoods2);
+    expression.replace(/y/g, income);
     console.log(expression);
   }
   if (select_html_Value == 3) {
-    expression.replace(/p1/g, p1);
-    expression.replace(/p2/g, p2);
-    expression.replace(/p3/g, p3);
-    expression.replace(/y/g, y);
+    expression.replace(/p1/g, paymentOfGoods1);
+    expression.replace(/p2/g, paymentOfGoods2);
+    expression.replace(/p3/g, paymentOfGoods3);
+    expression.replace(/y/g, income);
     console.log(expression);
   }
 
-  function valueCheck(dataExpression) {
-    // Split using a space character
-    let arr = dataExpression.split(" ");
+  console.log(AddingValue);
 
-    // Making the Array
-    var q_array = [];
-    for (let index = 0; index < arr.length; index++) {
-      q_array += `${arr[index]} `;
-    }
+  // function valueCheck(dataExpression) {
+  // Split using a space character
+  let arr = AddingValue.split(" ");
 
-    // Value of Quantity (Q)
-    var valueOfQ = eval(math.evaluate(q_array));
-    console.log(q_array);
-    console.log(valueOfQ);
-
-    q_result = {
-      derivative: deriveExpression(expressionValue),
-      puttingValues: q_array,
-      quantity: valueOfQ,
-    };
-    return q_result;
+  // Making the Array
+  var q_array = [];
+  for (let index = 0; index < arr.length; index++) {
+    q_array += `${arr[index]} `;
   }
-  answers = valueCheck(expression);
+
+  // Result
+  // var q_result = eval(math.evaluate(q_array));
+  var q_result = eval(q_array);
+  console.log(q_array);
+  console.log(q_result);
+
+  var answers = {
+    puttingValues: q_array,
+    answer: q_result,
+  };
+  //   return answers;
+  // }
+  // answers = valueCheck(expression);
   // Providing the answers to variables which needs it.
 
   console.log("-------------------");
   return answers;
 }
+
+var Expressive = "7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05 * y",
+  p1 = "209",
+  p2 = "101",
+  p3 = "478",
+  TheIncome = "18361",
+  // PriceElasticity(Expressive, p1, p2, p3, income);
+  ExpressionResult = Expressive.toLowerCase();
+console.log(PriceElasticity(ExpressionResult, p1, p2, p3, TheIncome, 1));
+console.log(7777 - 209 + 0.75 * 101 - 0.5 * 478 + 0.05 * 18361);
+console.log(eval(p1) + eval(p2) + eval(p3));
+
 // In fuunctions to check which data it is, like 1,2,3, out of which p1,p2 and p3 will be selected
 // we can use switch() or guard if statement to check and exit data accordingly in a var attay[].
 // the 1,2,3 can be obtained from the change function
