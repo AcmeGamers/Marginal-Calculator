@@ -1121,3 +1121,8 @@ var Expressive = "700-2*p+0.02*y",
   expression = Expressive.toLowerCase();
 // console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
 console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
+
+//////
+// YED
+//////
+var YED = "(d*q / d * p) * y/q";
