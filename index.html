@@ -637,12 +637,19 @@
       console.log("####### PED #######");
       var PED_formula = "(d*q / d * p) * p/q";
       console.log(PED_formula);
+      console.log(derivative, paymentOfGoods1, quantity);
       var PED_answer = derivative * (paymentOfGoods1 / quantity),
         PED_answer = Math.abs(PED_answer).toPrecision(3);
       console.log(PED_answer);
 
       var PED_commentary = checkPED(PED_answer);
       console.log(PED_commentary);
+      var PED_Data = {
+        PED_formula: PED_formula,
+        PED_answer: PED_answer,
+        PED_commentary: PED_commentary,
+      };
+      return PED_Data;
     }
 
     // Price Elasticity of Demand
@@ -707,7 +714,10 @@
 
         // Find PED
         calculatePED(
-          d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer)
+          // d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer)
+          d_Q_div_d_p_answer.answer,
+          paymentOfGoods1,
+          qValue.answer
         );
       }
       // If Value is 2
@@ -737,7 +747,7 @@
         console.log(derivation);
 
         // Find PED
-        calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
+        var PED_Data = calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
       }
 
       // If Value is 3
@@ -767,7 +777,7 @@
           {
             // PED
             name: "PED",
-            ped_PuttingValues: PED_formula,
+            ped_PuttingValues: PED_Data.PED_formula,
             ped_answer: PED_answer,
             PED_commentary: PED_commentary,
           },
@@ -778,16 +788,36 @@
     }
 
     function PEDCheck() {
-      // // Obtaining Input Value
-      // var expression = document
-      //   .getElementById("ped_expression")
-      //   .value.toLowerCase()
-      //   .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
+      // Obtaining Expression and Income
+      var expression = document
+        .getElementById("ped_expression")
+        .value.toLowerCase();
+      var ped_income = document.getElementById("ped_income").value; // Gets Value of Q
 
-      // // Logs The Result
-      // console.log(expression);
-      // var q_value = document.getElementById("q_value").value; // Gets Value of Q
-      console.log("Check");
+      // Logs The Result
+      console.log(expression);
+      console.log(ped_income);
+
+      if (select_value == 1) {
+        var paymentOfGoods1 = document.getElementById("pg1").value || 0;
+      } else if (select_value == 2) {
+        var paymentOfGoods1 = document.getElementById("pg1").value || 0;
+        var paymentOfGoods2 = document.getElementById("pg2").value || 0;
+      } else if (select_value == 3) {
+        var paymentOfGoods1 = document.getElementById("pg1").value || 0;
+        var paymentOfGoods2 = document.getElementById("pg2").value || 0;
+        var paymentOfGoods3 = document.getElementById("pg3").value || 0;
+      } else {
+        console.log("No value selected, give an error message on display");
+      }
+      PriceElasticity(
+        expression,
+        paymentOfGoods1,
+        paymentOfGoods2 || 0,
+        paymentOfGoods3 || 0,
+        ped_income,
+        select_value
+      );
     }
   </script>
   <!-- YED Calculator -->
@@ -846,6 +876,7 @@
       console.log(answer);
     }
   </script>
+  <!-- XED Calculator -->
   <script>
     /////////////////
     // XED Calculator
