@@ -1204,10 +1204,10 @@ function PriceElasticity(
 //////
 // YED
 //////
-function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
+function YEDCalculator(expression, y, q, selectPriceValue, paymentOfGoods1) {
   var YED = "(d*q / d * p) * y/q";
 
-  if (GoodsValue == 1) {
+  if (selectPriceValue == 1) {
     // Derivative
     // Formula = dQ/dY = (d/dy) [expression]
     var newcomment = "Considering Price as constant",
@@ -1220,7 +1220,7 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
     console.log(p_constant);
     console.log(q_variable);
     console.log(derivative);
-  } else if (GoodsValue == 2) {
+  } else if (selectPriceValue == 2) {
     // Derivative
     // Formula = dQ/dY = (d/dy) [expression]
     var newcomment = "Considering Prices as constant",
@@ -1232,7 +1232,7 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
     console.log(q_variable);
     console.log(derivative);
     console.log("");
-  } else if (GoodsValue == 3) {
+  } else if (selectPriceValue == 3) {
   } else {
     console.log("Please enter a valid number");
   }
@@ -1248,9 +1248,53 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
   var answer = checkYED(YED);
   console.log(answer);
 }
+
+function XEDCalculator(expression, p2, q1, selectPriceValue) {
+  if (selectPriceValue == 1) {
+    // Derivative
+    // Formula = dQ1/dp2 = (d/dp2) [expression]
+    var newcomment = "Considering Price 2 as variable",
+      q_variable = variableReplacer(expression, "p2", "x"),
+      derivative = deriveExpression(q_variable);
+
+    console.log(YED);
+    console.log(newcomment);
+    console.log(p_constant);
+    console.log(q_variable);
+    console.log(derivative);
+  } else if (selectPriceValue == 2) {
+    // Derivative
+    // Formula = dQ1/dp2 = (d/dp2) [expression]
+    var newcomment = "Considering Prices as constant",
+      q_variable = variableReplacer(p_constant, "p2", "x"),
+      derivative = deriveExpression(q_variable);
+
+    console.log(YED);
+    console.log(newcomment);
+    console.log(q_variable);
+    console.log(derivative);
+    console.log("");
+  } else if (selectPriceValue == 3) {
+  } else {
+    console.log("Please enter a valid number");
+  }
+  // Formula = (d*q / d*p) * y/q
+  console.log("Putting Values of Derivative");
+  console.log(YED);
+  var putting_values = variableReplacer(YED, "(d*q / d * p)", derivative);
+  console.log(putting_values);
+
+  YED = derivative * (y / q);
+  YED = YED.toPrecision(2);
+  console.log(YED);
+  var answer = checkYED(YED);
+  console.log(answer);
+}
+
 ////////
 // Tests
 ////////
+// PED
 // var Expressive = "700-2*p+0.02*y",
 var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   p = "200" || 0,
@@ -1262,10 +1306,11 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   expression = Expressive.toLowerCase();
 console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
+// YED
 // var y = 25,
 //   q = 750;
 var y = 10000,
   q = 5000;
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
-YEDCalculator(Expressive, income, q, 2);
+YEDCalculator(Expressive, y, q, 2);
