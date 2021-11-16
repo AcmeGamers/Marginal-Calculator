@@ -1288,7 +1288,7 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
   var putting_values = variableReplacer(XED, "(d*q / d * p)", derivative);
   console.log(putting_values);
 
-  XED = derivative * (q1 / p2);
+  XED = derivative * (p2 / q1);
   XED = XED.toPrecision(2);
   console.log(XED);
   var answer = checkYED(XED);
@@ -1318,4 +1318,4 @@ var y = 10000,
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
 // YEDCalculator(Expressive, y, q, 2);
-XEDCalculator(expression, p2, 5000, 2);
+XEDCalculator(expression, p2, q, 2);
