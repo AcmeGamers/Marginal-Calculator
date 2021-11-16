@@ -1122,10 +1122,22 @@ function PriceElasticity(
   }
   // If Value is 2
   if (select_html_Value == 2) {
-    expression.replace(/p1/g, paymentOfGoods1);
-    expression.replace(/p2/g, paymentOfGoods2);
-    expression.replace(/y/g, income);
-    console.log(expression);
+    // Finding Q1
+    var p1_replaced = variableReplacer(expression, "p1", paymentOfGoods1),
+      p1_p2_replaced = variableReplacer(p1_replaced, "p2", paymentOfGoods2),
+      y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income),
+      p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
+      y_p2_replaced = variableReplacer(p2_replaced, "y", income),
+      valueOf_Q1 = eval(y_p1_p2_replaced);
+
+    console.log(y_p2_replaced);
+    console.log(y_p1_p2_replaced);
+    console.log(valueOf_Q1);
+
+    // Finding Derivation == (dq1 / dp1 = d/dp1[expression])
+    // Keeping p1 varible, other than them, all are constants.
+    var derivation = deriveExpression(y_p2_replaced);
+    console.log(derivation);
   }
   // If Value is 3
   if (select_html_Value == 3) {
@@ -1137,27 +1149,27 @@ function PriceElasticity(
   }
 
   console.log("-------------------");
-  return (answers = [
-    {
-      // Q Values
-      name: "Q Value",
-      q_PuttingValues: qValue.puttingValues,
-      qValue: qValue.answer,
-    },
-    {
-      // d_Q_div_d_p
-      name: "Deviation",
-      deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
-      deviationAnswer: d_Q_div_d_p_answer.answer,
-    },
-    {
-      // PED
-      name: "PED",
-      ped_PuttingValues: PED_formula,
-      ped_answer: PED_answer,
-      PED_commentary: PED_commentary,
-    },
-  ]);
+  // return (answers = [
+  //   {
+  //     // Q Values
+  //     name: "Q Value",
+  //     q_PuttingValues: qValue.puttingValues,
+  //     qValue: qValue.answer,
+  //   },
+  //   {
+  //     // d_Q_div_d_p
+  //     name: "Deviation",
+  //     deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
+  //     deviationAnswer: d_Q_div_d_p_answer.answer,
+  //   },
+  //   {
+  //     // PED
+  //     name: "PED",
+  //     ped_PuttingValues: PED_formula,
+  //     ped_answer: PED_answer,
+  //     PED_commentary: PED_commentary,
+  //   },
+  // ]);
 }
 
 //////
@@ -1201,15 +1213,16 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
 ////////
 // Tests
 ////////
-var Expressive = "700-2*p+0.02*y",
-  p = "25" || 0,
+// var Expressive = "700-2*p+0.02*y",
+var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.2 * y",
+  p = "200" || 0,
   p1 = p,
-  p2 = "101" || 0,
+  p2 = "100" || 0,
   p3 = "478" || 0,
   income = "5000",
   // PriceElasticity(Expressive, p1, p2, p3, income);
   expression = Expressive.toLowerCase();
-console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
+console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
 var y = 25,
   q = 750;
