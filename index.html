@@ -752,12 +752,15 @@
           {
             // Q Values
             name: "Q Value",
+            originalExpression: originalExpression,
             q_PuttingValues: qValue.puttingValues,
             qValue: qValue.answer,
           },
           {
             // d_Q_div_d_p
             name: "Deviation",
+            originalExpression: originalExpression,
+            deviation_formula: expression_derivation,
             deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
             deviationAnswer: d_Q_div_d_p_answer.answer,
           },
@@ -837,7 +840,7 @@
       } else {
         console.log("No value selected, give an error message on display");
       }
-      PED_Data = PriceElasticity(
+      var PED_Data = PriceElasticity(
         expression,
         paymentOfGoods1,
         paymentOfGoods2 || 0,
@@ -847,21 +850,32 @@
       );
 
       function PED_Display() {
+        console.log(PED_Data);
         // Find Value of Q
         document.getElementById("ped_find_q").innerHTML =
           "Step 1: Finding Value of Q";
 
         var element = "ped_calculate_step1_1";
-        var firstNearDream = nerdamer(`d/dQ(${expression})`);
+        var firstNearDream = nerdamer(`${PED_Data[0].originalExpression}`);
         LatexValue("ped_calculate_step1", "1", element, "Q ");
 
         element = "ped_calculate_step1_2";
-        var secondNearDream = nerdamer(`${PED_Data.q_PuttingValues}`);
-        LatexValue("ped_calculate_step1", "2", element, "Q ");
+
+        LatexValue_WithoutNerdamer(
+          "ped_calculate_step1",
+          PED_Data[0].q_PuttingValues,
+          element,
+          `Q `
+        );
 
         element = "ped_calculate_step1_3";
-        var secondNearDream = nerdamer(`${PED_Data.qValue}`);
-        LatexValue("ped_calculate_step1", "3", element, "Q ");
+
+        LatexValue_WithoutNerdamer(
+          "ped_calculate_step1",
+          PED_Data[0].qValue,
+          element,
+          `Q `
+        );
 
         // Find Derivative of D_q / DP
         document.getElementById("ped_find_dev").innerHTML =
@@ -869,13 +883,15 @@
 
         // puttingValues_step1_2
         element = "ped_deviation_1_1";
-        var thirdNearDream = nerdamer(`${q_value}`);
-        LatexValue("ped_deviation_1", "3", element, "Value of Q");
+        var thirdNearDream = nerdamer(
+          `d*(${PED_Data[1].originalExpression})/dP`
+        );
+        LatexValue("ped_deviation_1", "3", element, "dQ / dP");
 
         // puttingValues_step1_1
         element = "ped_deviation_1_2";
         var secondNearDream = nerdamer(`${result.derivative}`);
-        LatexValue("ped_deviation_1", "2", element, "MC ");
+        LatexValue("ped_deviation_1", "4", element, "dQ / dP ");
 
         // puttingValues_step2_1
         element = "ped_deviation_1_3";
@@ -883,11 +899,11 @@
           "ped_deviation_1",
           result.puttingValues,
           element,
-          `MC `
+          `dQ / dP`
         );
 
         // Find Value of PED
-        document.getElementById("derivation_h2").innerHTML =
+        document.getElementById("find_ped").innerHTML =
           "Step 3: Finding Value of PED";
 
         var element = "find_ped_1_1";
@@ -903,11 +919,10 @@
         LatexValue("find_ped_1", "3", element, "PED ");
 
         // Results
-        document.getElementById("result").innerHTML = `PED = ${result.answer}`;
+        document.getElementById("").innerHTML = `PED = ${result.answer}`;
 
         // Conclusion
-        document.getElementById("Marginal_Conclusion_1").innerHTML =
-          "Conclusion";
+        document.getElementById("").innerHTML = "Conclusion";
         document.getElementById(
           "Marginal_Conclusion_2"
         ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
