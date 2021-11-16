@@ -1249,7 +1249,11 @@ function YEDCalculator(expression, y, q, selectPriceValue, paymentOfGoods1) {
   console.log(answer);
 }
 
+/////////////////
+// XED Calculator
+/////////////////
 function XEDCalculator(expression, p2, q1, selectPriceValue) {
+  var XED = "(d*q / d * p) * y/q";
   if (selectPriceValue == 1) {
     // Derivative
     // Formula = dQ1/dp2 = (d/dp2) [expression]
@@ -1257,7 +1261,7 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
       q_variable = variableReplacer(expression, "p2", "x"),
       derivative = deriveExpression(q_variable);
 
-    console.log(YED);
+    console.log(XED);
     console.log(newcomment);
     console.log(p_constant);
     console.log(q_variable);
@@ -1266,10 +1270,10 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
     // Derivative
     // Formula = dQ1/dp2 = (d/dp2) [expression]
     var newcomment = "Considering Prices as constant",
-      q_variable = variableReplacer(p_constant, "p2", "x"),
+      q_variable = variableReplacer(expression, "p2", "x"),
       derivative = deriveExpression(q_variable);
 
-    console.log(YED);
+    console.log(XED);
     console.log(newcomment);
     console.log(q_variable);
     console.log(derivative);
@@ -1280,14 +1284,14 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
   }
   // Formula = (d*q / d*p) * y/q
   console.log("Putting Values of Derivative");
-  console.log(YED);
-  var putting_values = variableReplacer(YED, "(d*q / d * p)", derivative);
+  console.log(XED);
+  var putting_values = variableReplacer(XED, "(d*q / d * p)", derivative);
   console.log(putting_values);
 
-  YED = derivative * (y / q);
-  YED = YED.toPrecision(2);
-  console.log(YED);
-  var answer = checkYED(YED);
+  XED = derivative * (q1 / p2);
+  XED = XED.toPrecision(2);
+  console.log(XED);
+  var answer = checkYED(XED);
   console.log(answer);
 }
 
@@ -1304,7 +1308,7 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   income = "5000",
   // PriceElasticity(Expressive, p1, p2, p3, income);
   expression = Expressive.toLowerCase();
-console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
+// console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
 // YED
 // var y = 25,
@@ -1313,4 +1317,5 @@ var y = 10000,
   q = 5000;
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
-YEDCalculator(Expressive, y, q, 2);
+// YEDCalculator(Expressive, y, q, 2);
+XEDCalculator(expression, p2, 5000, 2);
