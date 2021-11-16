@@ -657,6 +657,7 @@
       var PED_formula = "(d*q / d * p) * p/q";
       console.log(PED_formula);
       console.log(derivative, paymentOfGoods1, quantity);
+      var PED_answer_string = `| ${derivative} * (${paymentOfGoods1} / ${quantity}) | `;
       var PED_answer = derivative * (paymentOfGoods1 / quantity),
         PED_answer = Math.abs(PED_answer).toPrecision(3);
       console.log(PED_answer);
@@ -664,6 +665,7 @@
       var PED_commentary = checkPED(PED_answer);
       console.log(PED_commentary);
       var PED_Data = {
+        PED_answer_string: PED_answer_string,
         PED_formula: PED_formula,
         PED_answer: PED_answer,
         PED_commentary: PED_commentary,
@@ -766,6 +768,7 @@
           {
             // PED
             name: "PED",
+            PED_answer_string: PED_Data.PED_answer_string,
             ped_PuttingValues: PED_Data.PED_formula,
             ped_answer: PED_Data.PED_answer,
             PED_commentary: PED_Data.PED_commentary,
@@ -884,6 +887,7 @@
         element = "ped_deviation_1_1";
         var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
         LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
+
         var thirdNearDream = nerdamer();
         LatexValue_WithoutNerdamer(
           "ped_deviation_1",
@@ -892,26 +896,42 @@
           "dQ / dP"
         );
 
-        // puttingValues_step1_1
         element = "ped_deviation_1_2";
-        var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
+        var thirdNearDream = nerdamer(`${PED_Data[2].ped_PuttingValues}`);
         LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
 
         // Find Value of PED
         document.getElementById("find_ped").innerHTML =
           "Step 3: Finding Value of PED";
 
+        // (d*q / d * p) * p/q
         var element = "find_ped_1_1";
-        var firstNearDream = nerdamer(`d/dQ(${expression})`);
-        LatexValue("find_ped_1", "1", element, "PED ");
+        nerdamer.flush();
+
+        element = "find_ped_1_1";
+
+        LatexValue_WithoutNerdamer(
+          "find_ped_1",
+          PED_Data[2].ped_PuttingValues,
+          element,
+          "PED "
+        );
 
         element = "find_ped_1_2";
-        var secondNearDream = nerdamer(`${expression}`);
-        LatexValue("find_ped_1", "2", element, "PED ");
+        LatexValue_WithoutNerdamer(
+          "find_ped_1",
+          PED_Data[2].PED_answer_string,
+          element,
+          "PED "
+        );
 
         element = "find_ped_1_3";
-        var secondNearDream = nerdamer(`${expression}`);
-        LatexValue("find_ped_1", "3", element, "PED ");
+        LatexValue_WithoutNerdamer(
+          "find_ped_1",
+          PED_Data[2].ped_answer,
+          element,
+          "PED "
+        );
 
         // Results
         document.getElementById("").innerHTML = `PED = ${result.answer}`;
