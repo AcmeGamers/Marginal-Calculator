@@ -1294,6 +1294,9 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
   var answer = checkYED(XED);
   console.log(answer);
 }
+function ChangeCalculator(changeInQ1, changeInP) {
+  return changeInQ1 / changeInP;
+}
 
 ////////
 // Tests
@@ -1319,3 +1322,5 @@ var y = 10000,
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
 // YEDCalculator(Expressive, y, q, 2);
 XEDCalculator(expression, p2, q, 2);
+
+ChangeCalculator(changeInQ1, changeInP);
