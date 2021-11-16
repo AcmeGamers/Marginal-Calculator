@@ -971,16 +971,32 @@ function findQ(expression) {
 }
 
 function checkPED(value) {
+  var comment, is_Q, data;
   if (value < 1) {
-    var comment, is_Q;
     comment = `Since the value is less than 1, (${value} < 1), demand is inelastic.`;
     is_Q = `Q is a necessary good`;
-    return comment, is_Q;
+    data = {
+      comment: comment,
+      is_Q: is_Q,
+    };
+    return data;
   }
   if (value > 1) {
-    return `Since the value is greater than 1, (${value} > 1), demand is elastic.`;
+    comment = `Since the value is greater than 1, (${value} > 1), demand is elastic.`;
+    is_Q = `Q is a demanding good`;
+    data = {
+      comment: comment,
+      is_Q: is_Q,
+    };
+    return data;
   } else {
-    return `Since the value is equal to 1, (${value} == 1), demand is unitary`;
+    comment = `Since the value is equal to 1, (${value} == 1), demand is unitary`;
+    is_Q = `Demand for Q does not change in response to price.`;
+    data = {
+      comment: comment,
+      is_Q: is_Q,
+    };
+    return data;
   }
 }
 // Price Elasticity of Demand
