@@ -970,6 +970,19 @@ function findQ(expression) {
   return answers;
 }
 
+function checkPED(value) {
+  if (value < 1) {
+    var comment, is_Q;
+    comment = `Since the value is less than 1, (${value} < 1), demand is inelastic.`;
+    is_Q = `Q is a necessary good`;
+    return comment, is_Q;
+  }
+  if (value > 1) {
+    return `Since the value is greater than 1, (${value} > 1), demand is elastic.`;
+  } else {
+    return `Since the value is equal to 1, (${value} == 1), demand is unitary`;
+  }
+}
 // Price Elasticity of Demand
 function PriceElasticity(
   expression,
@@ -984,6 +997,7 @@ function PriceElasticity(
   var originalExpression, y_replaced_expression, d_Q_div_d_p, answers; // Creating variables.
 
   // select_html_Value means the value of select in the select.
+  // If Value is 1
   if (select_html_Value == 1) {
     // Formula
     // PED = | E_d | = | (d_Q / d_p) * p/q|
@@ -999,9 +1013,11 @@ function PriceElasticity(
     expression = variableReplacer(expression, "y", income);
     console.log(expression);
 
-    // Finding Q
-    var qValue = findQ(expression);
+    // Getting Q
+    var qValue = findQ(expression); // Answer of Q
     console.log(qValue);
+    console.log("####### Q End #######");
+    console.log("");
 
     // d_Q_div_d_p
     var expression_derivation = variableReplacer(
@@ -1009,15 +1025,45 @@ function PriceElasticity(
       "p",
       "x"
     );
+    console.log("####### d_Q_div_d_p #######");
+
+    console.log(
+      "Since value of Price changes, it won't make a change on Y because it will be the exact amount of sum of Price."
+    );
+    // Adding Value of Y
+    console.log(y_replaced_expression);
+
+    // Taking Deviation
     d_Q_div_d_p = deriveExpression(expression_derivation);
     console.log(d_Q_div_d_p);
+
+    // Putting answers in one bracket
+    var d_Q_div_d_p_answer = {
+      puttingValues: y_replaced_expression,
+      answer: parseFloat(d_Q_div_d_p),
+    };
+
+    // Find PED
+    console.log("");
+    console.log("####### PED #######");
+    var PED_formula = "(d*q / d * p) * p/q";
+    console.log(PED_formula);
+    var PED_answer =
+        d_Q_div_d_p_answer.answer * (paymentOfGoods1 / qValue.answer),
+      PED_answer = Math.abs(PED_answer).toPrecision(3);
+    console.log(PED_answer);
+
+    var PED_commentary = checkPED(PED_answer);
+    console.log(PED_commentary);
   }
+  // If Value is 2
   if (select_html_Value == 2) {
     expression.replace(/p1/g, paymentOfGoods1);
     expression.replace(/p2/g, paymentOfGoods2);
     expression.replace(/y/g, income);
     console.log(expression);
   }
+  // If Value is 3
   if (select_html_Value == 3) {
     expression.replace(/p1/g, paymentOfGoods1);
     expression.replace(/p2/g, paymentOfGoods2);
@@ -1027,10 +1073,27 @@ function PriceElasticity(
   }
 
   console.log("-------------------");
-  return (answers = {
-    q_PuttingValues: qValue.puttingValues,
-    qValue: qValue.answer,
-  });
+  return (answers = [
+    {
+      // Q Values
+      name: "Q Value",
+      q_PuttingValues: qValue.puttingValues,
+      qValue: qValue.answer,
+    },
+    {
+      // d_Q_div_d_p
+      name: "Deviation",
+      deviation_PuttingValues: d_Q_div_d_p_answer.puttingValues,
+      deviationAnswer: d_Q_div_d_p_answer.answer,
+    },
+    {
+      // PED
+      name: "PED",
+      ped_PuttingValues: PED_formula,
+      ped_answer: PED_answer,
+      PED_commentary: PED_commentary,
+    },
+  ]);
 }
 
 var Expressive = "700-2*p+0.02*y",
