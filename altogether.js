@@ -924,9 +924,10 @@ var deriveExpression = function (expression) {
 //   console.log("-------------------");
 //   return answers;
 // }
+
 //////////////////////////////
 // Price Elasticity of Demand
-
+//////////////////////////////
 // Variable Replacer
 function variableReplacer(
   expression,
@@ -1295,8 +1296,8 @@ function XEDCalculator(expression, p2, q1, selectPriceValue) {
   console.log(answer);
 }
 function ChangeCalculator(quantity_demand, price, percentChange) {
-  var data = (quantity_demand / price) * (percentChange / 100);
-  console.log(data);
+  var data = (price / quantity_demand) * percentChange;
+  console.log(data + "% Change");
   return data;
 }
 
@@ -1314,6 +1315,7 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   // PriceElasticity(Expressive, p1, p2, p3, income);
   expression = Expressive.toLowerCase();
 // console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
+// console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 
 // YED
 // var y = 25,
@@ -1323,7 +1325,7 @@ var y = 10000,
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
 // YEDCalculator(Expressive, y, q, 2);
-XEDCalculator(expression, p2, q, 2);
+// XEDCalculator(expression, p2, q, 2);
 
-ChangeCalculator(q, p2, 10);
+// ChangeCalculator(q, p2, 10);
 // Use css selector:after to say number and use `%` in selector.
