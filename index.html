@@ -130,7 +130,7 @@
               style="width: 50vw"
               value="700-2*p+0.02*y"
               placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
-              id="expression"
+              id="ped_expression"
             />
           </div>
           <!-- 700-2*p+0.02*y -->
@@ -160,7 +160,7 @@
               <!-- PED Income (Y) -->
               <p class="margin-right-1rem" style="margin-top: 0">Income (Y)</p>
               <input
-                id="income"
+                id="ped_income"
                 value="18361"
                 type="text"
                 placeholder="Income"
@@ -486,7 +486,8 @@
             data = `<div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 1 (P1)</p><input id="pg1"value="209"type="text"placeholder="Price of Good 1"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 2 (P2)</p><input id="pg2"value="101"type="text"placeholder="Price of Good 2"/></div><div class="text_and_input"><p class="margin-right-1rem">Pay of Goods 3 (P3)</p><input id="pg3"value="478"type="text"placeholder="Price of Good 3"/></div>`;
             break;
         }
-        console.log(e);
+        console.log(e.target.defaultValue);
+        select_value = e.target.defaultValue;
         result.innerHTML = data;
       });
   </script>
@@ -776,6 +777,21 @@
       }
     }
 
+    function PEDCheck() {
+      // // Obtaining Input Value
+      // var expression = document
+      //   .getElementById("ped_expression")
+      //   .value.toLowerCase()
+      //   .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
+
+      // // Logs The Result
+      // console.log(expression);
+      // var q_value = document.getElementById("q_value").value; // Gets Value of Q
+      console.log("Check");
+    }
+  </script>
+  <!-- YED Calculator -->
+  <script>
     //////
     // YED
     //////
@@ -829,7 +845,8 @@
       var answer = checkYED(YED);
       console.log(answer);
     }
-
+  </script>
+  <script>
     /////////////////
     // XED Calculator
     /////////////////
@@ -875,6 +892,8 @@
       var answer = checkYED(XED);
       console.log(answer);
     }
+  </script>
+  <script>
     function ChangeCalculator(quantity_demand, price, percentChange) {
       var data = (price / quantity_demand) * percentChange;
       console.log(data + "% Change");
