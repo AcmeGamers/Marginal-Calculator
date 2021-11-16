@@ -824,63 +824,81 @@
         ped_income,
         select_value
       );
-    }
 
-    function PED_Display() {
-      var result = MarginalRevenue(expression, q_value);
+      function PED_Display() {
+        var result = MarginalRevenue(expression, q_value);
 
-      // Derivation
-      document.getElementById("derivation_h2").innerHTML = "Step 1: Derivation";
+        // Find Value of Q
+        document.getElementById("derivation_h2").innerHTML =
+          "Step 1: Finding Value of Q";
 
-      var element = "derivative_step1_2";
-      var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
-      LatexValue("derivative_step1", "1", element, "MC ");
+        var element = "derivative_step1_2";
+        var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
+        LatexValue("derivative_step1", "1", element, "MC ");
 
-      element = "derivative_step2_2";
-      var secondNearDream = nerdamer(`${result.derivative.replace(/x/g, "Q")}`);
-      LatexValue("derivative_step2", "2", element, "MC ");
+        element = "derivative_step2_2";
+        var secondNearDream = nerdamer(
+          `${result.derivative.replace(/x/g, "Q")}`
+        );
+        LatexValue("derivative_step2", "2", element, "MC ");
 
-      // Putting Values
-      document.getElementById("puttingValues_h2").innerHTML =
-        "Step 2: Putting Values";
+        // Find Derivative of D_q / DP
+        document.getElementById("puttingValues_h2").innerHTML =
+          "Step 2: Finding dQ / dP";
 
-      // puttingValues_step1_2
-      element = "puttingValues_step1_1";
-      var thirdNearDream = nerdamer(`${q_value}`);
-      LatexValue("puttingValues_step1", "3", element, "Value of Q");
+        // puttingValues_step1_2
+        element = "puttingValues_step1_1";
+        var thirdNearDream = nerdamer(`${q_value}`);
+        LatexValue("puttingValues_step1", "3", element, "Value of Q");
 
-      // puttingValues_step1_1
-      element = "puttingValues_step1_2";
-      var secondNearDream = nerdamer(`${result.derivative}`);
-      LatexValue("puttingValues_step1", "2", element, "MC ");
+        // puttingValues_step1_1
+        element = "puttingValues_step1_2";
+        var secondNearDream = nerdamer(`${result.derivative}`);
+        LatexValue("puttingValues_step1", "2", element, "MC ");
 
-      // puttingValues_step2_1
-      element = "puttingValues_step2_1";
-      LatexValue_WithoutNerdamer(
-        "puttingValues_step2",
-        result.puttingValues,
-        element,
-        `MC `
-      );
+        // puttingValues_step2_1
+        element = "puttingValues_step2_1";
+        LatexValue_WithoutNerdamer(
+          "puttingValues_step2",
+          result.puttingValues,
+          element,
+          `MC `
+        );
 
-      // Results
-      document.getElementById("result").innerHTML = `MC = ${result.answer}`;
+        // Find Value of PED
+        document.getElementById("derivation_h2").innerHTML =
+          "Step 3: Finding Value of PED";
 
-      // Conclusion
-      document.getElementById("Marginal_Conclusion_1").innerHTML = "Conclusion";
-      document.getElementById(
-        "Marginal_Conclusion_2"
-      ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
+        var element = "derivative_step1_2";
+        var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
+        LatexValue("derivative_step1", "1", element, "MC ");
 
-      nerdamer.flush();
-    }
-    // Function that displays values on HTML page
-    try {
-      PED_Display();
-    } catch (error) {
-      document.getElementById("result").innerHTML =
-        "There is some issue in the formula or the typed data is invalid";
-      console.log(error);
+        element = "derivative_step2_2";
+        var secondNearDream = nerdamer(
+          `${result.derivative.replace(/x/g, "Q")}`
+        );
+        LatexValue("derivative_step2", "2", element, "MC ");
+
+        // Results
+        document.getElementById("result").innerHTML = `MC = ${result.answer}`;
+
+        // Conclusion
+        document.getElementById("Marginal_Conclusion_1").innerHTML =
+          "Conclusion";
+        document.getElementById(
+          "Marginal_Conclusion_2"
+        ).innerHTML = `Hence the revenue of ${q_value} units is $${result.answer}`;
+
+        nerdamer.flush();
+      }
+      // Function that displays values on HTML page
+      try {
+        PED_Display();
+      } catch (error) {
+        document.getElementById("result").innerHTML =
+          "There is some issue in the formula or the typed data is invalid";
+        console.log(error);
+      }
     }
   </script>
   <!-- YED Calculator -->
