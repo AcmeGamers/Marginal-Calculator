@@ -1160,17 +1160,6 @@ function PriceElasticity(
   ]);
 }
 
-var Expressive = "700-2*p+0.02*y",
-  p = "25" || 0,
-  p1 = p,
-  p2 = "101" || 0,
-  p3 = "478" || 0,
-  income = "5000",
-  // PriceElasticity(Expressive, p1, p2, p3, income);
-  expression = Expressive.toLowerCase();
-// console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
-console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
-
 //////
 // YED
 //////
@@ -1209,7 +1198,20 @@ function YEDCalculator(expression, y, q, GoodsValue, paymentOfGoods1) {
   var answer = checkYED(YED);
   console.log(answer);
 }
+////////
+// Tests
+////////
+var Expressive = "700-2*p+0.02*y",
+  p = "25" || 0,
+  p1 = p,
+  p2 = "101" || 0,
+  p3 = "478" || 0,
+  income = "5000",
+  // PriceElasticity(Expressive, p1, p2, p3, income);
+  expression = Expressive.toLowerCase();
+console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
+
 var y = 25,
   q = 750;
 
-YEDCalculator("700-2*p+0.02*y", y, q, 1);
+// YEDCalculator("700-2*p+0.02*y", y, q, 1);
