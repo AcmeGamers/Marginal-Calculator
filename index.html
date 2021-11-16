@@ -177,11 +177,39 @@
 
           <!-- PED Answer Display -->
           <div id="ped1" class="left-align">
-            <h2 id="calculate_h2"></h2>
-            <p id="calculate_step1" class="hide"></p>
-            <p id="calculate_step1_2" class="no-margin"></p>
-            <p id="calculate_step1_3" class="no-margin"></p>
-            <p id="calculate_step1_4" class="no-margin"></p>
+            <h2 id="ped_find_q"></h2>
+            <p id="ped_calculate_step1" class="hide"></p>
+            <p id="ped_calculate_step1_1" class="no-margin"></p>
+            <p id="ped_calculate_step1_2" class="no-margin"></p>
+            <p id="ped_calculate_step1_3" class="no-margin"></p>
+          </div>
+
+          <div id="ped2" class="left-align">
+            <h2 id="ped_find_dev"></h2>
+            <p id="ped_deviation_1" class="hide"></p>
+            <p id="ped_deviation_1_1" class="no-margin"></p>
+            <p id="ped_deviation_1_2" class="no-margin"></p>
+            <p id="ped_deviation_1_3" class="no-margin"></p>
+          </div>
+
+          <div id="ped3" class="left-align">
+            <h2 id="find_ped"></h2>
+            <p id="find_ped_1" class="hide"></p>
+            <p id="find_ped_1_1" class="no-margin"></p>
+            <p id="find_ped_1_2" class="no-margin"></p>
+            <p id="find_ped_1_3" class="no-margin"></p>
+          </div>
+
+          <div id="ped4" class="left-align">
+            <h2 id="ped_result"></h2>
+            <p id="ped_result_1" class="hide"></p>
+            <p id="ped_result_1_1" class="no-margin"></p>
+          </div>
+
+          <div id="ped5" class="left-align">
+            <h2 id="ped_conclusion"></h2>
+            <p id="ped_conclusion_1" class="hide"></p>
+            <p id="ped_conclusion_1_1" class="no-margin"></p>
           </div>
         </div>
       </div>
@@ -816,7 +844,7 @@
       } else {
         console.log("No value selected, give an error message on display");
       }
-      PriceElasticity(
+      PED_Data = PriceElasticity(
         expression,
         paymentOfGoods1,
         paymentOfGoods2 || 0,
@@ -832,15 +860,17 @@
         document.getElementById("derivation_h2").innerHTML =
           "Step 1: Finding Value of Q";
 
-        var element = "derivative_step1_2";
-        var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
-        LatexValue("derivative_step1", "1", element, "MC ");
+        var element = "ped_calculate_step1_1";
+        var firstNearDream = nerdamer(`d/dQ(${expression})`);
+        LatexValue("ped_calculate_step1", "1", element, "Q ");
 
-        element = "derivative_step2_2";
-        var secondNearDream = nerdamer(
-          `${result.derivative.replace(/x/g, "Q")}`
-        );
-        LatexValue("derivative_step2", "2", element, "MC ");
+        element = "ped_calculate_step1_2";
+        var secondNearDream = nerdamer(`${PED_Data.q_PuttingValues}`);
+        LatexValue("ped_calculate_step1", "2", element, "Q ");
+
+        element = "ped_calculate_step1_3";
+        var secondNearDream = nerdamer(`${PED_Data.qValue}`);
+        LatexValue("ped_calculate_step1", "3", element, "Q ");
 
         // Find Derivative of D_q / DP
         document.getElementById("puttingValues_h2").innerHTML =
