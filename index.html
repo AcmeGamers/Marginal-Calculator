@@ -324,66 +324,59 @@
         console.log(`There is some error in the user input`);
       }
     }
-
-    // Marginal Revenue Function
-    function MRCheck() {
-      hideToShow("mr", "flex", 3);
-
-      // Obtaining Input Value
-      var expression = document
-        .getElementById("expression")
-        .value.toLowerCase()
-        .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
-
-      // Logs The Result
-      console.log(expression);
-      var q_value = document.getElementById("q_value").value; // Gets Value of Q
-
-      // Latex Function
-      function LatexValue(id, nerdamerExpression, TheElement, data) {
-        // Renders data
-        document.getElementById(id).innerHTML = katex.render(
-          data +
-            `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
-          document.getElementById(TheElement),
-          {
-            displayMode: true,
-            macros: {
-              "\\RR": "\\mathbb{R}",
-            },
-          }
-        );
-      }
-
-      // Latex Function Without Nerdamer
-      function LatexValue_WithoutNerdamer(
-        id,
-        expressionValue,
-        TheElement,
-        data
-      ) {
-        document.getElementById(id).innerHTML = katex.render(
-          data + `=  ${expressionValue}`,
-          document.getElementById(TheElement),
-          {
-            displayMode: true,
-            macros: {
-              "\\RR": "\\mathbb{R}",
-            },
-          }
-        );
-      }
-
-      // Each Value Checker
-      function valueCheck(dataExpression) {
-        // Split using a space character
-        let arr = dataExpression.split(" ");
-
-        // Making the Array
-        var value1 = [];
-        for (let index = 0; index < arr.length; index++) {
-          value1 += `${arr[index]} `;
+    // Latex Function
+    function LatexValue(id, nerdamerExpression, TheElement, data) {
+      // Renders data
+      document.getElementById(id).innerHTML = katex.render(
+        data + `=  ${nerdamer.expressions(true, "LaTeX")[nerdamerExpression]}`,
+        document.getElementById(TheElement),
+        {
+          displayMode: true,
+          macros: {
+            "\\RR": "\\mathbb{R}",
+          },
         }
+      );
+    }
+
+    // Latex Function Without Nerdamer
+    function LatexValue_WithoutNerdamer(id, expressionValue, TheElement, data) {
+      document.getElementById(id).innerHTML = katex.render(
+        data + `=  ${expressionValue}`,
+        document.getElementById(TheElement),
+        {
+          displayMode: true,
+          macros: {
+            "\\RR": "\\mathbb{R}",
+          },
+        }
+      );
+    }
+
+    // Each Value Checker
+    function valueCheck(dataExpression) {
+      // Split using a space character
+      let arr = dataExpression.split(" ");
+
+      // Making the Array
+      var value1 = [];
+      for (let index = 0; index < arr.length; index++) {
+        value1 += `${arr[index]} `;
+      }
+
+      // Marginal Revenue Function
+      function MRCheck() {
+        hideToShow("mr", "flex", 3);
+
+        // Obtaining Input Value
+        var expression = document
+          .getElementById("expression")
+          .value.toLowerCase()
+          .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
+
+        // Logs The Result
+        console.log(expression);
+        var q_value = document.getElementById("q_value").value; // Gets Value of Q
 
         // Result
         var finalAnswer = eval(math.evaluate(value1));
