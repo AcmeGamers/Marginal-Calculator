@@ -22,6 +22,7 @@ body {
   font: normal 1.21em KaTeX_Main, Times New Roman, serif;
 }
 
+button,
 input {
   padding: 5px 1rem 5px 1rem;
 }
