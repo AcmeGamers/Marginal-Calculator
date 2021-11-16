@@ -924,6 +924,50 @@ var deriveExpression = function (expression) {
 //   console.log("-------------------");
 //   return answers;
 // }
+//////////////////////////////
+// Price Elasticity of Demand
+//////////////////////////////
+
+// Variable Replacer
+function variableReplacer(expression, valueToChange, value1, value2) {
+  var result;
+  if (value2) {
+    // First Value will be your new value, second is the value currently
+    result = expression.split(valueToChange).join(value1);
+    result = expression.split(valueToChange).join(value2);
+    return result;
+  } else {
+    result = expression.split(valueToChange).join(value1);
+    return result;
+  }
+}
+// Expression Spliter
+function expressionSpliter(expression) {
+  // Split using a space character
+  let arr = expression.split(" ");
+
+  // Making the Array
+  var array = [];
+  for (let index = 0; index < arr.length; index++) {
+    array += `${arr[index]} `;
+  }
+  return array;
+}
+
+// Q Finder
+function findQ(expression) {
+  var q_array = expressionSpliter(expression);
+  // var q_result = eval(math.evaluate(q_array));
+  var q_result = eval(q_array);
+  console.log(q_array);
+  console.log(q_result);
+
+  var answers = {
+    puttingValues: q_array,
+    answer: q_result,
+  };
+  return answers;
+}
 
 // Price Elasticity of Demand
 function PriceElasticity(
@@ -943,12 +987,20 @@ function PriceElasticity(
     // Formula
     // PED = | E_d | = | (d_Q / d_p) * p/q|
 
-    expression.replace(/p1/g, paymentOfGoods1);
-    expression.replace(/y/g, income);
+    /p1/.test(expression)
+      ? (expression = variableReplacer(expression, "p1", paymentOfGoods1))
+      : (expression = variableReplacer(expression, "p", paymentOfGoods1));
+
+    expression = variableReplacer(expression, "y", income);
     console.log(expression);
 
-    expression.replace(/p/g, "x");
-    d_Q_div_d_p = deriveExpression(expression);
+    // Finding Q
+    expression = findQ(expression);
+    console.log(expression);
+
+    // d_Q_div_d_p
+    expression_derivation = variableReplacer(expression, "p", "x");
+    d_Q_div_d_p = deriveExpression(expression_derivation);
     console.log(d_Q_div_d_p);
   }
   if (select_html_Value == 2) {
@@ -967,26 +1019,6 @@ function PriceElasticity(
 
   console.log(d_Q_div_d_p);
 
-  // function valueCheck(dataExpression) {
-  // Split using a space character
-  let arr = d_Q_div_d_p.split(" ");
-
-  // Making the Array
-  var q_array = [];
-  for (let index = 0; index < arr.length; index++) {
-    q_array += `${arr[index]} `;
-  }
-
-  // Result
-  // var q_result = eval(math.evaluate(q_array));
-  var q_result = eval(q_array);
-  console.log(q_array);
-  console.log(q_result);
-
-  var answers = {
-    puttingValues: q_array,
-    answer: q_result,
-  };
   //   return answers;
   // }
   // answers = valueCheck(expression);
@@ -996,13 +1028,15 @@ function PriceElasticity(
   return answers;
 }
 
-var Expressive = "7777 - P1 + 0.75 * P2 - 0.5*p3 + 0.05 * y",
-  p1 = "209",
-  p2 = "101",
-  p3 = "478",
-  TheIncome = "18361",
+var Expressive = "700-2*p+0.02*y",
+  p = "25" || 0,
+  p1 = p,
+  p2 = "101" || 0,
+  p3 = "478" || 0,
+  TheIncome = "5000",
   // PriceElasticity(Expressive, p1, p2, p3, income);
   ExpressionResult = Expressive.toLowerCase();
+// console.log(PriceElasticity(ExpressionResult, p1, p2, p3, TheIncome, 1));
 console.log(PriceElasticity(ExpressionResult, p1, p2, p3, TheIncome, 1));
-console.log(7777 - 209 + 0.75 * 101 - 0.5 * 478 + 0.05 * 18361);
-console.log(eval(p1) + eval(p2) + eval(p3));
+
+console.log(p);
