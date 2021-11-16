@@ -1305,15 +1305,15 @@ function ChangeCalculator(quantity_demand, price, percentChange) {
 // Tests
 ////////
 // PED
-// var Expressive = "700-2*p+0.02*y",
-var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
+var Expressive = "700-2*p+0.02*y",
+  // var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
   p = "200" || 0,
   p1 = p,
   p2 = "100" || 0,
   p3 = "478" || 0,
-  income = "5000",
-  // PriceElasticity(Expressive, p1, p2, p3, income);
-  expression = Expressive.toLowerCase();
+  income = "5000";
+console.log(PriceElasticity(Expressive, p1, p2, p3, income));
+// expression = Expressive.toLowerCase();
 // console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 // console.log(PriceElasticity(expression, p1, p2, p3, income, 2));
 

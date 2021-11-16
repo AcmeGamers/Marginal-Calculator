@@ -850,7 +850,7 @@
       );
 
       function PED_Display() {
-        console.log(PED_Data);
+        console.log("Hello", PED_Data);
         // Find Value of Q
         document.getElementById("ped_find_q").innerHTML =
           "Step 1: Finding Value of Q";
@@ -879,19 +879,24 @@
 
         // Find Derivative of D_q / DP
         document.getElementById("ped_find_dev").innerHTML =
-          "Step 2: Finding dQ / dP";
+          "Step 2: Finding Derivative dQ / dP";
 
         // puttingValues_step1_2
         element = "ped_deviation_1_1";
-        var thirdNearDream = nerdamer(
-          `d*(${PED_Data[1].originalExpression})/dP`
+        var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
+        LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
+        var thirdNearDream = nerdamer();
+        LatexValue_WithoutNerdamer(
+          "ped_deviation_1",
+          `d(${PED_Data[1].originalExpression}) / dP`,
+          element,
+          "dQ / dP"
         );
-        LatexValue("ped_deviation_1", "3", element, "dQ / dP");
 
         // puttingValues_step1_1
         element = "ped_deviation_1_2";
-        var secondNearDream = nerdamer(`${result.derivative}`);
-        LatexValue("ped_deviation_1", "4", element, "dQ / dP ");
+        var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
+        LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
 
         // puttingValues_step2_1
         element = "ped_deviation_1_3";
