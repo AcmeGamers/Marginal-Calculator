@@ -926,7 +926,6 @@ var deriveExpression = function (expression) {
 // }
 //////////////////////////////
 // Price Elasticity of Demand
-//////////////////////////////
 
 // Variable Replacer
 function variableReplacer(expression, valueToChange, value1, value2) {
