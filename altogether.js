@@ -1125,4 +1125,20 @@ console.log(PriceElasticity(expression, p1, p2, p3, income, 1));
 //////
 // YED
 //////
-var YED = "(d*q / d * p) * y/q";
+function YEDCalculator(expression, y, q, paymentOfGoods1) {
+  var YED = "(d*q / d * p) * y/q";
+
+  // Derivative
+  // Formula = dQ/dY = (d/dy) [expression]
+  var newcomment = "Considering Price as constant",
+    p_constant = variableReplacer(expression, "p", paymentOfGoods1 || 1),
+    q_variable = variableReplacer(p_constant, "q", "x"),
+    derivative = deriveExpression(q_variable);
+  console.log(YED);
+  console.log(p_constant);
+  console.log(derivative);
+}
+var y = 25,
+  q = 750;
+
+YEDCalculator("700-2*p+0.02*y", y, q);

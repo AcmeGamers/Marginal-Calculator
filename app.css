@@ -47,3 +47,7 @@ input {
   letter-spacing: 1px;
   font-family: sans-serif;
 }
+
+label {
+  cursor: pointer;
+}
