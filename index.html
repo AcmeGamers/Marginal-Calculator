@@ -28,7 +28,7 @@ two tabs, one is example of usage and how it works.
   </head>
   <body>
     <div class="se-pre-con"></div>
-    <div class="side_bar_tab"></div>
+    <!-- <div class="side_bar_tab"></div> -->
     <div id="tabs">
       <h2>Calculator</h2>
       <div style="margin: 0 0 1rem">
@@ -892,6 +892,115 @@ two tabs, one is example of usage and how it works.
       console.log("-------------------");
     }
 
+    function YED_AND_XED_CHECK(
+      select_html_Value,
+      PED_Data,
+      Y_Value,
+      paymentOfGoods1
+    ) {
+      //
+      // Is YED Checked?
+      //
+      var checkYED = true,
+        checkXED = false;
+      select_html_Value = select_value;
+      console.log("Hurray! :D");
+      // If value of YED is 1
+      if (checkYED == true) {
+        document.querySelector("#ped5-yed").style.display = "block";
+        document.querySelector("#ped6-yed").style.display = "block";
+
+        if (select_html_Value == 1) {
+          var YED_OBTAINED_DATA = YEDCalculator(
+            PED_Data[0].expression,
+            valueOfY,
+            PED_Data[1].qValue,
+            select_html_Value,
+            paymentOfGoods1
+          );
+
+          // Heading
+          var element = "ped5-yed-h2";
+          document.getElementById(element).innerText = "YED";
+
+          // Value 1
+          var element = "ped5-yed-1_1";
+          var firstNearDream = nerdamer(`${PED_Data[0].originalExpression}`);
+          LatexValue("ped5-yed-1", "1", element, "E_y ");
+
+          // Value 2
+          element = "ped5-yed-1_2";
+          LatexValue_WithoutNerdamer(
+            "ped5-yed-1",
+            PED_Data[0].q_PuttingValues,
+            element,
+            `E_y `
+          );
+
+          // Value 3
+          element = "ped5-yed-1_3";
+          LatexValue_WithoutNerdamer(
+            "ped5-yed-1",
+            PED_Data[0].q_PuttingValues,
+            element,
+            `E_y `
+          );
+        }
+
+        // If value of YED is 2
+        else if (select_html_Value == 2) {
+          console.log("");
+          console.log("");
+          console.log("Check:DDDDDDDDDDDD");
+
+          document.querySelector("#ped5-yed").style.display = "block";
+          document.querySelector("#ped6-yed").style.display = "block";
+          YEDCalculator(
+            PED_Data2[0].originalExpression,
+            valueOfY,
+            PED_Data2[0].answer,
+            select_html_Value,
+            paymentOfGoods1
+          );
+
+          // Heading
+          var element = "ped5-yed-h2";
+          document.getElementById(element).innerText = "YED";
+
+          // Value 1
+          var element = "ped5-yed-1_1";
+          var firstNearDream = nerdamer(`${PED_Data2[0].originalExpression}`);
+          LatexValue("ped5-yed-1", "1", element, "E_y ");
+
+          // Value 2
+          element = "ped5-yed-1_2";
+          LatexValue_WithoutNerdamer(
+            "ped5-yed-1",
+            PED_Data2[0].q_PuttingValues,
+            element,
+            `E_y `
+          );
+
+          // Value 3
+          element = "ped5-yed-1_3";
+          LatexValue_WithoutNerdamer(
+            "ped5-yed-1",
+            PED_Data2[0].q_PuttingValues,
+            element,
+            `E_y `
+          );
+        }
+
+        // If value of YED is 3
+        else if (select_html_Value == 3) {
+          document.querySelector("#ped5-yed").style.display = "block";
+          document.querySelector("#ped6-yed").style.display = "block";
+        } else {
+        }
+      }
+      if (checkXED) {
+      }
+    }
     function PEDCheck() {
       hideToShow("ped", "flex", 5);
       // Obtaining Expression and Income
@@ -1213,116 +1322,14 @@ two tabs, one is example of usage and how it works.
           document.getElementById(
             "ped_result_1_1"
           ).innerHTML = `${PED_Data[2].PED_commentary.comment}`;
-
+          console.log(select_html_Value);
           document.getElementById(
             "ped_result_1_2"
           ).innerHTML = `${PED_Data[2].PED_commentary.is_Q}`;
-
+          console.log(select_html_Value);
           nerdamer.flush();
-
-          //
-          // Is YED Checked?
-          //
-          var checkYED = true,
-            checkXED = false;
-          select_html_Value = select_value;
-          // If value of YED is 1
-          if (checkYED == true) {
-            document.querySelector("#ped5-yed").style.display = "block";
-            document.querySelector("#ped6-yed").style.display = "block";
-
-            if (select_html_Value == 1) {
-              var YED_OBTAINED_DATA = YEDCalculator(
-                PED_Data[0].expression,
-                valueOfY,
-                PED_Data[1].qValue,
-                select_html_Value,
-                paymentOfGoods1
-              );
-
-              // Heading
-              var element = "ped5-yed-h2";
-              document.getElementById(element).innerText = "YED";
-
-              // Value 1
-              var element = "ped5-yed-1_1";
-              var firstNearDream = nerdamer(
-                `${PED_Data[0].originalExpression}`
-              );
-              LatexValue("ped5-yed-1", "1", element, "E_y ");
-
-              // Value 2
-              element = "ped5-yed-1_2";
-              LatexValue_WithoutNerdamer(
-                "ped5-yed-1",
-                PED_Data[0].q_PuttingValues,
-                element,
-                `E_y `
-              );
-
-              // Value 3
-              element = "ped5-yed-1_3";
-              LatexValue_WithoutNerdamer(
-                "ped5-yed-1",
-                PED_Data[0].q_PuttingValues,
-                element,
-                `E_y `
-              );
-            }
-
-            // If value of YED is 2
-            else if (select_html_Value == 2) {
-              console.log("Check");
-              document.querySelector("#ped5-yed").style.display = "block";
-              document.querySelector("#ped6-yed").style.display = "block";
-              YEDCalculator(
-                PED_Data2[0].originalExpression,
-                valueOfY,
-                PED_Data2[0].answer,
-                select_html_Value,
-                paymentOfGoods1
-              );
-
-              // Heading
-              var element = "ped5-yed-h2";
-              document.getElementById(element).innerText = "YED";
-
-              // Value 1
-              var element = "ped5-yed-1_1";
-              var firstNearDream = nerdamer(
-                `${PED_Data2[0].originalExpression}`
-              );
-              LatexValue("ped5-yed-1", "1", element, "E_y ");
-
-              // Value 2
-              element = "ped5-yed-1_2";
-              LatexValue_WithoutNerdamer(
-                "ped5-yed-1",
-                PED_Data2[0].q_PuttingValues,
-                element,
-                `E_y `
-              );
-
-              // Value 3
-              element = "ped5-yed-1_3";
-              LatexValue_WithoutNerdamer(
-                "ped5-yed-1",
-                PED_Data2[0].q_PuttingValues,
-                element,
-                `E_y `
-              );
-            }
-
-            // If value of YED is 3
-            else if (select_html_Value == 3) {
-              document.querySelector("#ped5-yed").style.display = "block";
-              document.querySelector("#ped6-yed").style.display = "block";
-            } else {
-            }
-          }
-          if (checkXED) {
-          }
         }
+        YED_AND_XED_CHECK(select_value, PED_Data, );
       }
       // Function that displays values on HTML page
       try {
