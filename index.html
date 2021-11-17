@@ -198,7 +198,7 @@
             <h2 id="ped_result_h2"></h2>
             <p id="ped_result_1" class="hide"></p>
             <p id="ped_result_1_1" class="no-margin"></p>
-            <p id="ped_result_1_2" class="no-margin"></p>
+            <p id="ped_result_1_2" class=""></p>
           </div>
         </div>
       </div>
@@ -1017,16 +1017,14 @@
           LatexValue("ped_deviation_1", "2", element, "dQ_1/d P_1 ");
 
           element = "ped_deviation_1_2";
-          LatexValue_WithoutNerdamer(
-            "ped_deviation_1",
-            `d(${PED_Data2[1].puttingValues}) / dP_1`,
-            element,
-            "dQ_1/d P_1"
+          var secondNearDream = nerdamer(
+            `d(${PED_Data2[1].puttingValues}) / dP_1`
           );
+          LatexValue("ped_deviation_1", "3", element, "dQ_1/d P_1 ");
 
           element = "ped_deviation_1_3";
           var thirdNearDream = nerdamer(`${PED_Data2[1].derivation}`);
-          LatexValue("ped_deviation_1", "3", element, "dQ_1/d P_1 ");
+          LatexValue("ped_deviation_1", "4", element, "dQ_1/d P_1 ");
 
           // Find Value of PED
           document.getElementById("find_ped").innerHTML =
@@ -1038,12 +1036,8 @@
 
           element = "find_ped_1_1";
 
-          LatexValue_WithoutNerdamer(
-            "find_ped_1",
-            PED_Data2[2].PED_Data.PED_formula,
-            element,
-            "PED "
-          );
+          var thirdNearDream = nerdamer(`dQ_1/dP_1 * p/q`);
+          LatexValue("find_ped_1", "1", element, "PED ");
 
           element = "find_ped_1_2";
           LatexValue_WithoutNerdamer(
@@ -1071,7 +1065,7 @@
 
           document.getElementById(
             "ped_result_1_2"
-          ).innerHTML = `${PED_Data[2].PED_Data.PED_commentary.is_Q}`;
+          ).innerHTML = `${PED_Data2[2].PED_Data.PED_commentary.is_Q}`;
 
           nerdamer.flush();
         } else if (select_html_Value == 3) {
@@ -1110,17 +1104,15 @@
           var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
           LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
 
-          var thirdNearDream = nerdamer();
-          LatexValue_WithoutNerdamer(
-            "ped_deviation_1",
-            `d(${PED_Data[1].originalExpression}) / dP`,
-            element,
-            "dQ / dP"
+          element = "ped_deviation_1_2";
+          var secondNearDream = nerdamer(
+            `d(${PED_Data[1].originalExpression})\div dP`
           );
+          LatexValue("ped_deviation_1", "3", element, "dQ / dP ");
 
           element = "ped_deviation_1_2";
-          var thirdNearDream = nerdamer(`${PED_Data[2].ped_PuttingValues}`);
-          LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
+          var secondNearDream = nerdamer(`${PED_Data[2].ped_PuttingValues}`);
+          LatexValue("ped_deviation_1", "4", element, "dQ / dP ");
 
           // Find Value of PED
           document.getElementById("find_ped").innerHTML =
