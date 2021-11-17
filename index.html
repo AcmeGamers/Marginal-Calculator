@@ -1199,8 +1199,11 @@
           var checkYED = true,
             checkXED = false;
 
+          // If value of YED is 1
           if (checkYED) {
-            // If value of YED is 1
+            document.querySelector("#ped5-yed").style.display = "block";
+            document.querySelector("#ped6-yed").style.display = "block";
+
             if (select_html_Value == 1) {
               var YED_OBTAINED_DATA = YEDCalculator(
                 PED_Data[0].expression,
@@ -1209,9 +1212,6 @@
                 select_html_Value,
                 paymentOfGoods1
               );
-
-              document.getElementById("ped5-yed").style.display = "block";
-              document.getElementById("ped6-yed").style.display = "block";
 
               // Heading
               var element = "ped5-yed-h2";
@@ -1245,6 +1245,8 @@
 
             // If value of YED is 2
             else if (select_html_Value == 2) {
+              document.querySelector("#ped5-yed").style.display = "block";
+              document.querySelector("#ped6-yed").style.display = "block";
               YEDCalculator(
                 PED_Data2[0].originalExpression,
                 valueOfY,
@@ -1256,6 +1258,8 @@
 
             // If value of YED is 3
             else if (select_html_Value == 3) {
+              document.querySelector("#ped5-yed").style.display = "block";
+              document.querySelector("#ped6-yed").style.display = "block";
             } else {
             }
           }
