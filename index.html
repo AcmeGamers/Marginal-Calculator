@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="components/tabs.css" />
   </head>
   <body>
+    <div class="se-pre-con"></div>
     <div id="tabs">
       <h2>Calculator</h2>
 
@@ -313,6 +314,11 @@
 
   <!-- Custom Functions / Scripts  -->
   <script>
+    document.onreadystatechange = () => {
+      if (document.readyState === "complete") {
+        document.querySelector(".se-pre-con").style.display = "none";
+      }
+    };
     var select_value;
     // Add Custom Style Property
     function hideToShow(name, value, repeat) {
@@ -1204,14 +1210,14 @@
               );
 
               // Value 1
-              var element = "ped5-yed-1";
+              var element = "ped5-yed-1_1";
               var firstNearDream = nerdamer(
                 `${PED_Data[0].originalExpression}`
               );
               LatexValue("ped5-yed-1", "1", element, "E_y ");
 
               // Value 2
-              element = "ped_calculate_step1_2";
+              element = "ped5-yed-1_2";
               LatexValue_WithoutNerdamer(
                 "ped5-yed-1",
                 PED_Data[0].q_PuttingValues,
@@ -1220,7 +1226,7 @@
               );
 
               // Value 3
-              element = "ped_calculate_step1_3";
+              element = "ped5-yed-1_3";
               LatexValue_WithoutNerdamer(
                 "ped5-yed-1",
                 PED_Data[0].q_PuttingValues,
