@@ -1014,19 +1014,19 @@
           var secondNearDream = nerdamer(
             `d(${PED_Data2[1].originalExpression}) / dP_1`
           );
-          LatexValue("ped_deviation_1", "2", element, "dQ1 / dP1 ");
+          LatexValue("ped_deviation_1", "2", element, "dQ_1/d P_1 ");
 
           element = "ped_deviation_1_2";
           LatexValue_WithoutNerdamer(
             "ped_deviation_1",
             `d(${PED_Data2[1].puttingValues}) / dP_1`,
             element,
-            "dQ1 / dP1"
+            "dQ_1/d P_1"
           );
 
           element = "ped_deviation_1_3";
           var thirdNearDream = nerdamer(`${PED_Data2[1].derivation}`);
-          LatexValue("ped_deviation_1", "3", element, "dQ1 / dP1 ");
+          LatexValue("ped_deviation_1", "3", element, "dQ_1/d P_1 ");
 
           // Find Value of PED
           document.getElementById("find_ped").innerHTML =
@@ -1040,7 +1040,7 @@
 
           LatexValue_WithoutNerdamer(
             "find_ped_1",
-            PED_Data[2].ped_PuttingValues,
+            PED_Data2[2].PED_Data.PED_formula,
             element,
             "PED "
           );
@@ -1048,7 +1048,7 @@
           element = "find_ped_1_2";
           LatexValue_WithoutNerdamer(
             "find_ped_1",
-            PED_Data[2].PED_answer_string,
+            PED_Data2[2].PED_Data.PED_answer_string,
             element,
             "PED "
           );
@@ -1056,7 +1056,7 @@
           element = "find_ped_1_3";
           LatexValue_WithoutNerdamer(
             "find_ped_1",
-            PED_Data[2].ped_answer,
+            PED_Data2[2].PED_Data.PED_answer,
             element,
             "PED "
           );
@@ -1067,11 +1067,11 @@
           // Conclusion
           document.getElementById(
             "ped_result_1_1"
-          ).innerHTML = `${PED_Data[2].PED_commentary.comment}`;
+          ).innerHTML = `${PED_Data2[2].PED_Data.PED_commentary.comment}`;
 
           document.getElementById(
             "ped_result_1_2"
-          ).innerHTML = `${PED_Data[2].PED_commentary.is_Q}`;
+          ).innerHTML = `${PED_Data[2].PED_Data.PED_commentary.is_Q}`;
 
           nerdamer.flush();
         } else if (select_html_Value == 3) {
