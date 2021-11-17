@@ -404,32 +404,32 @@ two tabs, one is example of usage and how it works.
         value1 += `${arr[index]} `;
       }
 
-      // Marginal Revenue Function
-      function MRCheck() {
-        hideToShow("mr", "flex", 3);
+      // Result
+      var finalAnswer = eval(math.evaluate(value1));
+      console.log(value1);
+      console.log(finalAnswer);
 
-        // Obtaining Input Value
-        var expression = document
-          .getElementById("expression")
-          .value.toLowerCase()
-          .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
+      answers = {
+        derivative: deriveExpression(expressionValue),
+        puttingValues: value1,
+        answer: finalAnswer,
+      };
+      return answers;
+    }
 
-        // Logs The Result
-        console.log(expression);
-        var q_value = document.getElementById("q_value").value; // Gets Value of Q
+    // Marginal Revenue Function
+    function MRCheck() {
+      hideToShow("mr", "flex", 3);
 
-        // Result
-        var finalAnswer = eval(math.evaluate(value1));
-        console.log(value1);
-        console.log(finalAnswer);
+      // Obtaining Input Value
+      var expression = document
+        .getElementById("expression")
+        .value.toLowerCase()
+        .replace(/q/g, "x"); // This line replaces any `x` variable with `q`
 
-        answers = {
-          derivative: deriveExpression(expressionValue),
-          puttingValues: value1,
-          answer: finalAnswer,
-        };
-        return answers;
-      }
+      // Logs The Result
+      console.log(expression);
+      var q_value = document.getElementById("q_value").value; // Gets Value of Q
 
       // Marginal Revenue Calculation
       function MarginalRevenue(expression, Q) {
@@ -525,7 +525,6 @@ two tabs, one is example of usage and how it works.
         console.log(error);
       }
     }
-
     // <!-- Script for PED -->
 
     // <!-- Script to change Price good limits -->
@@ -1329,7 +1328,7 @@ two tabs, one is example of usage and how it works.
           console.log(select_html_Value);
           nerdamer.flush();
         }
-        YED_AND_XED_CHECK(select_value, PED_Data, );
+        YED_AND_XED_CHECK(select_value, PED_Data);
       }
       // Function that displays values on HTML page
       try {
