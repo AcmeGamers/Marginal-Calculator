@@ -125,7 +125,7 @@
             <input
               type="text"
               style="width: 50vw"
-              value="700-2*p+0.02*y"
+              value="4850 - 5 * p1 + 1.5 * p2 + 0.1 * y"
               placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
               id="ped_expression"
             />
@@ -183,6 +183,7 @@
             <p id="ped_deviation_1" class="hide"></p>
             <p id="ped_deviation_1_1" class="no-margin"></p>
             <p id="ped_deviation_1_2" class="no-margin"></p>
+            <p id="ped_deviation_1_3" class="no-margin"></p>
           </div>
 
           <div id="ped3" class="left-align">
@@ -670,7 +671,56 @@
       };
       return PED_Data;
     }
+    function if2PED_Calc(expression, paymentOfGoods1, paymentOfGoods2, income) {
+      // Finding Q1
+      console.log("");
+      console.log("##### Finding Q1 #####");
+      var p1_replaced = variableReplacer(expression, "p1", paymentOfGoods1),
+        p1_p2_replaced = variableReplacer(p1_replaced, "p2", paymentOfGoods2),
+        y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income);
+      valueOf_Q1 = eval(y_p1_p2_replaced);
 
+      var p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
+        y_p2_replaced = variableReplacer(p2_replaced, "y", income),
+        x_variable = variableReplacer(y_p2_replaced, "p1", "x");
+
+      console.log(y_p1_p2_replaced);
+      console.log(valueOf_Q1);
+
+      console.log("");
+      console.log("##### Finding Derivation #####");
+      // Finding Derivation == (dq1 / dp1 = d/dp1[expression])
+      // Keeping p1 varible, other than them, all are constants.
+      derivation = deriveExpression(x_variable);
+      console.log("Keeping p1 varible, other than them, all are constants.");
+      console.log(y_p2_replaced);
+      console.log(derivation);
+
+      // Find PED
+      PED_Data = calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
+      console.log(PED_Data);
+      PED_Data2 = [
+        {
+          name: "Value of Q",
+          originalExpression: expression,
+          puttingValues: y_p1_p2_replaced,
+          answer: valueOf_Q1,
+        },
+        {
+          name: "Derivation of dQ1 / dP1 = d/dp1[expression]",
+          formula: `d/dp1[${expression}]`,
+          originalExpression: expression,
+          note1: "Taking Y and p2 as constants because derivation is of p1",
+          puttingValues: y_p2_replaced,
+          derivation: derivation,
+        },
+        {
+          name: "PED",
+          PED_Data: calculatePED(derivation, paymentOfGoods1, valueOf_Q1),
+        },
+      ];
+      return PED_Data2;
+    }
     /////////////////////////////
     // Price Elasticity of Demand
     //////////////////////////////
@@ -690,7 +740,8 @@
         answers,
         valueOf_Q1,
         derivation,
-        PED_Data; // Creating variables.
+        PED_Data,
+        PED_Data2; // Creating variables.
 
       // select_html_Value means the value of select in the select.
       // If Value is 1
@@ -773,51 +824,10 @@
           },
         ]);
       }
+
       // If Value is 2
       if (select_html_Value == 2) {
-        // Finding Q1
-        console.log("");
-        console.log("##### Finding Q1 #####");
-        var p1_replaced = variableReplacer(expression, "p1", paymentOfGoods1),
-          p1_p2_replaced = variableReplacer(p1_replaced, "p2", paymentOfGoods2),
-          y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income);
-        valueOf_Q1 = eval(y_p1_p2_replaced);
-
-        var p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
-          y_p2_replaced = variableReplacer(p2_replaced, "y", income),
-          x_variable = variableReplacer(y_p2_replaced, "p1", "x");
-
-        console.log(y_p1_p2_replaced);
-        console.log(valueOf_Q1);
-
-        console.log("");
-        console.log("##### Finding Derivation #####");
-        // Finding Derivation == (dq1 / dp1 = d/dp1[expression])
-        // Keeping p1 varible, other than them, all are constants.
-        derivation = deriveExpression(x_variable);
-        console.log("Keeping p1 varible, other than them, all are constants.");
-        console.log(y_p2_replaced);
-        console.log(derivation);
-
-        // Find PED
-        PED_Data = calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
-        console.log(PED_Data);
-        PED_Data = [
-          {
-            name: "Value of Q",
-            originalExpression: expression,
-            puttingValues: y_p1_p2_replaced,
-            answer: valueOf_Q1,
-          },
-          {
-            name: "Derivation of dQ1 / dP1 = d/dp1[expression]",
-            originalExpression: expression,
-            note1: "Taking Y and p2 as constants because derivation is of p1",
-            puttingValues: y_p2_replaced,
-            derivation: derivation,
-          },
-          { name: "PED", originalFormula: "" },
-        ];
+        if2PED_Calc(expression, paymentOfGoods1, paymentOfGoods2, income);
       }
 
       // If Value is 3
@@ -865,6 +875,12 @@
         select_value
       );
 
+      var PED_Data2 = if2PED_Calc(
+        expression,
+        paymentOfGoods1,
+        paymentOfGoods2,
+        income
+      );
       function PED_Display(select_html_Value) {
         console.log("Hello", PED_Data);
 
@@ -968,14 +984,14 @@
             "Step 1: Finding Value of Q";
 
           var element = "ped_calculate_step1_1";
-          var firstNearDream = nerdamer(`${PED_Data[0].originalExpression}`);
+          var firstNearDream = nerdamer(`${PED_Data2[0].originalExpression}`);
           LatexValue("ped_calculate_step1", "1", element, "Q ");
 
           element = "ped_calculate_step1_2";
 
           LatexValue_WithoutNerdamer(
             "ped_calculate_step1",
-            PED_Data[0].q_PuttingValues,
+            PED_Data2[0].puttingValues,
             element,
             `Q `
           );
@@ -984,31 +1000,33 @@
 
           LatexValue_WithoutNerdamer(
             "ped_calculate_step1",
-            PED_Data[0].qValue,
+            PED_Data2[0].answer,
             element,
             `Q `
           );
 
-          // Find Derivative of D_q / DP
+          // Find Derivative of dQ1 / dP1
           document.getElementById("ped_find_dev").innerHTML =
-            "Step 2: Finding Derivative dQ / dP";
+            "Step 2: Finding Derivative dQ1 / dP1";
 
           // puttingValues_step1_2
           element = "ped_deviation_1_1";
-          var secondNearDream = nerdamer(`${PED_Data[1].deviationAnswer}`);
-          LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
-
-          var thirdNearDream = nerdamer();
-          LatexValue_WithoutNerdamer(
-            "ped_deviation_1",
-            `d(${PED_Data[1].originalExpression}) / dP`,
-            element,
-            "dQ / dP"
+          var secondNearDream = nerdamer(
+            `d(${PED_Data2[1].originalExpression}) / dP_1`
           );
+          LatexValue("ped_deviation_1", "2", element, "dQ1 / dP1 ");
 
           element = "ped_deviation_1_2";
-          var thirdNearDream = nerdamer(`${PED_Data[2].ped_PuttingValues}`);
-          LatexValue("ped_deviation_1", "2", element, "dQ / dP ");
+          LatexValue_WithoutNerdamer(
+            "ped_deviation_1",
+            `d(${PED_Data2[1].puttingValues}) / dP_1`,
+            element,
+            "dQ1 / dP1"
+          );
+
+          element = "ped_deviation_1_3";
+          var thirdNearDream = nerdamer(`${PED_Data2[1].derivation}`);
+          LatexValue("ped_deviation_1", "3", element, "dQ1 / dP1 ");
 
           // Find Value of PED
           document.getElementById("find_ped").innerHTML =
