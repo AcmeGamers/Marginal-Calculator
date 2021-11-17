@@ -88,3 +88,14 @@ footer {
 #tabs {
   margin-bottom: 5rem;
 }
+
+/* Side Bar Tab */
+.side_bar_tab {
+  width: 30vw;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: red;
+  z-index: 2;
+}
