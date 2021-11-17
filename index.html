@@ -1208,6 +1208,7 @@
     ) {
       var YED = "(d*q / d * p) * y/q";
 
+      // If YED value is 1
       if (selectPriceValue == 1) {
         // Derivative
         // Formula = dQ/dY = (d/dy) [expression]
@@ -1221,7 +1222,10 @@
         console.log(p_constant);
         console.log(q_variable);
         console.log(derivative);
-      } else if (selectPriceValue == 2) {
+      }
+
+      // If YED value is 2
+      else if (selectPriceValue == 2) {
         // Derivative
         // Formula = dQ/dY = (d/dy) [expression]
         var newcomment = "Considering Prices as constant",
@@ -1233,7 +1237,10 @@
         console.log(q_variable);
         console.log(derivative);
         console.log("");
-      } else if (selectPriceValue == 3) {
+      }
+
+      // If YED value is 3
+      else if (selectPriceValue == 3) {
       } else {
         console.log("Please enter a valid number");
       }
