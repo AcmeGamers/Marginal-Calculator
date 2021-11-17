@@ -694,8 +694,8 @@
       console.log("##### Finding Q1 #####");
       var p1_replaced = variableReplacer(expression, "p1", paymentOfGoods1),
         p1_p2_replaced = variableReplacer(p1_replaced, "p2", paymentOfGoods2),
-        y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income);
-      valueOf_Q1 = eval(y_p1_p2_replaced);
+        y_p1_p2_replaced = variableReplacer(p1_p2_replaced, "y", income),
+        valueOf_Q1 = eval(y_p1_p2_replaced);
 
       var p2_replaced = variableReplacer(expression, "p2", paymentOfGoods2),
         y_p2_replaced = variableReplacer(p2_replaced, "y", income),
@@ -898,6 +898,10 @@
         paymentOfGoods2,
         income
       );
+
+      //
+      // PED Display
+      //
       function PED_Display(select_html_Value) {
         console.log("Hello", PED_Data);
 
@@ -1182,6 +1186,64 @@
           ).innerHTML = `${PED_Data[2].PED_commentary.is_Q}`;
 
           nerdamer.flush();
+
+          var checkYED = true,
+            checkXED = false;
+          if (checkYED) {
+            // If value of YED is 1
+            if (select_html_Value == 1) {
+              var YED_OBTAINED_DATA = YEDCalculator(
+                PED_Data[0].expression,
+                valueOfY,
+                PED_Data[1].qValue,
+                select_html_Value,
+                paymentOfGoods1
+              );
+
+              // Value 1
+              var element = "ped5-yed-1";
+              var firstNearDream = nerdamer(
+                `${PED_Data[0].originalExpression}`
+              );
+              LatexValue("ped5-yed-1", "1", element, "E_y ");
+
+              // Value 2
+              element = "ped_calculate_step1_2";
+              LatexValue_WithoutNerdamer(
+                "ped5-yed-1",
+                PED_Data[0].q_PuttingValues,
+                element,
+                `E_y `
+              );
+
+              // Value 3
+              element = "ped_calculate_step1_3";
+              LatexValue_WithoutNerdamer(
+                "ped5-yed-1",
+                PED_Data[0].q_PuttingValues,
+                element,
+                `E_y `
+              );
+            }
+
+            // If value of YED is 2
+            else if (select_html_Value == 2) {
+              YEDCalculator(
+                PED_Data2[0].originalExpression,
+                valueOfY,
+                PED_Data2[0].answer,
+                select_html_Value,
+                paymentOfGoods1
+              );
+            }
+
+            // If value of YED is 3
+            else if (select_html_Value == 3) {
+            } else {
+            }
+          }
+          if (checkXED) {
+          }
         }
       }
       // Function that displays values on HTML page
@@ -1255,6 +1317,16 @@
       console.log(YED);
       var answer = checkYED(YED);
       console.log(answer);
+      var YED_Data = {
+        expression: expression,
+        note: "Replaced values of q",
+        q_variable: q_variable, // Repleaced Data
+        putting_values: putting_values,
+        derivative: YED,
+        comments: answer,
+      };
+
+      return YED_Data;
     }
   </script>
   <!-- XED Calculator -->
