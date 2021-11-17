@@ -234,7 +234,7 @@ two tabs, one is example of usage and how it works.
               <p id="ped5-yed-1" class="hide"></p>
               <p id="ped5-yed-1_1" class="no-margin"></p>
               <p id="ped5-yed-1_2" class=""></p>
-              <p id="ped5-yed-1_2" class=""></p>
+              <p id="ped5-yed-1_3" class=""></p>
             </div>
           </div>
           <div class="if_active_xed">
@@ -912,7 +912,7 @@ two tabs, one is example of usage and how it works.
         if (select_html_Value == 1) {
           var YED_OBTAINED_DATA = YEDCalculator(
             PED_Data[0].expression,
-            valueOfY,
+            Y_Value,
             PED_Data[1].qValue,
             select_html_Value,
             paymentOfGoods1
@@ -956,7 +956,7 @@ two tabs, one is example of usage and how it works.
           document.querySelector("#ped6-yed").style.display = "block";
           YEDCalculator(
             PED_Data2[0].originalExpression,
-            valueOfY,
+            Y_Value,
             PED_Data2[0].answer,
             select_html_Value,
             paymentOfGoods1
@@ -975,16 +975,17 @@ two tabs, one is example of usage and how it works.
           element = "ped5-yed-1_2";
           LatexValue_WithoutNerdamer(
             "ped5-yed-1",
-            PED_Data2[0].q_PuttingValues,
+            PED_Data2[0].puttingValues,
             element,
             `E_y `
           );
 
+          console.log(PED_Data2[0].answer);
           // Value 3
           element = "ped5-yed-1_3";
           LatexValue_WithoutNerdamer(
             "ped5-yed-1",
-            PED_Data2[0].q_PuttingValues,
+            PED_Data2[0].answer,
             element,
             `E_y `
           );
