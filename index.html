@@ -1198,6 +1198,7 @@
           //
           var checkYED = true,
             checkXED = false;
+
           if (checkYED) {
             // If value of YED is 1
             if (select_html_Value == 1) {
@@ -1208,6 +1209,13 @@
                 select_html_Value,
                 paymentOfGoods1
               );
+
+              document.getElementById("ped5-yed").style.display = "block";
+              document.getElementById("ped6-yed").style.display = "block";
+
+              // Heading
+              var element = "ped5-yed-h2";
+              document.getElementById(element).innerText = "YED";
 
               // Value 1
               var element = "ped5-yed-1_1";
