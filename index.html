@@ -802,6 +802,22 @@
         // Find PED
         PED_Data = calculatePED(derivation, paymentOfGoods1, valueOf_Q1);
         console.log(PED_Data);
+        PED_Data = [
+          {
+            name: "Value of Q",
+            originalExpression: expression,
+            puttingValues: y_p1_p2_replaced,
+            answer: valueOf_Q1,
+          },
+          {
+            name: "Derivation of dQ1 / dP1 = d/dp1[expression]",
+            originalExpression: expression,
+            note1: "Taking Y and p2 as constants because derivation is of p1",
+            puttingValues: y_p2_replaced,
+            derivation: derivation,
+          },
+          { name: "PED", originalFormula: "" },
+        ];
       }
 
       // If Value is 3
