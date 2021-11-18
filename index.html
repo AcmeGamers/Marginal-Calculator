@@ -667,13 +667,13 @@ two tabs, one is example of usage and how it works.
 
         var element = "derivative_step1_2";
         var firstNearDream = nerdamer(`d/dQ(${expression.replace(/x/g, "Q")})`);
-        LatexValue("derivative_step1", "1", element, "MC ");
+        LatexValue("derivative_step1", "1", element, "MR ");
 
         element = "derivative_step2_2";
         var secondNearDream = nerdamer(
           `${result.derivative.replace(/x/g, "Q")}`
         );
-        LatexValue("derivative_step2", "2", element, "MC ");
+        LatexValue("derivative_step2", "2", element, "MR ");
 
         // Putting Values
         document.getElementById("puttingValues_h2").innerHTML =
@@ -687,7 +687,7 @@ two tabs, one is example of usage and how it works.
         // puttingValues_step1_1
         element = "puttingValues_step1_2";
         var secondNearDream = nerdamer(`${result.derivative}`);
-        LatexValue("puttingValues_step1", "2", element, "MC ");
+        LatexValue("puttingValues_step1", "2", element, "MR ");
 
         // puttingValues_step2_1
         element = "puttingValues_step2_1";
@@ -695,11 +695,11 @@ two tabs, one is example of usage and how it works.
           "puttingValues_step2",
           result.puttingValues,
           element,
-          `MC `
+          `MR `
         );
 
         // Results
-        document.getElementById("result").innerHTML = `MC = ${result.answer}`;
+        document.getElementById("result").innerHTML = `MR = ${result.answer}`;
 
         // Conclusion
         document.getElementById("Marginal_Conclusion_1").innerHTML =
