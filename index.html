@@ -1792,7 +1792,7 @@ two tabs, one is example of usage and how it works.
       console.log("##### Part 2 #####");
       console.log("ped = derivate x p1/q1");
       console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
-      var answer = `${((derivation * p1) / qValue.answer).toFixed(2)}`;
+      var answer = `${(derivation * (p1 / qValue.answer)).toFixed(2)}`;
       console.log(`ped = ${answer}`);
 
       // Results
@@ -1812,7 +1812,7 @@ two tabs, one is example of usage and how it works.
       ).innerHTML = `Placing all the values in the formula, we get.`;
       document.getElementById(
         "part_1_PED-1-11"
-      ).innerHTML = `<h4>Answer</h4>PED = ${answer}`;
+      ).innerHTML = `<h4>Answer</h4>PED = ${Math.abs(answer)}`;
 
       // Part 2
       // Finding Income of Elasticity
