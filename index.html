@@ -342,6 +342,8 @@ two tabs, one is example of usage and how it works.
           <span id="part_1_PED-1-7" class="px-10-ud"></span>
           <span id="part_1_PED-1-8" class="px-10-ud"></span>
           <span id="part_1_PED-1-9" class="px-10-ud"></span>
+          <span id="part_1_PED-1-10" class="px-10-ud"></span>
+          <span id="part_1_PED-1-11" class="px-10-ud"></span>
         </div>
 
         <!-- Part 2 -->
@@ -1681,8 +1683,10 @@ two tabs, one is example of usage and how it works.
       // ped = dq1/dp1 x p1/q1
       // Formula == (dq1 / dp1 = d/dp1[expression])
       document.getElementById("part_1_PED_h2").innerHTML =
-        "<h2>Finding PED</h2>";
-      document.getElementById("part_1_PED-1-1").innerHTML = `Formula`;
+        "<h2>Price Elasticity of Demand (PED)</h2>";
+      document.getElementById(
+        "part_1_PED-1-1"
+      ).innerHTML = `Formula = dq1/dp1 x p1/q1`;
 
       console.log("");
       console.log("");
@@ -1707,33 +1711,34 @@ two tabs, one is example of usage and how it works.
       // Results
       document.getElementById(
         "part_1_PED-1-2"
-      ).innerHTML = `<h3>Finding Q</h3>`;
-      document.getElementById("part_1_PED-1-3").innerHTML = `Q = ${expression}`;
+      ).innerHTML = `<h3 class="px-10-u">Finding Q</h3>`;
       document.getElementById(
         "part_1_PED-1-3"
+      ).innerHTML = `Q1 = ${expression}`;
+      document.getElementById(
+        "part_1_PED-1-4"
       ).innerHTML = `Placing all the values in the formula`;
-      document.getElementById("part_1_PED-1-4").innerHTML = `Taking Derivation`;
-      document.getElementById("part_1_PED-1-5").innerHTML = `Q = ${derivation}`;
+      document.getElementById("part_1_PED-1-5").innerHTML = `Q = ${expression}`;
+      document.getElementById("part_1_PED-1-6").innerHTML = `Taking Derivation`;
+      document.getElementById("part_1_PED-1-7").innerHTML = `Q = ${derivation}`;
 
       // so putting derivate in ped
       console.log("##### Part 2 #####");
       console.log("ped = derivate x p1/q1");
       console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
-      var answer = `ped = ${((derivation * p1) / qValue.answer).toPrecision(
-        2
-      )}`;
+      var answer = `${((derivation * p1) / qValue.answer).toPrecision(2)}`;
       console.log(`ped = ${answer}`);
 
       // Results
       document.getElementById(
-        "part_1_PED-1-6"
-      ).innerHTML = `Now we have obtained Q, we can find out PED.`;
-      document.getElementById("part_1_PED-1-7").innerHTML =
-        "We know, ped = derivation x p1/q1";
-      document.getElementById(
         "part_1_PED-1-8"
+      ).innerHTML = `Now we have obtained Q, we can find out PED.`;
+      document.getElementById("part_1_PED-1-9").innerHTML =
+        "<h3 class='px-10-u'>Finding PED</h3> PED = dq1/dp1 x p1/q1";
+      document.getElementById(
+        "part_1_PED-1-10"
       ).innerHTML = `Placing all the values in the formula, we get.`;
-      document.getElementById("part_1_PED-1-9").innerHTML = `PED = ${answer}`;
+      document.getElementById("part_1_PED-1-11").innerHTML = `PED = ${answer}`;
 
       // Part 2
       // Finding Income of Elasticity
@@ -1765,28 +1770,32 @@ two tabs, one is example of usage and how it works.
       console.log(`yed = ${((derivation * y) / qValue.answer).toPrecision(2)}`);
 
       // Results
-      document.getElementById("part_2_YED_h2").innerHTML = `<h2>YED</h2>`;
-      document.getElementById("part_2_YED-1-1").innerHTML =
-        "<h3>Finding Derivation</h3>";
+      document.getElementById(
+        "part_2_YED_h2"
+      ).innerHTML = `<h2 class='px-10-u'>Income Elasticity of Demand (YED)</h2>`;
+      document.getElementById(
+        "part_2_YED-1-1"
+      ).innerHTML = `<h3 class='px-10-u'>Formula</h3>
+      <p>YED = dq1/dy x y/q1</p>
+        <h3 class='px-10-u'>Finding Derivation</h3>`;
       document.getElementById(
         "part_2_YED-1-2"
       ).innerHTML = `Taking Derivation from Y`;
       document.getElementById(
         "part_2_YED-1-3"
-      ).innerHTML = `dQ/dy = d/dy (${expression})`;
+      ).innerHTML = `dq1/dy = d/dy (${expression})`;
       document.getElementById(
         "part_2_YED-1-4"
-      ).innerHTML = `dQ/dy = ${derivation}`;
+      ).innerHTML = `dq1/dy = ${derivation}`;
 
       // Results
       document.getElementById(
         "part_2_YED-1-5"
-      ).innerHTML = `<h3>Placing Values in YED</h3>`;
-      document.getElementById("part_2_YED-1-6").innerHTML =
-        "<h3>Finding Derivation</h3>";
+      ).innerHTML = `<h3 class='px-10-u'>Placing Values in YED</h3>`;
+      // document.getElementById("part_2_YED-1-6").innerHTML ="<h3>Finding Derivation</h3>";
       document.getElementById(
         "part_2_YED-1-7"
-      ).innerHTML = `We know, <b>YED = derivate x y/q1</b>, so`;
+      ).innerHTML = `We know, <b>YED = dq1/dy x y/q1</b>, so`;
       document.getElementById(
         "part_2_YED-1-8"
       ).innerHTML = `yed = ${derivation} x ${y}/${qValue.answer}`;
@@ -1849,7 +1858,7 @@ two tabs, one is example of usage and how it works.
         // good 1 and good 2 = dq1 / dp2 x p2/q1
         console.log("##### Cross Price #####");
         console.log("##### Finding Derivation #####");
-        var formula = `${good1} and ${good2} = dq1 / d${successVariable} x ${successVariable}/q1`;
+        var formula = `${good1} and ${good2} = dq1 / d${good2} x ${good2}/q1`;
         console.log(formula);
         console.log("Keeping p2 varible, other than them, all are constants.");
 
@@ -1863,7 +1872,7 @@ two tabs, one is example of usage and how it works.
 
         // Putting Values for XED
         console.log("##### Putting Values #####");
-        var XED = `XED = derivate x ${successVariable}/q1`;
+        var XED = `XED = derivate x ${good2}/q1`;
         var XED_Putting_Values = `XED = ${derivation} x ${p2}/${qValue}`;
         var XED_answer = ((derivation * p2) / qValue).toPrecision(2);
         console.log(XED);
@@ -1875,21 +1884,21 @@ two tabs, one is example of usage and how it works.
         // Finding Derivation
         document.getElementById(
           "part_3_XED_h2"
-        ).innerHTML = `Finding Cross Pricing Index`;
+        ).innerHTML = `<h2>Finding Cross Price Elasticity of Demand (XED)</h2>`;
         document.getElementById("part_3_XED_1").innerHTML =
-          "Finding Derivation";
+          "<h3 class='px-10-u'>Finding Derivation</h3>";
         document.getElementById(
           "part_3_XED_2"
-        ).innerHTML = `dq1 / d${successVariable} = d ${expression} / d${successVariable}`;
+        ).innerHTML = `dq1 / d${good2} = d/d${good2} (${expression}) `;
         document.getElementById(
           "part_3_XED_3"
         ).innerHTML = `Placing all the values in the formula and taking derivation, we get.`;
         document.getElementById(
           "part_3_XED_4"
-        ).innerHTML = `dq1 / ${successVariable} = ${derivation}`;
+        ).innerHTML = `dq1 / ${good2} = ${derivation}`;
         document.getElementById(
           "part_3_XED_5"
-        ).innerHTML = `Note, derivation below is d${successVariable} on R.H.S, due to which, variables other than ${successVariable} were taken as constant.`;
+        ).innerHTML = `<h3 class='px-10-u'>Finding XED</h3>`;
 
         // Finding XED
         document.getElementById("part_3_XED_6").innerHTML = XED;
@@ -1994,7 +2003,7 @@ two tabs, one is example of usage and how it works.
         document.getElementById("part_5_percent_change_1").innerHTML = check;
         document.getElementById(
           "part_5_percent_change_2"
-        ).innerHTML = `<h3>Finding Derivation</h3>`;
+        ).innerHTML = `<h3 class='px-10-u'>Finding Derivation</h3>`;
         document.getElementById(
           "part_5_percent_change_3"
         ).innerHTML = `We know, ${expression}`;
@@ -2011,7 +2020,7 @@ two tabs, one is example of usage and how it works.
         // Results
         document.getElementById(
           "part_5_percent_change_7"
-        ).innerHTML = `<h3>Finding Cross Price Value</h3>`;
+        ).innerHTML = `<h3 class='px-10-u'>Finding Cross Price Value</h3>`;
         document.getElementById(
           "part_5_percent_change_8"
         ).innerHTML = `We know, xed = derivate x ${goodsTest}/q1`;

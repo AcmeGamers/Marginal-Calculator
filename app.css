@@ -100,6 +100,9 @@ footer {
   z-index: 2;
 }
 
-px-10-ud {
+.px-10-ud {
   margin: 10px 0;
+}
+.px-10-u {
+  margin: 10px 0 0;
 }

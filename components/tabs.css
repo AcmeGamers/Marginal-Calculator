@@ -39,6 +39,7 @@ body {
   border-radius: 0 0 10px 10px;
   border-top: none;
   animation: fadeEffect 0.5s; /* Fading effect takes .5s second */
+  /* font-family: system-ui; */
 }
 
 /* Go from zero to full opacity */
