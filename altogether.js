@@ -1330,3 +1330,58 @@ YEDCalculator(Expressive, y, q, 2);
 
 // ChangeCalculator(q, p2, 10);
 // Use css selector:after to say number and use `%` in selector.
+
+// # Part 1
+// ## Finding Q1
+// q1 = expression (putting p1, p2, p3, y)
+// q1 = answer
+p1;
+p2;
+p3;
+y;
+variableReplacer(expression, "p1", p1, "p2", p2, "p3", p3);
+var qValue = Q_Checker(expression); // Answer of Q
+
+// # Part 2
+// ## Finding PED
+// ped = dq1/dp1 x p1/q1
+
+// ## Finding Derivative
+// dQ1/dP1 = d/dP1 (expression) # All values other than p1 are constant
+// dq1/dp1 = answer
+
+// so putting derivate in ped
+
+// ped = derivate x p1/q1
+
+// ## Part 3
+// ## Finding cross price
+
+// good 1 and good 2 = dq1 / dp2 x p2/q1
+
+// ### Finding Derivative
+// dq1/dp2 = d/dp2 (expression) # All values other than p2 are constant
+// dq1/dp2 = answer
+
+// XED = derivative x p2/q1
+
+// ## Part 4
+// ## Finding cross price
+// good 1 and good 3 = dq1 / dp2 x p2/q1
+
+// ### Finding Derivative
+// dq1/dp2 = d/dp2 (expression) # All values other than p2 are constant
+// dq1/dp2 = answer
+
+// XED = derivative x p2/q1
+
+// Part 5
+
+// Percentage Change
+// PED for good 1 and good 3, decrease by 5% in price of goods 3
+
+// cross ped good 1 and good 3 = -0.08  // Taken from Part 4, cross price of good 1 and good 3
+// xed = % change in q1 / % change in p1   // Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
+
+// so
+// % change in q1 = percent change x cross price
