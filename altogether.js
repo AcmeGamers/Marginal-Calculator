@@ -1415,21 +1415,31 @@ var price1 = crossPriceFinder(expression, p2, qValue);
 var price2 = crossPriceFinder(expression, p3, qValue);
 
 // Part 5
-function percentChange(percentValue, crossPriceValue, decreaseOrIncrease) {
+function percentChange(
+  good1,
+  good2,
+  percentValue,
+  crossPriceValue,
+  decreaseOrIncrease
+) {
   // Percentage Change
-  var value;
-  // PED for good 1 and good 3, decrease by 5% in price of goods 3
-
-  // # Taken from Part 4, cross price of good 1 and good 3
-  // cross ped good 1 and good 3 = -0.08
-  xed = crossPriceValue;
 
   // # Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
   if ((decreaseOrIncrease = "+")) {
     percentChangeP1 = "+" + percentValue;
+    decreaseOrIncrease = "increase";
   } else {
     percentChangeP1 = "-" + percentValue;
+    decreaseOrIncrease = "decrease";
   }
+
+  // PED for good 1 and good 3, decrease by 5% in price of goods 3
+  console.log(
+    `PED for ${good1} and ${good2}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2}`
+  );
+  // # Taken from Part 4, cross price of good 1 and good 3
+  // cross ped good 1 and good 3 = -0.08
+  xed = crossPriceValue;
 
   // xed = % change in q1 / % change in p1
   // so
