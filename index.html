@@ -434,6 +434,11 @@ two tabs, one is example of usage and how it works.
           <span id="part_4_XED_1" class="px-10-ud"></span>
           <span id="part_4_XED_2" class="px-10-ud"></span>
           <span id="part_4_XED_3" class="px-10-ud"></span>
+          <span id="part_4_XED_4" class="px-10-ud"></span>
+          <span id="part_4_XED_5" class="px-10-ud"></span>
+          <span id="part_4_XED_6" class="px-10-ud"></span>
+          <span id="part_4_XED_7" class="px-10-ud"></span>
+          <span id="part_4_XED_8" class="px-10-ud"></span>
         </div>
 
         <!-- Part 5 -->
@@ -1704,7 +1709,7 @@ two tabs, one is example of usage and how it works.
     document.querySelector("#students_tab_1").style.display = "flex";
     document.querySelector("#students_tab_2").style.display = "flex";
     document.querySelector("#students_tab_3").style.display = "flex";
-    document.querySelector("#students_tab_4").style.display = "none";
+    document.querySelector("#students_tab_4").style.display = "flex";
     document.querySelector("#students_tab_5").style.display = "flex";
 
     // Scripts for the students
@@ -1942,35 +1947,72 @@ two tabs, one is example of usage and how it works.
         console.log(`XED = ${answer}`);
 
         // Results
+        if (good2 == "p2") {
+          // Finding Derivation
+          document.getElementById(
+            "part_3_XED_h2"
+          ).innerHTML = `<h2>Cross Price Elasticity of Demand (XED)</h2>XED = dq1 / d${good2} x p2/q1`;
+          document.getElementById("part_3_XED_1").innerHTML =
+            "<h3 class='px-10-u'>Finding Derivation</h3>";
+          document.getElementById(
+            "part_3_XED_2"
+          ).innerHTML = `dq1 / d${good2} = d/d${good2} (${expression}) `;
+          document.getElementById(
+            "part_3_XED_3"
+          ).innerHTML = `Placing all the values in the formula and taking derivation, we get.`;
+          document.getElementById(
+            "part_3_XED_4"
+          ).innerHTML = `dq1 / ${good2} = ${derivation}`;
+          document.getElementById(
+            "part_3_XED_5"
+          ).innerHTML = `<h3 class='px-10-u'>Finding XED</h3>`;
 
-        // Finding Derivation
-        document.getElementById(
-          "part_3_XED_h2"
-        ).innerHTML = `<h2>Cross Price Elasticity of Demand (XED)</h2>XED = dq1 / d${good2} x p2/q1`;
-        document.getElementById("part_3_XED_1").innerHTML =
-          "<h3 class='px-10-u'>Finding Derivation</h3>";
-        document.getElementById(
-          "part_3_XED_2"
-        ).innerHTML = `dq1 / d${good2} = d/d${good2} (${expression}) `;
-        document.getElementById(
-          "part_3_XED_3"
-        ).innerHTML = `Placing all the values in the formula and taking derivation, we get.`;
-        document.getElementById(
-          "part_3_XED_4"
-        ).innerHTML = `dq1 / ${good2} = ${derivation}`;
-        document.getElementById(
-          "part_3_XED_5"
-        ).innerHTML = `<h3 class='px-10-u'>Finding XED</h3>`;
+          // Finding XED
+          document.getElementById("part_3_XED_6").innerHTML = XED;
+          document.getElementById("part_3_XED_7").innerHTML =
+            XED_Putting_Values;
+          document.getElementById("part_3_XED_8").innerHTML = XED_answer;
+        }
+        //
+        // If P1 and P3
+        //
+        else if (good2 == "p3") {
+          // Finding Derivation
+          document.getElementById(
+            "part_4_XED_h2"
+          ).innerHTML = `<h2>Cross Price Elasticity of Demand (XED)</h2>XED = dq1 / d${good2} x p2/q1`;
+          document.getElementById("part_4_XED_1").innerHTML =
+            "<h3 class='px-10-u'>Finding Derivation</h3>";
+          document.getElementById(
+            "part_4_XED_2"
+          ).innerHTML = `dq1 / d${good2} = d/d${good2} (${expression}) `;
+          document.getElementById(
+            "part_4_XED_3"
+          ).innerHTML = `Placing all the values in the formula and taking derivation, we get.`;
+          document.getElementById(
+            "part_4_XED_4"
+          ).innerHTML = `dq1 / ${good2} = ${derivation}`;
+          document.getElementById(
+            "part_4_XED_5"
+          ).innerHTML = `<h3 class='px-10-u'>Finding XED</h3>`;
 
-        // Finding XED
-        document.getElementById("part_3_XED_6").innerHTML = XED;
-        document.getElementById("part_3_XED_7").innerHTML = XED_Putting_Values;
-        document.getElementById("part_3_XED_8").innerHTML = XED_answer;
+          // Finding XED
+          document.getElementById("part_4_XED_6").innerHTML = XED;
+          document.getElementById("part_4_XED_7").innerHTML =
+            XED_Putting_Values;
+          document.getElementById("part_4_XED_8").innerHTML = XED_answer;
+        }
 
         return answer;
       }
       // Part 3
-      // var price1 = crossPriceFinder(expression, p2, qValue.answer);
+      var price2 = crossPriceFinder(
+        "good 1",
+        "good 2",
+        expression,
+        p2,
+        qValue.answer
+      );
       console.log("");
       console.log("");
       console.log("");
@@ -1980,7 +2022,7 @@ two tabs, one is example of usage and how it works.
         "good 1",
         "good 2",
         expression,
-        p2,
+        p3,
         qValue.answer
       );
 
