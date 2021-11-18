@@ -1353,9 +1353,8 @@ var qValue = Q_Checker(q_replaced); // Answer of Q
 // # Part 2
 // ## Finding PED
 // ped = dq1/dp1 x p1/q1
-console.log("##### Finding Derivation #####");
 // Formula == (dq1 / dp1 = d/dp1[expression])
-
+console.log("##### Finding Derivation #####");
 console.log("Keeping p1 varible, other than them, all are constants.");
 p1_replaced = variableReplacer(expression, "p1", "x");
 var derivation = deriveExpression(p1_replaced);
@@ -1365,19 +1364,55 @@ console.log(derivation);
 // so putting derivate in ped
 console.log("##### Finding PED #####");
 console.log("ped = derivate x p1/q1");
-console.log("ped = derivate x p1/q1");
-// ped = derivate x p1/q1
+console.log(`ped = ${derivation} x ${p1}/${qValue}`);
 
 // ## Part 3
-// ## Finding cross price
+// ## Finding cross price between two things
 
 // good 1 and good 2 = dq1 / dp2 x p2/q1
+console.log("##### Cross Price #####");
+console.log("##### Finding Derivation #####");
+console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
+console.log("Keeping p2 varible, other than them, all are constants.");
+// Calculation
+p2_replaced = variableReplacer(expression, "p2", "x");
+var derivation = deriveExpression(p2_replaced);
 
-// ### Finding Derivative
-// dq1/dp2 = d/dp2 (expression) # All values other than p2 are constant
-// dq1/dp2 = answer
+// Results
+console.log(p2_replaced);
+console.log(derivation);
 
-// XED = derivative x p2/q1
+// Putting Values for XED
+console.log("##### Putting Values #####");
+console.log("XED = derivate x p2/q1");
+console.log(`ped = ${derivation} x ${p2}/${qValue}`);
+
+function crossPriceFinder(expression, p2, qValue) {
+  // ## Finding cross price between two things
+
+  // good 1 and good 2 = dq1 / dp2 x p2/q1
+  console.log("##### Cross Price #####");
+  console.log("##### Finding Derivation #####");
+  console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
+  console.log("Keeping p2 varible, other than them, all are constants.");
+  // Calculation
+  p2_replaced = variableReplacer(expression, "p2", "x");
+  var derivation = deriveExpression(p2_replaced);
+
+  // Results
+  console.log(p2_replaced);
+  console.log(derivation);
+
+  // Putting Values for XED
+  console.log("##### Putting Values #####");
+  console.log("XED = derivate x p2/q1");
+  console.log(`ped = ${derivation} x ${p2}/${qValue}`);
+}
+// Part 3
+crossPriceFinder(expression, p2, qValue) 
+
+// Part 4
+crossPriceFinder(expression, p3, qValue) 
 
 // ## Part 4
 // ## Finding cross price
