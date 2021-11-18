@@ -1367,25 +1367,25 @@ console.log("ped = derivate x p1/q1");
 console.log(`ped = ${derivation} x ${p1}/${qValue}`);
 
 // ## Part 3
-// ## Finding cross price between two things
+// // ## Finding cross price between two things
 
-// good 1 and good 2 = dq1 / dp2 x p2/q1
-console.log("##### Cross Price #####");
-console.log("##### Finding Derivation #####");
-console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
-console.log("Keeping p2 varible, other than them, all are constants.");
-// Calculation
-p2_replaced = variableReplacer(expression, "p2", "x");
-var derivation = deriveExpression(p2_replaced);
+// // good 1 and good 2 = dq1 / dp2 x p2/q1
+// console.log("##### Cross Price #####");
+// console.log("##### Finding Derivation #####");
+// console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
+// console.log("Keeping p2 varible, other than them, all are constants.");
+// // Calculation
+// p2_replaced = variableReplacer(expression, "p2", "x");
+// var derivation = deriveExpression(p2_replaced);
 
-// Results
-console.log(p2_replaced);
-console.log(derivation);
+// // Results
+// console.log(p2_replaced);
+// console.log(derivation);
 
-// Putting Values for XED
-console.log("##### Putting Values #####");
-console.log("XED = derivate x p2/q1");
-console.log(`ped = ${derivation} x ${p2}/${qValue}`);
+// // Putting Values for XED
+// console.log("##### Putting Values #####");
+// console.log("XED = derivate x p2/q1");
+// console.log(`ped = ${derivation} x ${p2}/${qValue}`);
 
 function crossPriceFinder(expression, p2, qValue) {
   // ## Finding cross price between two things
@@ -1409,28 +1409,30 @@ function crossPriceFinder(expression, p2, qValue) {
   console.log(`ped = ${derivation} x ${p2}/${qValue}`);
 }
 // Part 3
-crossPriceFinder(expression, p2, qValue) 
+var price1 = crossPriceFinder(expression, p2, qValue);
 
 // Part 4
-crossPriceFinder(expression, p3, qValue) 
-
-// ## Part 4
-// ## Finding cross price
-// good 1 and good 3 = dq1 / dp2 x p2/q1
-
-// ### Finding Derivative
-// dq1/dp2 = d/dp2 (expression) # All values other than p2 are constant
-// dq1/dp2 = answer
-
-// XED = derivative x p2/q1
+var price2 = crossPriceFinder(expression, p3, qValue);
 
 // Part 5
+function percentChange(percentValue, crossPriceValue, decreaseOrIncrease) {
+  // Percentage Change
+  var value;
+  // PED for good 1 and good 3, decrease by 5% in price of goods 3
 
-// Percentage Change
-// PED for good 1 and good 3, decrease by 5% in price of goods 3
+  // # Taken from Part 4, cross price of good 1 and good 3
+  // cross ped good 1 and good 3 = -0.08
+  xed = crossPriceValue;
 
-// cross ped good 1 and good 3 = -0.08  // Taken from Part 4, cross price of good 1 and good 3
-// xed = % change in q1 / % change in p1   // Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
+  // # Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
+  if ((decreaseOrIncrease = "+")) {
+    percentChangeP1 = "+" + percentValue;
+  } else {
+    percentChangeP1 = "-" + percentValue;
+  }
 
-// so
-// % change in q1 = percent change x cross price
+  // xed = % change in q1 / % change in p1
+  // so
+  // % change in q1 = percent change x cross price
+  percentChangeQ1 = eval(percentChangeP1 * xed);
+}
