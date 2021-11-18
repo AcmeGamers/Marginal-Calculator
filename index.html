@@ -1624,11 +1624,11 @@ two tabs, one is example of usage and how it works.
     // ## Finding Q1
     // q1 = expression (putting p1, p2, p3, y)
     // q1 = answer
-    var expression = "1466 - p1 + 0.75 * p2 - 0.5*p3 + 0.05 * y",
-      p1 = 150,
-      p2 = 112,
-      p3 = 389,
-      y = 21919;
+    var expression = document.querySelector("student_expression").value,
+      p1 = document.querySelector("pog1").value,
+      p2 = document.querySelector("pog2").value,
+      p3 = document.querySelector("pog3").value,
+      y = document.querySelector("student_income").value;
     console.log("##### Finding Q #####");
     var q_replaced = variableReplacer(
       expression,
@@ -1844,48 +1844,19 @@ two tabs, one is example of usage and how it works.
     console.log("");
     console.log("");
   </script>
+  <script>
+  // Function that displays values on HTML page
+    try {
+      MarginalRevenueDisplay();
+    } catch (error) {
+      document.getElementById("result").innerHTML =
+        "There is some issue in the formula or the typed data is invalid";
+      console.log(error);
+    }
+
+
+
+
+    </script>
 </html>
 
-<!-- 
-Expression
-"student_expression"
-
-Price of Good 1
-"pog1"
-
-Price of Good 2
-"pog2"
-
-Price of Good 3
-"pog3"
-
-Income (Y) 
-"student_income"
-
-calculate
-"StudentValuesCheck "
-
-
-Part 1
-students_tab_1
-part_1_PED
-part_1_PED-1
-      
-
-Part 2
-part_2_YED
-part_2_YED-1
-
-Part 3 
-students_tab_3
-part_3_XED
-
-Part 4
-students_tab_4
-part_4_XED
-
-Part 5 
-students_tab_5
-part_5_percent_change
-
--->
