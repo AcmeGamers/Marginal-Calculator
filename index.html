@@ -284,27 +284,30 @@ two tabs, one is example of usage and how it works.
         <div class="text_and_input style='margin: 10px 0 0 1rem'">
           <p class="margin-right-1rem">Pay of Goods 1 (P1)</p>
           <input
+            ng-pattern="/^\d+$/"
             id="pog1"
             value="209"
-            type="text"
+            type="number"
             placeholder="Price of Good 1"
           />
         </div>
         <div class="text_and_input">
           <p class="margin-right-1rem">Pay of Goods 2 (P2)</p>
           <input
+            ng-pattern="/^\d+$/"
             id="pog2"
             value="101"
-            type="text"
+            type="number"
             placeholder="Price of Good 2"
           />
         </div>
         <div class="text_and_input">
           <p class="margin-right-1rem">Pay of Goods 3 (P3)</p>
           <input
+            ng-pattern="/^\d+$/"
             id="pog3"
             value="478"
-            type="text"
+            type="number"
             placeholder="Price of Good 3"
           />
         </div>
@@ -314,9 +317,10 @@ two tabs, one is example of usage and how it works.
           <p class="margin-right-1rem">Income (Y)</p>
           <input
             id="student_income"
+            type="number"
             value="18361"
-            type="text"
             placeholder="Income"
+            ng-pattern="/^\d+$/"
           />
         </div>
         <!-- Select Options for Percent Change -->
@@ -357,8 +361,8 @@ two tabs, one is example of usage and how it works.
             Then by how much percent?
 
             <input
-              type="text"
               value="5"
+              type="number"
               style="width: 25px"
               class="input-percent"
               id="percent"
@@ -1706,7 +1710,7 @@ two tabs, one is example of usage and how it works.
     // q1 = answer
     function StudentValuesCheck() {
       var expression = document.querySelector("#student_expression").value || 0,
-        p1 = document.querySelector("#pog1").value || 0,
+        p1 = document.querySelector("#pog1").value.toLowerCase() || 0,
         p2 = document.querySelector("#pog2").value || 0,
         p3 = document.querySelector("#pog3").value || 0,
         y = document.querySelector("#student_income").value || 0;
@@ -1766,8 +1770,10 @@ two tabs, one is example of usage and how it works.
         "part_1_PED-1-4"
       ).innerHTML = `Placing all the values in the formula`;
       document.getElementById("part_1_PED-1-5").innerHTML = `Q = ${expression}`;
-      document.getElementById("part_1_PED-1-6").innerHTML = `Taking Derivation`;
-      document.getElementById("part_1_PED-1-7").innerHTML = `Q = ${derivation}`;
+      // document.getElementById("part_1_PED-1-6").innerHTML = `Taking Derivation`;
+      document.getElementById(
+        "part_1_PED-1-7"
+      ).innerHTML = `Q = ${qValue.puttingValues}`;
 
       // so putting derivate in ped
       console.log("##### Part 2 #####");
