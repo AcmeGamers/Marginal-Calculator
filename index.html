@@ -270,6 +270,7 @@ two tabs, one is example of usage and how it works.
             <button onclick="window.location.reload(true)">Clear Cache</button>
           </p>
         </div>
+
         <!-- PED Expression -->
         <span class="margin-right-1rem">Expression</span>
         <input
@@ -284,25 +285,14 @@ two tabs, one is example of usage and how it works.
       <div
         style="display: flex; flex-direction: column; align-items: flex-start"
       >
-        <!-- PED Goods Result -->
-        <div id="PED_goods" style="display: block; margin: 1rem 0">
-          <span id="ped_result"></span>
-        </div>
-        <div style="display: flex; flex-direction: row; align-items: baseline">
-          <!-- PED Income (Y) -->
-          <p class="margin-right-1rem" style="margin-top: 0">Income (Y)</p>
-          <input
-            id="ped_income"
-            value="18361"
-            type="text"
-            placeholder="Income"
-          />
-        </div>
-        <!-- PED Calculate -->
-        <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
-          Calculate!
-        </button>
+        <!-- PED Income (Y) -->
+        <p class="margin-right-1rem" style="margin-top: 0">Income (Y)</p>
+        <input id="ped_income" value="18361" type="text" placeholder="Income" />
       </div>
+      <!-- PED Calculate -->
+      <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
+        Calculate!
+      </button>
     </div>
 
     <!-- Footer -->
