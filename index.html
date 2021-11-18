@@ -1709,8 +1709,10 @@ two tabs, one is example of usage and how it works.
     // q1 = expression (putting p1, p2, p3, y)
     // q1 = answer
     function StudentValuesCheck() {
-      var expression = document.querySelector("#student_expression").value || 0,
-        p1 = document.querySelector("#pog1").value.toLowerCase() || 0,
+      var expression =
+          document.querySelector("#student_expression").value.toLowerCase() ||
+          0,
+        p1 = document.querySelector("#pog1").value || 0,
         p2 = document.querySelector("#pog2").value || 0,
         p3 = document.querySelector("#pog3").value || 0,
         y = document.querySelector("#student_income").value || 0;
@@ -1769,11 +1771,13 @@ two tabs, one is example of usage and how it works.
       document.getElementById(
         "part_1_PED-1-4"
       ).innerHTML = `Placing all the values in the formula`;
-      document.getElementById("part_1_PED-1-5").innerHTML = `Q = ${expression}`;
-      // document.getElementById("part_1_PED-1-6").innerHTML = `Taking Derivation`;
+      // document.getElementById("part_1_PED-1-5").innerHTML = `Q = ${expression}`;
+      document.getElementById(
+        "part_1_PED-1-6"
+      ).innerHTML = `Q = ${qValue.puttingValues}`;
       document.getElementById(
         "part_1_PED-1-7"
-      ).innerHTML = `Q = ${qValue.puttingValues}`;
+      ).innerHTML = `Q = ${qValue.answer}`;
 
       // so putting derivate in ped
       console.log("##### Part 2 #####");
@@ -2083,6 +2087,21 @@ two tabs, one is example of usage and how it works.
         document.getElementById(
           "part_5_percent_change_9"
         ).innerHTML = `XED = ${answer}`;
+
+        // Results
+        document.getElementById(
+          "part_5_percent_change_10"
+        ).innerHTML = `<h3 class='px-10-u'>Finding Percent of Change</h3><h4>Formula</h4> PoC = % Change in Q1 / % Change in ${goodsTest}`;
+        var percent = document.getElementById("percent").value;
+        var operator = document.getElementById("decreaseOrIncrease").value;
+        document.getElementById(
+          "part_5_percent_change_11"
+        ).innerHTML = `<p>Placing Values</p>Change in Q1 = ${answer} * ${operator}${percent}`;
+        document.getElementById(
+          "part_5_percent_change_12"
+        ).innerHTML = `<p>Placing Values</p>Change in Q1 = ${eval(
+          answer * (operator + percent)
+        )}`;
 
         console.log("Hello");
       }
