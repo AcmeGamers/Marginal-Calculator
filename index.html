@@ -108,7 +108,7 @@ two tabs, one is example of usage and how it works.
       <!-- Price Elasticity of Demand (PED) -->
       <div id="PED" class="tabcontent">
         <div>
-          <h3>Price Elasticity of Demand (PED)</h3>
+          <h1 style="font-size: 20px">Price Elasticity of Demand (PED)</h1>
 
           <!-- Need of Values -->
           <div id="checkPEDRequirements">
@@ -233,8 +233,8 @@ two tabs, one is example of usage and how it works.
               <h2 id="ped5-yed-h2"></h2>
               <p id="ped5-yed-1" class="hide"></p>
               <p id="ped5-yed-1_1" class="no-margin"></p>
-              <p id="ped5-yed-1_2" class=""></p>
-              <p id="ped5-yed-1_3" class=""></p>
+              <p id="ped5-yed-1_2" class="no-margin"></p>
+              <p id="ped5-yed-1_3" class="no-margin"></p>
             </div>
           </div>
           <div class="if_active_xed">
@@ -904,10 +904,11 @@ two tabs, one is example of usage and how it works.
         checkXED = false;
       select_html_Value = select_value;
       console.log("Hurray! :D");
+      nerdamer.flush();
       // If value of YED is 1
       if (checkYED == true) {
-        document.querySelector("#ped5-yed").style.display = "block";
-        document.querySelector("#ped6-yed").style.display = "block";
+        document.querySelector("#ped5-yed").style.display = "flex";
+        document.querySelector("#ped6-yed").style.display = "flex";
 
         if (select_html_Value == 1) {
           var YED_OBTAINED_DATA = YEDCalculator(
@@ -952,8 +953,8 @@ two tabs, one is example of usage and how it works.
           console.log("");
           console.log("Check:DDDDDDDDDDDD");
 
-          document.querySelector("#ped5-yed").style.display = "block";
-          document.querySelector("#ped6-yed").style.display = "block";
+          document.querySelector("#ped5-yed").style.display = "flex";
+          document.querySelector("#ped6-yed").style.display = "flex";
           YEDCalculator(
             PED_Data2[0].originalExpression,
             Y_Value,
@@ -993,8 +994,8 @@ two tabs, one is example of usage and how it works.
 
         // If value of YED is 3
         else if (select_html_Value == 3) {
-          document.querySelector("#ped5-yed").style.display = "block";
-          document.querySelector("#ped6-yed").style.display = "block";
+          document.querySelector("#ped5-yed").style.display = "flex";
+          document.querySelector("#ped6-yed").style.display = "flex";
         } else {
         }
       }
@@ -1147,7 +1148,7 @@ two tabs, one is example of usage and how it works.
         // Else Condition
         else if (select_html_Value == 2) {
           // Find Value of Q
-          document.getElementById("ped_deviation_1_3").style.display = "block";
+          document.getElementById("ped_deviation_1_3").style.display = "flex";
           document.getElementById("ped_find_q").innerHTML =
             "Step 1: Finding Value of Q";
 
