@@ -1305,7 +1305,6 @@ function ChangeCalculator(quantity_demand, price, percentChange) {
 // Tests
 ////////
 
-
 // PED
 // var Expressive = "700-2*p+0.02*y",
 var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
@@ -1326,7 +1325,7 @@ var y = 10000,
   q = 5000;
 
 // YEDCalculator("700-2*p+0.02*y", y, q, 1);
-// YEDCalculator(Expressive, y, q, 2);
+YEDCalculator(Expressive, y, q, 2);
 // XEDCalculator(expression, p2, q, 2);
 
 // ChangeCalculator(q, p2, 10);
