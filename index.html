@@ -1806,7 +1806,7 @@ two tabs, one is example of usage and how it works.
       ).innerHTML = `Placing all the values in the formula, we get.`;
       document.getElementById(
         "part_1_PED-1-11"
-      ).innerHTML = `<h3>Answer</h3>PED = ${answer}`;
+      ).innerHTML = `<h4>Answer</h4>PED = ${answer}`;
 
       // Part 2
       // Finding Income of Elasticity
@@ -1869,7 +1869,7 @@ two tabs, one is example of usage and how it works.
       ).innerHTML = `YED = ${derivation} x ${y}/${qValue.answer}`;
       document.getElementById(
         "part_2_YED-1-9"
-      ).innerHTML = `<h3>Answer</h3> YED = ${(
+      ).innerHTML = `<h4>Answer</h4> YED = ${(
         (derivation * y) /
         qValue.answer
       ).toPrecision(2)}`;
@@ -1945,7 +1945,7 @@ two tabs, one is example of usage and how it works.
         console.log("##### Putting Values #####");
         var XED = `XED = derivate x ${good2}/q1`;
         var XED_Putting_Values = `XED = ${derivation} x ${p2}/${qValue}`;
-        var XED_answer = `<h3>Answer</h3>XED = ${(
+        var XED_answer = `<h4>Answer</h4>XED = ${(
           (derivation * p2) /
           qValue
         ).toPrecision(2)}`;
@@ -2163,7 +2163,7 @@ two tabs, one is example of usage and how it works.
         var answer = eval(answer * (operator + percent)).toFixed(2);
         document.getElementById(
           "part_5_percent_change_12"
-        ).innerHTML = `<h3>Answer</h3>% Change in Q1 = ${answer}`;
+        ).innerHTML = `<h4>Answer</h4>% Change in Q1 = ${answer}`;
         // PED for good 1 and good 3, decrease by 5% in price of goods 3
         // var check = `PED for ${good1} and ${good2Name}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2Name}`;
         var decreaseOrIncrease = document
