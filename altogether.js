@@ -1343,10 +1343,10 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
 // q1 = expression (putting p1, p2, p3, y)
 // q1 = answer
 var expression = "1466 - p1 + 0.75 * p2 - 0.5*p3 + 0.05 * y",
-  p1,
-  p2,
-  p3,
-  y;
+  p1 = 150,
+  p2 = 112,
+  p3 = 389,
+  y = 21919;
 console.log("##### Finding Q #####");
 var q_replaced = variableReplacer(
   expression,
@@ -1361,21 +1361,64 @@ var q_replaced = variableReplacer(
 );
 var qValue = Q_Checker(q_replaced); // Answer of Q
 console.log(qValue);
+
 // # Part 2
 // ## Finding PED
 // ped = dq1/dp1 x p1/q1
 // Formula == (dq1 / dp1 = d/dp1[expression])
+console.log("");
+console.log("");
+console.log("##### Finding PED #####");
 console.log("##### Finding Derivation #####");
 console.log("Keeping p1 varible, other than them, all are constants.");
-var p1_replaced = variableReplacer(expression, "p1", "x");
+var p2_p3_y_replaced = variableReplacer(expression, "p2", p2, "p3", p3, "y", y);
+var p1_replaced = variableReplacer(p2_p3_y_replaced, "p1", "x");
 var derivation = deriveExpression(p1_replaced);
 console.log(p1_replaced);
 console.log(derivation);
+console.log("");
 
 // so putting derivate in ped
-console.log("##### Finding PED #####");
+console.log("##### Part 2 #####");
 console.log("ped = derivate x p1/q1");
-console.log(`ped = ${derivation} x ${p1}/${qValue}`);
+console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
+console.log(`ped = ${((derivation * p1) / qValue.answer).toPrecision(2)}`);
+
+console.log("");
+console.log("");
+console.log("");
+
+// Part 3
+// Finding Income of Elasticity
+console.log("");
+console.log("");
+console.log("##### Finding Income of Elasticity #####");
+console.log("##### Finding Derivation #####");
+console.log("Keeping y varible, other than them, all are constants.");
+var p1_p2_p3_replaced = variableReplacer(
+  expression,
+  "p1",
+  p1,
+  "p2",
+  p2,
+  "p3",
+  p3
+);
+var y_replaced = variableReplacer(p1_p2_p3_replaced, "y", "x");
+var derivation = deriveExpression(y_replaced);
+console.log(y_replaced);
+console.log(derivation);
+console.log("");
+
+// so putting derivate in ped
+console.log("##### Part 2 #####");
+console.log("ped = derivate x y/q1");
+console.log(`ped = ${derivation} x ${y}/${qValue.answer}`);
+console.log(`ped = ${((derivation * y) / qValue.answer).toPrecision(2)}`);
+
+console.log("");
+console.log("");
+console.log("");
 
 // ## Finding cross price between two things
 function crossPriceFinder(expression, p2, qValue) {
@@ -1395,13 +1438,18 @@ function crossPriceFinder(expression, p2, qValue) {
   // Putting Values for XED
   console.log("##### Putting Values #####");
   console.log("XED = derivate x p2/q1");
-  console.log(`ped = ${derivation} x ${p2}/${qValue}`);
+  console.log(`XED = ${derivation} x ${p2}/${qValue}`);
+  var answer = ((derivation * p2) / qValue).toPrecision(2);
+  console.log(`XED = ${answer}`);
+  return answer;
 }
 // Part 3
-var price1 = crossPriceFinder(expression, p2, qValue);
-
+// var price1 = crossPriceFinder(expression, p2, qValue.answer);
+console.log("");
+console.log("");
+console.log("");
 // Part 4
-var price2 = crossPriceFinder(expression, p3, qValue);
+var price2 = crossPriceFinder(expression, p2, qValue.answer);
 
 // Part 5
 function percentChange(
@@ -1411,14 +1459,16 @@ function percentChange(
   crossPriceValue,
   decreaseOrIncrease
 ) {
+  good1 = good1.toLowerCase();
+  good2 = good2.toLowerCase();
   // Percentage Change
 
   // # Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
-  if ((decreaseOrIncrease = "+")) {
-    percentChangeP1 = "+" + percentValue;
+  if (decreaseOrIncrease == "+") {
+    var percentChangeP1 = "+" + percentValue;
     decreaseOrIncrease = "increase";
   } else {
-    percentChangeP1 = "-" + percentValue;
+    var percentChangeP1 = "-" + percentValue;
     decreaseOrIncrease = "decrease";
   }
 
@@ -1426,12 +1476,70 @@ function percentChange(
   console.log(
     `PED for ${good1} and ${good2}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2}`
   );
+  // Taking derivation
+  console.log("");
+  console.log("");
+  console.log("##### Finding Derivation #####");
+  var goodsTest = good2 == "good 1" ? "p1" : good2 == "good 2" ? "p2" : "p3";
+  var failedtest1, failedtest2, failedTestVariable1, failedTestVariable2;
+  if (goodsTest == "p1") {
+    failedtest1 = "p2";
+    failedtest2 = "p3";
+    failedTestVariable1 = p2;
+    failedTestVariable2 = p3;
+  } else if (goodsTest == "p2") {
+    failedtest1 = "p1";
+    failedtest2 = "p3";
+    failedTestVariable1 = p1;
+    failedTestVariable2 = p3;
+  } else {
+    failedtest1 = "p1";
+    failedtest2 = "p2";
+    failedTestVariable1 = p1;
+    failedTestVariable2 = p2;
+  }
+
+  var p2_p3_y_replaced = variableReplacer(
+    expression,
+    failedtest1,
+    failedTestVariable1,
+    failedtest2,
+    failedTestVariable2,
+    "y",
+    y
+  );
+  var p1_replaced = variableReplacer(p2_p3_y_replaced, goodsTest, "x");
+  var derivation = deriveExpression(p1_replaced);
+  console.log(
+    `Keeping ${goodsTest} varible, other than them, all are constants.`
+  );
+  console.log(p1_replaced);
+  console.log(derivation);
+  console.log("");
+
+  // so putting derivate in ped
+  console.log("##### Part 2 #####");
+  console.log("ped = derivate x p1/q1");
+  console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
+  console.log(`ped = ${((derivation * p1) / qValue.answer).toPrecision(2)}`);
+
+  console.log("");
+  console.log("");
+  console.log("");
+
   // # Taken from Part 4, cross price of good 1 and good 3
   // cross ped good 1 and good 3 = -0.08
-  xed = crossPriceValue;
-
+  var xed = crossPriceValue;
+  console.log("cross price value = " + xed);
   // xed = % change in q1 / % change in p1
   // so
   // % change in q1 = percent change x cross price
-  percentChangeQ1 = eval(percentChangeP1 * xed);
+  var percentChangeQ1 = eval(percentChangeP1 * xed);
+  console.log(`percentChangeQ1 = ${percentChangeQ1}`);
 }
+console.log("");
+console.log("");
+console.log("Good 1 and Good 3");
+percentChange("good 1", "good 3", "5", price2, "-");
+console.log("");
+console.log("");
