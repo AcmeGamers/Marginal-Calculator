@@ -280,19 +280,49 @@ two tabs, one is example of usage and how it works.
           placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
           id="ped_expression"
         />
-      </div>
+        <div class="text_and_input">
+          <p class="margin-right-1rem">Pay of Goods 1 (P1)</p>
+          <input
+            id="pg1"
+            value="209"
+            type="text"
+            placeholder="Price of Good 1"
+          />
+        </div>
+        <div class="text_and_input">
+          <p class="margin-right-1rem">Pay of Goods 2 (P2)</p>
+          <input
+            id="pg2"
+            value="101"
+            type="text"
+            placeholder="Price of Good 2"
+          />
+        </div>
+        <div class="text_and_input">
+          <p class="margin-right-1rem">Pay of Goods 3 (P3)</p>
+          <input
+            id="pg3"
+            value="478"
+            type="text"
+            placeholder="Price of Good 3"
+          />
+        </div>
 
-      <div
-        style="display: flex; flex-direction: column; align-items: flex-start"
-      >
-        <!-- PED Income (Y) -->
-        <p class="margin-right-1rem" style="margin-top: 0">Income (Y)</p>
-        <input id="ped_income" value="18361" type="text" placeholder="Income" />
+        <div class="text_and_input">
+          <!-- PED Income (Y) -->
+          <p class="margin-right-1rem" style="margin-top: 0">Income (Y)</p>
+          <input
+            id="ped_income"
+            value="18361"
+            type="text"
+            placeholder="Income"
+          />
+        </div>
+        <!-- PED Calculate -->
+        <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
+          Calculate!
+        </button>
       </div>
-      <!-- PED Calculate -->
-      <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
-        Calculate!
-      </button>
     </div>
 
     <!-- Footer -->
