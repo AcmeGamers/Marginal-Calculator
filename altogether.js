@@ -936,20 +936,27 @@ function variableReplacer(
   valueToChange2,
   value2,
   valueToChange3,
-  value3
+  value3,
+  valueToChange3,
+  value4
 ) {
   var result;
 
   if (value2) {
     // First Value will be your new value, second is the value currently
     result = expression.split(valueToChange).join(value1);
-    result = expression.split(valueToChange2).join(value2);
+    result = result.split(valueToChange2).join(value2);
     return result;
-  }
-  if (value3) {
+  } else if (value3) {
     result = expression.split(valueToChange).join(value1);
-    result = expression.split(valueToChange2).join(value2);
-    result = expression.split(valueToChange3).join(value3);
+    result = result.split(valueToChange2).join(value2);
+    result = result.split(valueToChange3).join(value3);
+    return result;
+  } else if (value3) {
+    result = expression.split(valueToChange).join(value1);
+    result = result.split(valueToChange2).join(value2);
+    result = result.split(valueToChange3).join(value3);
+    result = result.split(valueToChange3).join(value4);
     return result;
   } else {
     result = expression.split(valueToChange).join(value1);
@@ -1339,19 +1346,26 @@ p1;
 p2;
 p3;
 y;
-variableReplacer(expression, "p1", p1, "p2", p2, "p3", p3);
-var qValue = Q_Checker(expression); // Answer of Q
+console.log("##### Finding Q #####");
+q_replaced = variableReplacer(expression, "p1", p1, "p2", p2, "p3", p3);
+var qValue = Q_Checker(q_replaced); // Answer of Q
 
 // # Part 2
 // ## Finding PED
 // ped = dq1/dp1 x p1/q1
+console.log("##### Finding Derivation #####");
+// Formula == (dq1 / dp1 = d/dp1[expression])
 
-// ## Finding Derivative
-// dQ1/dP1 = d/dP1 (expression) # All values other than p1 are constant
-// dq1/dp1 = answer
+console.log("Keeping p1 varible, other than them, all are constants.");
+p1_replaced = variableReplacer(expression, "p1", "x");
+var derivation = deriveExpression(p1_replaced);
+console.log(p1_replaced);
+console.log(derivation);
 
 // so putting derivate in ped
-
+console.log("##### Finding PED #####");
+console.log("ped = derivate x p1/q1");
+console.log("ped = derivate x p1/q1");
 // ped = derivate x p1/q1
 
 // ## Part 3
