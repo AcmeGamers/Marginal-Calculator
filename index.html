@@ -1796,9 +1796,14 @@ two tabs, one is example of usage and how it works.
       console.log(`ped = ${answer}`);
 
       // Results
-      document.getElementById(
-        "part_1_PED-1-8"
-      ).innerHTML = `Now we have obtained Q, we can find out PED.`;
+      document.getElementById("part_1_PED-1-8").innerHTML = `
+      <p>Now we have obtained Q, finding derivative.</p>
+      <h3> Finding Derivation </h3>
+      <p>dq1/dp1 = ${expression}</p>
+      <p>Adding Values</p>
+      <p>dq1/dp1 = ${p2_p3_y_replaced}</p>
+      <p>dq1/dp1 = ${derivation}</p>
+      `;
       document.getElementById(
         "part_1_PED-1-9"
       ).innerHTML = `<h3 class='px-10-u'>Finding PED</h3> <p>PED = dq1/dp1 x p1/q1 </p>ped = ${derivation} x ${p1}/${qValue.answer}`;
