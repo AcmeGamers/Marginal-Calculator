@@ -2151,7 +2151,7 @@ two tabs, one is example of usage and how it works.
           "part_5_percent_change_11"
         ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${answer} * ${operator}${percent}`;
 
-        var answer = eval(answer * (operator + percent)).toPrecision(2);
+        var answer = eval(answer * (operator + percent)).toFixed(2);
         document.getElementById(
           "part_5_percent_change_12"
         ).innerHTML = `% Change in Q1 = ${answer}`;
