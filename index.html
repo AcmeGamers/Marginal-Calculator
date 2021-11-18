@@ -2149,7 +2149,9 @@ two tabs, one is example of usage and how it works.
 
         document.getElementById(
           "part_5_percent_change_11"
-        ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${(answer).toFixed(2)} * ${operator}${percent}`;
+        ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${parseFloat(
+          answer
+        ).toFixed(2)} * ${operator}${percent}`;
 
         var answer = eval(answer * (operator + percent)).toFixed(2);
         document.getElementById(
