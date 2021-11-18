@@ -1648,11 +1648,11 @@ two tabs, one is example of usage and how it works.
     // q1 = expression (putting p1, p2, p3, y)
     // q1 = answer
     function StudentValuesCheck() {
-      var expression = document.querySelector("#student_expression").value,
-        p1 = document.querySelector("#pog1").value,
-        p2 = document.querySelector("#pog2").value,
-        p3 = document.querySelector("#pog3").value,
-        y = document.querySelector("#student_income").value;
+      var expression = document.querySelector("#student_expression").value || 0,
+        p1 = document.querySelector("#pog1").value || 0,
+        p2 = document.querySelector("#pog2").value || 0,
+        p3 = document.querySelector("#pog3").value || 0,
+        y = document.querySelector("#student_income").value || 0;
       console.log("##### Finding Q #####");
       var q_replaced = variableReplacer(
         expression,
@@ -1672,7 +1672,8 @@ two tabs, one is example of usage and how it works.
       // ## Finding PED
       // ped = dq1/dp1 x p1/q1
       // Formula == (dq1 / dp1 = d/dp1[expression])
-      document.getElementById("part_1_PED").innerHTML = "<h2>Finding PED</h2>";
+      document.getElementById("part_1_PED_h2").innerHTML =
+        "<h2>Finding PED</h2>";
       document.getElementById("part_1_PED-1-1").innerHTML = `Formula`;
 
       console.log("");
@@ -1756,7 +1757,7 @@ two tabs, one is example of usage and how it works.
       console.log(`yed = ${((derivation * y) / qValue.answer).toPrecision(2)}`);
 
       // Results
-      document.getElementById("part_2_YED").innerHTML = `<h2>YED</h2>`;
+      document.getElementById("part_2_YED_h2").innerHTML = `<h2>YED</h2>`;
       document.getElementById("part_2_YED-1-1").innerHTML =
         "<h3>Finding Derivation</h3>";
       document.getElementById(
@@ -1877,7 +1878,7 @@ two tabs, one is example of usage and how it works.
         ).innerHTML = `Placing all the values in the formula and taking derivation, we get.`;
         document.getElementById(
           "part_3_XED_4"
-        ).innerHTML = `dq1 / ${successVariable} = ${deriation}`;
+        ).innerHTML = `dq1 / ${successVariable} = ${derivation}`;
         document.getElementById(
           "part_3_XED_5"
         ).innerHTML = `Note, derivation below is d${successVariable} on R.H.S, due to which, variables other than ${successVariable} were taken as constant.`;
@@ -1918,6 +1919,7 @@ two tabs, one is example of usage and how it works.
           var percentChangeP1 = "-" + percentValue;
           decreaseOrIncrease = "decrease";
         }
+        var goodsTest = checkGood(good2).goodsTest;
         good2 = checkGood(good2).goodsTest;
         var failedtest1 = checkGood(good2).failedtest1,
           failedtest2 = checkGood(good2).failedtest2,
@@ -1957,7 +1959,7 @@ two tabs, one is example of usage and how it works.
         var formula = `xed = derivate x ${goodsTest}/q1`;
         var putting_Values = `xed = ${derivation} x ${goodsTest}/${qValue.answer}`;
         console.log(formula);
-        console.log(puttingValues);
+        console.log(putting_Values);
         var answer = (
           (derivation * successVariable) /
           qValue.answer
@@ -2008,9 +2010,13 @@ two tabs, one is example of usage and how it works.
         document.getElementById(
           "part_5_percent_change_9"
         ).innerHTML = `xed = ${answer}`;
+
+        // Unhiding Answers
+        hideToShow("students_tab_", 5, "flex");
+        document.getElementById(students_tab_4).style.display = "none";
       }
       console.log("Good 1 and Good 3");
-      percentChange("good 1", "good 3", "5", "-");
+      // percentChange("good 1", "good 3", "5", "-");
       console.log("");
       console.log("");
     }
