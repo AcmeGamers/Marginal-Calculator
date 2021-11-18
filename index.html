@@ -278,12 +278,12 @@ two tabs, one is example of usage and how it works.
           style="width: 50vw"
           value="4850 - 5 * p1 + 1.5 * p2 + 0.1 * y"
           placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
-          id="ped_expression"
+          id="student_expression"
         />
         <div class="text_and_input">
           <p class="margin-right-1rem">Pay of Goods 1 (P1)</p>
           <input
-            id="pg1"
+            id="pog1"
             value="209"
             type="text"
             placeholder="Price of Good 1"
@@ -292,7 +292,7 @@ two tabs, one is example of usage and how it works.
         <div class="text_and_input">
           <p class="margin-right-1rem">Pay of Goods 2 (P2)</p>
           <input
-            id="pg2"
+            id="pog2"
             value="101"
             type="text"
             placeholder="Price of Good 2"
@@ -301,7 +301,7 @@ two tabs, one is example of usage and how it works.
         <div class="text_and_input">
           <p class="margin-right-1rem">Pay of Goods 3 (P3)</p>
           <input
-            id="pg3"
+            id="pog3"
             value="478"
             type="text"
             placeholder="Price of Good 3"
@@ -319,7 +319,11 @@ two tabs, one is example of usage and how it works.
           />
         </div>
         <!-- PED Calculate -->
-        <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
+        <button
+          style="margin: 1rem 0"
+          type="button"
+          onclick="StudentValuesCheck()"
+        >
           Calculate!
         </button>
       </div>
@@ -1841,3 +1845,23 @@ two tabs, one is example of usage and how it works.
     console.log("");
   </script>
 </html>
+
+<!-- 
+Expression
+"student_expression"
+
+Price of Good 1
+"pog1"
+
+Price of Good 2
+"pog2"
+
+Price of Good 3
+"pog3"
+
+Income (Y) 
+"student_income"
+
+calculate
+"StudentValuesCheck "
+-->
