@@ -1456,7 +1456,7 @@ function percentChange(
   good1,
   good2,
   percentValue,
-  crossPriceValue,
+
   decreaseOrIncrease
 ) {
   good1 = good1.toLowerCase();
@@ -1481,22 +1481,29 @@ function percentChange(
   console.log("");
   console.log("##### Finding Derivation #####");
   var goodsTest = good2 == "good 1" ? "p1" : good2 == "good 2" ? "p2" : "p3";
-  var failedtest1, failedtest2, failedTestVariable1, failedTestVariable2;
+  var failedtest1,
+    failedtest2,
+    failedTestVariable1,
+    failedTestVariable2,
+    successVariable;
   if (goodsTest == "p1") {
     failedtest1 = "p2";
     failedtest2 = "p3";
+    successVariable = p1;
     failedTestVariable1 = p2;
     failedTestVariable2 = p3;
   } else if (goodsTest == "p2") {
     failedtest1 = "p1";
     failedtest2 = "p3";
     failedTestVariable1 = p1;
+    successVariable = p2;
     failedTestVariable2 = p3;
-  } else {
+  } else if (goodsTest == "p3") {
     failedtest1 = "p1";
     failedtest2 = "p2";
     failedTestVariable1 = p1;
     failedTestVariable2 = p2;
+    successVariable = p3;
   }
 
   var p2_p3_y_replaced = variableReplacer(
@@ -1508,6 +1515,7 @@ function percentChange(
     "y",
     y
   );
+  console.log(p2_p3_y_replaced);
   var p1_replaced = variableReplacer(p2_p3_y_replaced, goodsTest, "x");
   var derivation = deriveExpression(p1_replaced);
   console.log(
@@ -1519,9 +1527,10 @@ function percentChange(
 
   // so putting derivate in ped
   console.log("##### Part 2 #####");
-  console.log("ped = derivate x p1/q1");
-  console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
-  console.log(`ped = ${((derivation * p1) / qValue.answer).toPrecision(2)}`);
+  console.log(`xed = derivate x ${goodsTest}/q1`);
+  console.log(`xed = ${derivation} x ${goodsTest}/${qValue.answer}`);
+  var answer = ((derivation * successVariable) / qValue.answer).toPrecision(2);
+  console.log(`xed = ${answer}`);
 
   console.log("");
   console.log("");
@@ -1529,17 +1538,15 @@ function percentChange(
 
   // # Taken from Part 4, cross price of good 1 and good 3
   // cross ped good 1 and good 3 = -0.08
-  var xed = crossPriceValue;
+  var xed = answer;
   console.log("cross price value = " + xed);
   // xed = % change in q1 / % change in p1
   // so
   // % change in q1 = percent change x cross price
   var percentChangeQ1 = eval(percentChangeP1 * xed);
-  console.log(`percentChangeQ1 = ${percentChangeQ1}`);
+  console.log(`percentChangeQ1 = ${percentChangeQ1.toPrecision(2)}`);
 }
-console.log("");
-console.log("");
 console.log("Good 1 and Good 3");
-percentChange("good 1", "good 3", "5", price2, "-");
+percentChange("good 1", "good 3", "5", "-");
 console.log("");
 console.log("");
