@@ -2118,9 +2118,9 @@ two tabs, one is example of usage and how it works.
         document.getElementById(
           "part_5_percent_change_13"
         ).innerHTML = `Therefore, the percentage change in quanitity of good is %${answer}. Which means that the price of ${good2} ${
-          decreaseOrIncrease == "decrease" ? "increases" : "decreases"
+          Math.sign(answer) == -1 ? "increases" : "decreases"
         } by %${percentValue}. The quanitity demanded of ${good1} ${
-          decreaseOrIncrease == "decrease" ? "decreases" : "increases"
+          Math.sign(answer) == -1 ? "decreases" : "increases"
         } by %${answer}`;
         console.log("Hello");
       }
