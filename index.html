@@ -190,6 +190,7 @@ two tabs, one is example of usage and how it works.
                 placeholder="Income"
               />
             </div>
+
             <!-- PED Calculate -->
             <button style="margin: 1rem 0" type="button" onclick="PEDCheck()">
               Calculate!
@@ -280,10 +281,8 @@ two tabs, one is example of usage and how it works.
           placeholder="1456 - P1 + 0.75 * P2 - 0.5 * p3 + 0.05*Y"
           id="student_expression"
         />
-        <div class="text_and_input">
-          <p class="margin-right-1rem" style="margin: 10px">
-            Pay of Goods 1 (P1)
-          </p>
+        <div class="text_and_input style='margin: 10px 0 0 1rem'">
+          <p class="margin-right-1rem">Pay of Goods 1 (P1)</p>
           <input
             id="pog1"
             value="209"
@@ -319,6 +318,52 @@ two tabs, one is example of usage and how it works.
             type="text"
             placeholder="Income"
           />
+        </div>
+        <!-- Select Options for Percent Change -->
+        <h3>Percent Change</h3>
+        <div
+          style="display: flex; flex-direction: row; align-items: flex-start"
+        >
+          <p>
+            Select the goods to compare:
+            <select name="good1" id="good1">
+              <option value="good1">Goods 1</option>
+              <option value="good2">Goods 2</option>
+              <option value="good3">Goods 3</option>
+            </select>
+
+            <select name="good2" id="good2">
+              <option value="good1">Goods 1</option>
+              <option value="good2">Goods 2</option>
+              <option value="good3">Goods 3</option>
+            </select>
+          </p>
+        </div>
+        <div
+          style="display: flex; flex-direction: row; align-items: flex-start"
+        >
+          <p>
+            And was there a decrease or increase:
+            <select name="decreaseOrIncrease" id="decreaseOrIncrease">
+              <option value="+">Increase</option>
+              <option value="-">Decrease</option>
+            </select>
+          </p>
+        </div>
+        <div
+          style="display: flex; flex-direction: row; align-items: flex-start"
+        >
+          <p>
+            Then by how much percent?
+
+            <input
+              type="text"
+              value="5"
+              style="width: 25px"
+              class="input-percent"
+            />
+            <span>%</span>
+          </p>
         </div>
         <!-- PED Calculate -->
         <button
@@ -1652,7 +1697,6 @@ two tabs, one is example of usage and how it works.
     document.querySelector("#students_tab_3").style.display = "flex";
     document.querySelector("#students_tab_4").style.display = "none";
     document.querySelector("#students_tab_5").style.display = "flex";
-    document.querySelector("#students_tab_6").style.display = "flex";
 
     // Scripts for the students
     // # Part 1_1
@@ -2002,7 +2046,9 @@ two tabs, one is example of usage and how it works.
         // Results
         document.getElementById("part_5_percent_change_h2").innerHTML =
           "Percent Change";
+
         document.getElementById("part_5_percent_change_1").innerHTML = check;
+
         document.getElementById(
           "part_5_percent_change_2"
         ).innerHTML = `<h3 class='px-10-u'>Finding Derivation</h3>`;
@@ -2034,7 +2080,7 @@ two tabs, one is example of usage and how it works.
       }
 
       console.log("Good 1 and Good 3");
-      // percentChange("good 1", "good 3", "5", "-");
+      percentChange("good 1", "good 3", "5", "-");
       console.log("");
       console.log("");
     }
