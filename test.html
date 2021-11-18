@@ -486,13 +486,28 @@ two tabs, one is example of usage and how it works.
     integrity="sha256-1X0hl2yReR/yZuZo7R3A9LUgS9+zWl8GzYjuk4pd6bE="
     crossorigin="anonymous"
   ></script>
+
   <!-- Create a simple CodeMirror instance -->
-  <link rel="stylesheet" href="lib/codemirror.css" />
-  <script src="lib/codemirror.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css"
+    integrity="sha512-6sALqOPMrNSc+1p5xOhPwGIzs6kIlST+9oGWlI4Wwcbj1saaX9J3uzO3Vub016dmHV7hM+bMi/rfXLiF5DNIZg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"
+    integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script>
-    var editor = CodeMirror.fromTextArea(myTextarea, {
-      lineNumbers: true,
-    });
+    var editor = CodeMirror.fromTextArea(
+      document.getElementById("ped_expression"),
+      {
+        lineNumbers: true,
+      }
+    );
   </script>
   <!-- Math JS -->
   <script src="https://cdn.jsdelivr.net/npm/mathjs@10.0.0/lib/browser/math.min.js"></script>
