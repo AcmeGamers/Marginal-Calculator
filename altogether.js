@@ -937,7 +937,7 @@ function variableReplacer(
   value2,
   valueToChange3,
   value3,
-  valueToChange3,
+  valueToChange4,
   value4
 ) {
   var result;
@@ -956,7 +956,7 @@ function variableReplacer(
     result = expression.split(valueToChange).join(value1);
     result = result.split(valueToChange2).join(value2);
     result = result.split(valueToChange3).join(value3);
-    result = result.split(valueToChange3).join(value4);
+    result = result.split(valueToChange4).join(value4);
     return result;
   } else {
     result = expression.split(valueToChange).join(value1);
@@ -1328,12 +1328,12 @@ var Expressive = "4850 - 5 * p1 + 1.5 * p2 + 0.1 * y",
 // YED
 // var y = 25,
 //   q = 750;
-var y = 10000,
-  q = 5000;
+// var y = 10000,
+//   q = 5000;
 
-// YEDCalculator("700-2*p+0.02*y", y, q, 1);
-YEDCalculator(Expressive, y, q, 2);
-// XEDCalculator(expression, p2, q, 2);
+// // YEDCalculator("700-2*p+0.02*y", y, q, 1);
+// YEDCalculator(Expressive, y, q, 2);
+// // XEDCalculator(expression, p2, q, 2);
 
 // ChangeCalculator(q, p2, 10);
 // Use css selector:after to say number and use `%` in selector.
@@ -1342,21 +1342,32 @@ YEDCalculator(Expressive, y, q, 2);
 // ## Finding Q1
 // q1 = expression (putting p1, p2, p3, y)
 // q1 = answer
-p1;
-p2;
-p3;
-y;
+var expression = "1466 - p1 + 0.75 * p2 - 0.5*p3 + 0.05 * y",
+  p1,
+  p2,
+  p3,
+  y;
 console.log("##### Finding Q #####");
-q_replaced = variableReplacer(expression, "p1", p1, "p2", p2, "p3", p3);
+var q_replaced = variableReplacer(
+  expression,
+  "p1",
+  p1,
+  "p2",
+  p2,
+  "p3",
+  p3,
+  "y",
+  y
+);
 var qValue = Q_Checker(q_replaced); // Answer of Q
-
+console.log(qValue);
 // # Part 2
 // ## Finding PED
 // ped = dq1/dp1 x p1/q1
 // Formula == (dq1 / dp1 = d/dp1[expression])
 console.log("##### Finding Derivation #####");
 console.log("Keeping p1 varible, other than them, all are constants.");
-p1_replaced = variableReplacer(expression, "p1", "x");
+var p1_replaced = variableReplacer(expression, "p1", "x");
 var derivation = deriveExpression(p1_replaced);
 console.log(p1_replaced);
 console.log(derivation);
@@ -1366,37 +1377,15 @@ console.log("##### Finding PED #####");
 console.log("ped = derivate x p1/q1");
 console.log(`ped = ${derivation} x ${p1}/${qValue}`);
 
-// ## Part 3
-// // ## Finding cross price between two things
-
-// // good 1 and good 2 = dq1 / dp2 x p2/q1
-// console.log("##### Cross Price #####");
-// console.log("##### Finding Derivation #####");
-// console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
-// console.log("Keeping p2 varible, other than them, all are constants.");
-// // Calculation
-// p2_replaced = variableReplacer(expression, "p2", "x");
-// var derivation = deriveExpression(p2_replaced);
-
-// // Results
-// console.log(p2_replaced);
-// console.log(derivation);
-
-// // Putting Values for XED
-// console.log("##### Putting Values #####");
-// console.log("XED = derivate x p2/q1");
-// console.log(`ped = ${derivation} x ${p2}/${qValue}`);
-
+// ## Finding cross price between two things
 function crossPriceFinder(expression, p2, qValue) {
-  // ## Finding cross price between two things
-
   // good 1 and good 2 = dq1 / dp2 x p2/q1
   console.log("##### Cross Price #####");
   console.log("##### Finding Derivation #####");
   console.log("good 1 and good 2 = dq1 / dp2 x p2/q1");
   console.log("Keeping p2 varible, other than them, all are constants.");
   // Calculation
-  p2_replaced = variableReplacer(expression, "p2", "x");
+  var p2_replaced = variableReplacer(expression, "p2", "x");
   var derivation = deriveExpression(p2_replaced);
 
   // Results
