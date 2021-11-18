@@ -361,6 +361,7 @@ two tabs, one is example of usage and how it works.
               value="5"
               style="width: 25px"
               class="input-percent"
+              id="percent"
             />
             <span>%</span>
           </p>
@@ -1732,7 +1733,7 @@ two tabs, one is example of usage and how it works.
         "<h2>Price Elasticity of Demand (PED)</h2>";
       document.getElementById(
         "part_1_PED-1-1"
-      ).innerHTML = `Formula = dq1/dp1 x p1/q1`;
+      ).innerHTML = `<h3>Formula</h3> dq1/dp1 x p1/q1`;
 
       console.log("");
       console.log("");
@@ -1822,8 +1823,8 @@ two tabs, one is example of usage and how it works.
       document.getElementById(
         "part_2_YED-1-1"
       ).innerHTML = `<h3 class='px-10-u'>Formula</h3>
-      <p>YED = dq1/dy x y/q1</p>
-        <h3 class='px-10-u'>Finding Derivation</h3>`;
+          <p>YED = dq1/dy x y/q1</p>
+            <h3 class='px-10-u'>Finding Derivation</h3>`;
       document.getElementById(
         "part_2_YED-1-2"
       ).innerHTML = `Taking Derivation from Y`;
@@ -1930,7 +1931,7 @@ two tabs, one is example of usage and how it works.
         // Finding Derivation
         document.getElementById(
           "part_3_XED_h2"
-        ).innerHTML = `<h2>Finding Cross Price Elasticity of Demand (XED)</h2>`;
+        ).innerHTML = `<h2>Cross Price Elasticity of Demand (XED)</h2>XED = dq1 / d${good2} x p2/q1`;
         document.getElementById("part_3_XED_1").innerHTML =
           "<h3 class='px-10-u'>Finding Derivation</h3>";
         document.getElementById(
@@ -1970,8 +1971,9 @@ two tabs, one is example of usage and how it works.
 
       // Part 5
       function percentChange(good1, good2, percentValue, decreaseOrIncrease) {
-        good1 = good1.toLowerCase();
-        good2 = good2.toLowerCase();
+        good1Name = good1.toLowerCase();
+        good2Name = good2.toLowerCase();
+
         // Percentage Change
 
         // # Since change in goods 3 and goods 1 price is decrease by 5%, it is -5
@@ -1991,7 +1993,7 @@ two tabs, one is example of usage and how it works.
           successVariable = checkGood(good2).successVariable;
 
         // PED for good 1 and good 3, decrease by 5% in price of goods 3
-        var check = `PED for ${good1} and ${good2}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2}`;
+        var check = `PED for ${good1} and ${good2Name}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2Name}`;
 
         // Taking derivation
         console.log("");
@@ -2036,7 +2038,7 @@ two tabs, one is example of usage and how it works.
         // # Taken from Part 4, cross price of good 1 and good 3
         // cross ped good 1 and good 3 = -0.08
         var xed = answer;
-        console.log("cross price value = " + xed);
+        console.log("Cross Price Value = " + xed);
         // xed = % change in q1 / % change in p1
         // so
         // % change in q1 = percent change x cross price
@@ -2045,7 +2047,7 @@ two tabs, one is example of usage and how it works.
 
         // Results
         document.getElementById("part_5_percent_change_h2").innerHTML =
-          "Percent Change";
+          "<h2>Percent Change<h2>";
 
         document.getElementById("part_5_percent_change_1").innerHTML = check;
 
@@ -2054,16 +2056,16 @@ two tabs, one is example of usage and how it works.
         ).innerHTML = `<h3 class='px-10-u'>Finding Derivation</h3>`;
         document.getElementById(
           "part_5_percent_change_3"
-        ).innerHTML = `We know, ${expression}`;
+        ).innerHTML = `${expression}`;
         document.getElementById(
           "part_5_percent_change_4"
         ).innerHTML = `Putting Values`;
         document.getElementById(
           "part_5_percent_change_5"
-        ).innerHTML = `derivation = ${p1_replaced}`;
+        ).innerHTML = `dq1/d${goodsTest} = d/d${goodsTest} (${expression})`;
         document.getElementById(
           "part_5_percent_change_6"
-        ).innerHTML = `derivation = ${derivation}`;
+        ).innerHTML = `dq1/d${goodsTest} = ${derivation}`;
 
         // Results
         document.getElementById(
@@ -2071,17 +2073,20 @@ two tabs, one is example of usage and how it works.
         ).innerHTML = `<h3 class='px-10-u'>Finding Cross Price Value</h3>`;
         document.getElementById(
           "part_5_percent_change_8"
-        ).innerHTML = `We know, xed = derivate x ${goodsTest}/q1`;
+        ).innerHTML = `We know, XED = dq1/d${goodsTest} x ${goodsTest}/q1`;
         document.getElementById(
           "part_5_percent_change_9"
-        ).innerHTML = `xed = ${answer}`;
+        ).innerHTML = `XED = ${answer}`;
 
         console.log("Hello");
       }
 
       console.log("Good 1 and Good 3");
-
-      percentChange("good 1", "good 3", "5", "-");
+      var good1 = document.getElementById("good1").value,
+        good2 = document.getElementById("good2").value,
+        percent = document.getElementById("percent").value,
+        operator = document.getElementById("decreaseOrIncrease").value;
+      percentChange(good1, good2, percent, decreaseOrIncrease);
       console.log("");
       console.log("");
     }
