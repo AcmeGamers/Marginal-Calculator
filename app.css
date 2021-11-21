@@ -1,12 +1,14 @@
 body {
   background-color: #fbfbfb;
 }
+/* 
 h2 {
   margin-left: -2rem !important;
   background: #c1c1c15e;
   width: 100%;
   text-align: center;
 }
+ */
 
 .no-js #loader {
   display: none;
