@@ -1,14 +1,11 @@
 body {
   background-color: #fbfbfb;
 }
-/* 
-h2 {
-  margin-left: -2rem !important;
-  background: #c1c1c15e;
-  width: 100%;
-  text-align: center;
+hr {
+  background: #c1c1c1;
+  width: -webkit-fill-available;
+  height: 0.3rem;
 }
- */
 
 .no-js #loader {
   display: none;
