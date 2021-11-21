@@ -25,20 +25,20 @@ two tabs, one is example of usage and how it works.
     <title>Marginal Calculator</title>
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="components/tabs.css" />
-		<link rel="icon" type="image/x-icon" href="components/favicon-1.ico">
+    <link rel="icon" type="image/x-icon" href="components/favicon-1.ico" />
   </head>
   <body>
     <div class="se-pre-con"></div>
+    <div style="margin: 0 0 1rem">
+      <h2>Calculator</h2>
+      <!-- use storage session check if there is a session. -->
+      <span>
+        Cache Clear in case of new commit/change
+        <button onclick="window.location.reload(true)">Clear</button>
+      </span>
+    </div>
     <!-- <div class="side_bar_tab"></div> -->
     <div id="tabs">
-      <h2>Calculator</h2>
-      <div style="margin: 0 0 1rem">
-        <!-- use storage session check if there is a session. -->
-        <span>
-          Cache Clear in case of new commit/change
-          <button onclick="window.location.reload(true)">Clear</button>
-        </span>
-      </div>
       <div class="tab">
         <button
           class="tablinks"
@@ -497,13 +497,24 @@ two tabs, one is example of usage and how it works.
     integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs"
     crossorigin="anonymous"
   />
-  
+
   <!-- Math Quill -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.9.1/mathquill.min.css" integrity="sha512-ClJLWtbX5z9xE5ZeKRcTGB+nJGP32tjiM75BMsvTYbl1L93KDrtK3SNVtJnv0lpIyv6G/JqD4ovPr7NxdeZVBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.9.1/mathquill.min.css"
+    integrity="sha512-ClJLWtbX5z9xE5ZeKRcTGB+nJGP32tjiM75BMsvTYbl1L93KDrtK3SNVtJnv0lpIyv6G/JqD4ovPr7NxdeZVBA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.9.1/mathquill.min.js" integrity="sha512-nrkcp3u2ytFW9WsmuD0JwlIhY6ZDCfL8+vd9cofdsl7m4XvmCR+DCvhvq0Zuhg69rGLsASKfYgcJKvyh6dyf0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.9.1/mathquill.min.js"
+    integrity="sha512-nrkcp3u2ytFW9WsmuD0JwlIhY6ZDCfL8+vd9cofdsl7m4XvmCR+DCvhvq0Zuhg69rGLsASKfYgcJKvyh6dyf0A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script>
-  var MQ = MathQuill.getInterface(2);
+    // var MQ = MathQuill.getInterface(2);
   </script>
 
   <!-- The loading of KaTeX is deferred to speed up page rendering -->
