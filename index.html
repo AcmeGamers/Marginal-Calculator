@@ -1873,7 +1873,9 @@ two tabs, one is example of usage and how it works.
       console.log("##### Part 2 #####");
       console.log("yed = derivate x y/q1");
       console.log(`yed = ${derivation} x ${y}/${qValue.answer}`);
-      console.log(`yed = ${((derivation * y) / qValue.answer).toPrecision(3)}`);
+      var answer = ((derivation * y) / qValue.answer).toPrecision(3);
+      console.log(`yed = ${answer}`);
+      checkYED(answer);
 
       // Results
       document.getElementById(
@@ -1910,7 +1912,10 @@ two tabs, one is example of usage and how it works.
       ).innerHTML = `<h4>Answer</h4> YED = ${(
         (derivation * y) /
         qValue.answer
-      ).toPrecision(3)}`;
+      ).toPrecision(3)}
+      
+      
+      `;
       console.log("");
       console.log("");
       console.log("");
