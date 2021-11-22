@@ -2194,7 +2194,7 @@ two tabs, one is example of usage and how it works.
           "part_5_percent_change_11"
         ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${parseFloat(
           answer
-        ).toPrecision(3)} * ${operator}${percent / 100}`;
+        ).toPrecision(3)} * (${operator == "+" ? "" : "-"}${percent / 100})`;
 
         var answer = eval(answer * (operator + percent)).toPrecision(3);
         document.getElementById(
