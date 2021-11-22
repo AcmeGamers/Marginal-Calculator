@@ -1912,6 +1912,7 @@ two tabs, one is example of usage and how it works.
       <p>${yed_comments.comment}</p>
       <p>${yed_comments.elasticity}</p>
       `;
+
       console.log("");
       console.log("");
       console.log("");
@@ -1983,11 +1984,14 @@ two tabs, one is example of usage and how it works.
         // Putting Values for XED
         console.log("##### Putting Values #####");
         var XED = `XED = derivate x ${good2}/q1`;
+        var answer = ((derivation * p2) / qValue).toPrecision(3);
+        var yed_comments = checkYED(answer);
         var XED_Putting_Values = `XED = ${derivation} x ${p2}/${qValue}`;
-        var XED_answer = `<h4>Answer</h4>XED = ${(
-          (derivation * p2) /
-          qValue
-        ).toPrecision(3)}`;
+        var XED_answer = `<h4>Answer</h4>XED = ${answer}
+        
+        <p>${yed_comments.comment}</p>
+        <p>${yed_comments.elasticity}</p>`;
+
         console.log(XED);
         console.log(XED_Putting_Values);
         console.log(`XED = ${answer}`);
