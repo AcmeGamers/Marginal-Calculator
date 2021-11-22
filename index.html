@@ -921,6 +921,35 @@ two tabs, one is example of usage and how it works.
         return data;
       }
     }
+    function checkXED(value, good1, good2) {
+      var comment, elasticity, data;
+      if (value < 1) {
+        comment = `Since the value is less than 1, (${value} < 1). It is Complementary Elasticity.`;
+        elasticity = `Such that, This means that when the price of ${good1} increases, the demand for ${good2} decreases. `;
+        data = {
+          comment: comment,
+          elasticity: elasticity,
+        };
+        return data;
+      }
+      if (value > 1) {
+        comment = `Since the value is greater than 1, (${value} > 1). It is Subsitute Elasticity.`;
+        elasticity = `Such that, This means that when the price of ${good1} increases, the demand for ${good2} also increases. `;
+        data = {
+          comment: comment,
+          elasticity: elasticity,
+        };
+        return data;
+      }
+      if (value == 1) {
+        comment = `Since the value is equal to 0, (${value} == 0). It is Unrelated Elasticity.`;
+        elasticity = `Such that, te price of ${good1} can increase by 100 percent, but it will create no effect on demand for ${good2}.`;
+        data = {
+          comment: comment,
+          elasticity: elasticity,
+        };
+        return data;
+      }
 
     function calculatePED(derivative, paymentOfGoods1, quantity) {
       // Find PED
