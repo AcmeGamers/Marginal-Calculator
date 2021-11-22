@@ -8,6 +8,7 @@ https://acmegamers.github.io/Marginal-Calculator/index.html
 
 ## Liberaries and Sources
 * MathJS 
-* LaTex
+* KaTex
 * Nerdamer
+* Math Quill
 * Michi83, JS Derivative Finder: https://github.com/Michi83/JS-Derivative-Finder
