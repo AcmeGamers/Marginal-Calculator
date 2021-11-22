@@ -857,7 +857,7 @@ two tabs, one is example of usage and how it works.
       }
       if (value > 1) {
         comment = `Since the value is greater than 1, (${value} > 1), demand is elastic.`;
-        is_Q = `Q is a demanding good`;
+        is_Q = `Q is a Luxury good`;
         data = {
           comment: comment,
           is_Q: is_Q,
@@ -876,8 +876,8 @@ two tabs, one is example of usage and how it works.
 
     function checkYED(value) {
       var comment, elasticity, data;
-      if (value < 1) {
-        comment = `Since the value is less than 1, (${value} < 1). It is a necessary good.`;
+      if (value < 0) {
+        comment = `Since the value is less than 0, (${value} < 0). It is a necessary good.`;
         elasticity = `Such that, Income Elasticity is <b>Low Income Elasticity</b> having <b>necessary goods</b> from Normal Goods.`;
         data = {
           comment: comment,
@@ -885,18 +885,9 @@ two tabs, one is example of usage and how it works.
         };
         return data;
       }
-      if (value > 1) {
-        comment = `Since the value is greater than 1, (${value} > 1). This is typical of a luxury or superior good.`;
-        elasticity = `Such that, Income Elasticity is <b>High Income Elasticity</b> having <b>superior goods</b> from Normal Goods.`;
-        data = {
-          comment: comment,
-          elasticity: elasticity,
-        };
-        return data;
-      }
-      if (value == 1) {
-        comment = `Since the value is equal to 1, (${value} = 1). Proportional increase in price and goods.`;
-        elasticity = `Such that, Income Elasticity is <b>Unitary Income Elasticity</b> having no change.`;
+      if (value > 0) {
+        comment = `Since the value is greater than 0, (${value} > 0). This is typical of a luxury or superior good.`;
+        elasticity = `Such that, Income Elasticity is <b>High Income Elasticity</b> having <b>luxury or superior goods</b> from Normal Goods.`;
         data = {
           comment: comment,
           elasticity: elasticity,
@@ -904,16 +895,8 @@ two tabs, one is example of usage and how it works.
         return data;
       }
       if (value == 0) {
-        comment = `Since the value is equal to 0, (${value} = 0). Change in income has no effect over the bought quantity`;
-        elasticity = `Such that, Income Elasticity is <b>Zero Income Elasticity</b> having <b>Sticky goods</b> from Normal Goods.`;
-        data = {
-          comment: comment,
-          elasticity: elasticity,
-        };
-        return data;
-      } else {
-        comment = `Since the value is less than 0, (${value} > 0), it is an inferior goods, unlike others which are normal goods.`;
-        elasticity = `Such that, Income Elasticity is <b>Negative Income Elasticity</b> inferior from Normal Goods.`;
+        comment = `Since the value is equal to 0, (${value} = 0). Proportional increase in price and goods.`;
+        elasticity = `Such that, Income Elasticity is <b>Unitary Income Elasticity</b> having no change.`;
         data = {
           comment: comment,
           elasticity: elasticity,
