@@ -924,7 +924,7 @@ two tabs, one is example of usage and how it works.
       console.log(derivative, paymentOfGoods1, quantity);
       var PED_answer_string = `| ${derivative} * (${paymentOfGoods1} / ${quantity}) | `;
       var PED_answer = derivative * (paymentOfGoods1 / quantity),
-        PED_answer = Math.abs(PED_answer).toFixed(2);
+        PED_answer = Math.abs(PED_answer).toPrecision(2);
       console.log(PED_answer);
 
       var PED_commentary = checkPED(PED_answer);
@@ -1617,7 +1617,7 @@ two tabs, one is example of usage and how it works.
       console.log(putting_values);
 
       YED = derivative * (y / q);
-      YED = YED.toFixed(2);
+      YED = YED.toPrecision(2);
       console.log(YED);
       var answer = checkYED(YED);
       console.log(answer);
@@ -1676,7 +1676,7 @@ two tabs, one is example of usage and how it works.
       console.log(putting_values);
 
       XED = derivative * (p2 / q1);
-      XED = XED.toFixed(2);
+      XED = XED.toPrecision(2);
       console.log(XED);
       var answer = checkYED(XED);
       console.log(answer);
@@ -1815,7 +1815,7 @@ two tabs, one is example of usage and how it works.
       console.log("##### Part 2 #####");
       console.log("ped = derivate x p1/q1");
       console.log(`ped = ${derivation} x ${p1}/${qValue.answer}`);
-      var answer = `${(derivation * (p1 / qValue.answer)).toFixed(2)}`;
+      var answer = `${(derivation * (p1 / qValue.answer)).toPrecision(2)}`;
       console.log(`ped = ${answer}`);
 
       // Results
@@ -1864,7 +1864,7 @@ two tabs, one is example of usage and how it works.
       console.log("##### Part 2 #####");
       console.log("yed = derivate x y/q1");
       console.log(`yed = ${derivation} x ${y}/${qValue.answer}`);
-      console.log(`yed = ${((derivation * y) / qValue.answer).toFixed(2)}`);
+      console.log(`yed = ${((derivation * y) / qValue.answer).toPrecision(2)}`);
 
       // Results
       document.getElementById(
@@ -1901,7 +1901,7 @@ two tabs, one is example of usage and how it works.
       ).innerHTML = `<h4>Answer</h4> YED = ${(
         (derivation * y) /
         qValue.answer
-      ).toFixed(2)}`;
+      ).toPrecision(2)}`;
       console.log("");
       console.log("");
       console.log("");
@@ -1977,7 +1977,7 @@ two tabs, one is example of usage and how it works.
         var XED_answer = `<h4>Answer</h4>XED = ${(
           (derivation * p2) /
           qValue
-        ).toFixed(2)}`;
+        ).toPrecision(2)}`;
         console.log(XED);
         console.log(XED_Putting_Values);
         console.log(`XED = ${answer}`);
@@ -2123,9 +2123,10 @@ two tabs, one is example of usage and how it works.
         var putting_Values = `xed = ${derivation} x ${goodsTest}/${qValue.answer}`;
         console.log(formula);
         console.log(putting_Values);
-        var answer = ((derivation * successVariable) / qValue.answer).toFixed(
-          2
-        );
+        var answer = (
+          (derivation * successVariable) /
+          qValue.answer
+        ).toPrecision(2);
         console.log(`xed = ${answer}`);
 
         console.log("");
@@ -2140,7 +2141,7 @@ two tabs, one is example of usage and how it works.
         // so
         // % change in q1 = percent change x cross price
         var percentChangeQ1 = eval(percentChangeP1 * xed);
-        console.log(`percentChangeQ1 = ${percentChangeQ1.toFixed(2)}`);
+        console.log(`percentChangeQ1 = ${percentChangeQ1.toPrecision(2)}`);
 
         // Results
         document.getElementById("part_5_percent_change_h2").innerHTML =
@@ -2186,9 +2187,9 @@ two tabs, one is example of usage and how it works.
           "part_5_percent_change_11"
         ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${parseFloat(
           answer
-        ).toFixed(2)} * ${operator}${percent}`;
+        ).toPrecision(2)} * ${operator}${percent}`;
 
-        var answer = eval(answer * (operator + percent)).toFixed(2);
+        var answer = eval(answer * (operator + percent)).toPrecision(2);
         document.getElementById(
           "part_5_percent_change_12"
         ).innerHTML = `<h4>Answer</h4>% Change in Q1 = ${answer}`;
