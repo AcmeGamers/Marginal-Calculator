@@ -2194,12 +2194,12 @@ two tabs, one is example of usage and how it works.
           "part_5_percent_change_11"
         ).innerHTML = `<p>Placing Values</p>% Change in Q1 = ${parseFloat(
           answer
-        ).toPrecision(3)} * ${operator}${percent}`;
+        ).toPrecision(3)} * ${operator}${percent / 100}`;
 
         var answer = eval(answer * (operator + percent)).toPrecision(3);
         document.getElementById(
           "part_5_percent_change_12"
-        ).innerHTML = `<h4>Answer</h4>% Change in Q1 = ${answer}`;
+        ).innerHTML = `<h4>Answer</h4>% Change in Q1 = ${answer}%`;
         // PED for good 1 and good 3, decrease by 5% in price of goods 3
         // var check = `PED for ${good1} and ${good2Name}, ${decreaseOrIncrease} by ${percentValue}% in price of ${good2Name}`;
         var decreaseOrIncrease = document
@@ -2208,11 +2208,11 @@ two tabs, one is example of usage and how it works.
         good2 = document.getElementById("good2").value;
         document.getElementById(
           "part_5_percent_change_13"
-        ).innerHTML = `Therefore, the percentage change in quanitity of good is %${answer}. Which means that the price of ${good2} ${
+        ).innerHTML = `Therefore, the percentage change in quanitity of good is ${answer}%. Which means that the price of ${good2} ${
           Math.sign(answer) == -1 ? "increases" : "decreases"
-        } by %${percentValue}. The quanitity demanded of ${good1} ${
+        } by ${percentValue}%. The quanitity demanded of ${good1} ${
           Math.sign(answer) == -1 ? "decreases" : "increases"
-        } by %${answer}`;
+        } by ${answer}%`;
         console.log("Hello");
       }
 
