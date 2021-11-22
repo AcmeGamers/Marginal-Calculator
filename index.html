@@ -1875,7 +1875,7 @@ two tabs, one is example of usage and how it works.
       console.log(`yed = ${derivation} x ${y}/${qValue.answer}`);
       var answer = ((derivation * y) / qValue.answer).toPrecision(3);
       console.log(`yed = ${answer}`);
-      checkYED(answer);
+      var yed_comments = checkYED(answer);
 
       // Results
       document.getElementById(
@@ -1907,14 +1907,10 @@ two tabs, one is example of usage and how it works.
       document.getElementById(
         "part_2_YED-1-8"
       ).innerHTML = `YED = ${derivation} x ${y}/${qValue.answer}`;
-      document.getElementById(
-        "part_2_YED-1-9"
-      ).innerHTML = `<h4>Answer</h4> YED = ${(
-        (derivation * y) /
-        qValue.answer
-      ).toPrecision(3)}
-      
-      
+      document.getElementById("part_2_YED-1-9").innerHTML = `<h4>Answer</h4> 
+      <p>YED = ${((derivation * y) / qValue.answer).toPrecision(3)}</p>
+      <p>${yed_comments.comment}</p>
+      <p>${yed_comments.elasticity}</p>
       `;
       console.log("");
       console.log("");
