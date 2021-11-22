@@ -943,13 +943,14 @@ two tabs, one is example of usage and how it works.
       }
       if (value == 1) {
         comment = `Since the value is equal to 0, (${value} == 0). It is Unrelated Elasticity.`;
-        elasticity = `Such that, te price of ${good1} can increase by 100 percent, but it will create no effect on demand for ${good2}.`;
+        elasticity = `Such that, te price of ${good1} can increase by 100 percent, but it will create no effect on demand for ${good2}. `;
         data = {
           comment: comment,
           elasticity: elasticity,
         };
         return data;
       }
+    }
 
     function calculatePED(derivative, paymentOfGoods1, quantity) {
       // Find PED
