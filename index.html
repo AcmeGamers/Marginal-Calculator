@@ -56,7 +56,7 @@ two tabs, one is example of usage and how it works.
           Cross Price Elasticity of Demand (XED)
         </button>
         <button class="tablinks" onclick="openTab(event, 'PC')">
-          Students' Tab
+          Alpha Feature
         </button>
       </div>
 
@@ -265,10 +265,10 @@ two tabs, one is example of usage and how it works.
 
       <div id="PC" class="tabcontent">
         <div>
-          <h3>Students' Tab</h3>
+          <h3>Alpha Version</h3>
           <p>
-            Alpha feature of the calculator which is made for the use of finding
-            PED, YED, XED, and Percent Change.
+            This feature currently supports calculation of PED, YED, XED, and
+            Percent Change without any text Styling.
           </p>
         </div>
 
@@ -1735,19 +1735,19 @@ two tabs, one is example of usage and how it works.
   <!--  -->
 
   <script>
-    // Unhiding Answers
-    document.querySelector("#students_tab_1").style.display = "flex";
-    document.querySelector("#students_tab_2").style.display = "flex";
-    document.querySelector("#students_tab_3").style.display = "flex";
-    document.querySelector("#students_tab_4").style.display = "flex";
-    document.querySelector("#students_tab_5").style.display = "flex";
-
     // Scripts for the students
     // # Part 1_1
     // ## Finding Q1
     // q1 = expression (putting p1, p2, p3, y)
     // q1 = answer
     function StudentValuesCheck() {
+      // Unhiding Answers
+      document.querySelector("#students_tab_1").style.display = "flex";
+      document.querySelector("#students_tab_2").style.display = "flex";
+      document.querySelector("#students_tab_3").style.display = "flex";
+      document.querySelector("#students_tab_4").style.display = "flex";
+      document.querySelector("#students_tab_5").style.display = "flex";
+
       var expression =
           document.querySelector("#student_expression").value.toLowerCase() ||
           0,
