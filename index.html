@@ -789,20 +789,26 @@ two tabs, one is example of usage and how it works.
       valueToChange2,
       value2,
       valueToChange3,
-      value3
+      value3,
+      value4,
+      valueToChange4
     ) {
       var result;
 
-      if (value2) {
-        // First Value will be your new value, second is the value currently
+      if (value4) {
         result = expression.split(valueToChange).join(value1);
-        result = expression.split(valueToChange2).join(value2);
+        result = result.split(valueToChange2).join(value2);
+        result = result.split(valueToChange3).join(value3);
+        result = result.split(valueToChange4).join(value4);
         return result;
-      }
-      if (value3) {
+      } else if (value3) {
         result = expression.split(valueToChange).join(value1);
-        result = expression.split(valueToChange2).join(value2);
-        result = expression.split(valueToChange3).join(value3);
+        result = result.split(valueToChange2).join(value2);
+        result = result.split(valueToChange3).join(value3);
+        return result;
+      } else if (value2) {
+        result = expression.split(valueToChange).join(value1);
+        result = result.split(valueToChange2).join(value2);
         return result;
       } else {
         result = expression.split(valueToChange).join(value1);
@@ -1748,7 +1754,7 @@ two tabs, one is example of usage and how it works.
         p2 = document.querySelector("#pog2").value || 0,
         p3 = document.querySelector("#pog3").value || 0,
         y = document.querySelector("#student_income").value || 0;
-      console.log("P1 = " +  p1 + "\n P2 = " +  p2);
+      console.log("P1 = " + p1 + "\n P2 = " + p2);
       console.log("##### Finding Q #####");
       var q_replaced = variableReplacer(
         expression,
