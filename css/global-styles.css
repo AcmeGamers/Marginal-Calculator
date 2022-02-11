@@ -1,5 +1,12 @@
 :root {
   --main-thm: #634ed4;
+  --main-thm-dark: #3c2d9f;
+  --main-thm-light: #6f5ae2;
+  --main-thm-light-2: #f5f5f5;
+
+  --old-bg-v1: #0075ff;
+  --old-bg-hover: #3f97ff;
+  --old-bg-active: #006ae7;
 }
 
 body {

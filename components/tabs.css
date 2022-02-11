@@ -6,7 +6,7 @@ body {
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #0075ff;
+  background-color: var(--main-thm);
 }
 
 /* Style the buttons inside the tab */
@@ -24,11 +24,11 @@ body {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #3f97ff;
+  background-color: var(--main-thm-light);
 }
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #006ae7;
+  background-color: var(--main-thm-dark);
 }
 
 /* Style the tab content */
@@ -40,6 +40,7 @@ body {
   border-top: none;
   animation: fadeEffect 0.5s; /* Fading effect takes .5s second */
   /* font-family: system-ui; */
+  background: #fff;
 }
 
 /* Go from zero to full opacity */
