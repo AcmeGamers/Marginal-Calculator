@@ -1,5 +1,9 @@
+:root {
+  --main-thm: #634ed4;
+}
+
 body {
-  background-color: #fbfbfb;
+  background-color: var(--main-thm);
 }
 hr {
   background: #c1c1c1;
