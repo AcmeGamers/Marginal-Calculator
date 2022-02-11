@@ -6,12 +6,12 @@ body {
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: var(--main-thm);
+  background-color: #fff;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
+  background-color: var(--main-thm);
   float: left;
   border: none;
   outline: none;
@@ -19,7 +19,8 @@ body {
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
-  color: white;
+  color: #fff;
+  margin: 10px;
 }
 
 /* Change background color of buttons on hover */

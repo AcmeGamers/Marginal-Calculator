@@ -1,7 +1,7 @@
 :root {
   --main-thm: #634ed4;
   --main-thm-dark: #3c2d9f;
-  --main-thm-light: #6f5ae2;
+  --main-thm-light: #7b67ee;
   --main-thm-light-2: #f5f5f5;
 
   --old-bg-v1: #0075ff;
@@ -12,6 +12,7 @@
 body {
   background-color: var(--main-thm);
 }
+
 hr {
   background: #c1c1c1;
   width: -webkit-fill-available;
@@ -36,9 +37,19 @@ hr {
   z-index: 9999;
   background: url("./components/Preloader_11.gif") center no-repeat #fff;
 }
-
-.hide {
-  display: none;
+button {
+  background: var(--main-thm);
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: var(--main-thm-light);
 }
 
 .left-align {
@@ -47,10 +58,6 @@ hr {
   align-items: flex-start;
   margin-top: 1rem;
   display: none;
-}
-
-.no-margin {
-  margin: 0;
 }
 
 #result {

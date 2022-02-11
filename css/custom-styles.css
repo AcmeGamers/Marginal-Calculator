@@ -15,12 +15,14 @@
 .verti-center {
   align-items: center;
 }
-.flex-1 {
-  flex: 1;
-}
-.flex-2 {
-  flex: 2;
-}
 .mg-d-1r {
   margin-bottom: 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.no-margin {
+  margin: 0;
 }
