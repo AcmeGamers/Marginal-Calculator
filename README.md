@@ -3,10 +3,11 @@
 My goodness, I wonder what I was doing when I was coding this :')
 
 ## Completition Rate
-- **PED** (90% Complete - Input: 80%)
+- **PED** (90% Complete - Input: 100%)
 - **YED** (90% Complete - Input: 0%)
 - **XED** (90% Complete - Input: 0%)
 - **Everything - Alpha** (Cause why not - 50% Complete)
+- **Desgin** (😄 ~ I might need to redesign everything :'D)
 
 ## Marginal-Calculator
 
